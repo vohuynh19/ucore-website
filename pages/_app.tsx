@@ -6,8 +6,7 @@ import "@fontsource/roboto/700.css";
 import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { appWithTranslation } from "next-i18next";
-
-import { GlobalStyled, theme } from "../src/styles";
+import { GlobalStyled, theme } from "@styles";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

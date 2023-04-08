@@ -15,6 +15,9 @@ export async function getStaticProps({ locale }: { locale: string }) {
 const Home: NextPage = () => {
   return (
     <div>
+      Hellllooooo
+      <Button>Antd work</Button>
+      <Button>Antd work</Button>
       <Button>Antd work</Button>
       <AcUnitIcon />
     </div>
