@@ -7,12 +7,12 @@ import type { AppProps } from "next/app";
 import { ThemeProvider } from "styled-components";
 import { appWithTranslation } from "next-i18next";
 
-import GlobalStyle, { appTheme } from "../src/styles";
+import { GlobalStyled, theme } from "../src/styles";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={appTheme}>
-      <GlobalStyle />
+    <ThemeProvider theme={theme}>
+      <GlobalStyled />
       <Component {...pageProps} />
     </ThemeProvider>
   );
