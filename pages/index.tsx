@@ -2,8 +2,6 @@ import { Button } from "antd";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
-import AcUnitIcon from "@mui/icons-material/AcUnit";
-
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
     props: {
@@ -13,15 +11,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Home: NextPage = () => {
-  return (
-    <div>
-      Hellllooooo
-      <Button>Antd work</Button>
-      <Button>Antd work</Button>
-      <Button>Antd work</Button>
-      <AcUnitIcon />
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Home;

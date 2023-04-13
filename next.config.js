@@ -1,19 +1,5 @@
 const { i18n } = require("./next-i18next.config");
 
-// Set caching headers for all pages and API routes
-const headers = async () => [
-  {
-    source: "/:path*",
-    headers: [
-      {
-        key: "Cache-Control",
-        value:
-          "public, max-age=3600, s-maxage=3600, stale-while-revalidate=3600",
-      },
-    ],
-  },
-];
-
 const nextConfig = {
   i18n,
   reactStrictMode: true,
@@ -21,7 +7,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  headers,
+  devIndicators: {
+    buildActivityPosition: "top-right",
+  },
 };
 
 module.exports = nextConfig;
