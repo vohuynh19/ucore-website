@@ -6,7 +6,7 @@ export const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
 });
 
-const GlobalStyled = createGlobalStyle`
+export const GlobalStyled = createGlobalStyle`
   html,
   body {
     padding: 0;
@@ -22,5 +22,3 @@ const GlobalStyled = createGlobalStyle`
     box-sizing: border-box;
   }
 `;
-
-export default GlobalStyled;

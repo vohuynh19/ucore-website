@@ -1,5 +1,5 @@
-import { Footer, Header } from "@ui/organisms";
 import { PropsWithChildren } from "react";
+import { Footer, Header } from "ui/organisms";
 
 const NavigationLayout = ({ children }: PropsWithChildren) => {
   return (

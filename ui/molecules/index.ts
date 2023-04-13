@@ -1,8 +1,8 @@
 export * from "./HeaderMenu";
 export { default as HeaderMenu } from "./HeaderMenu";
 
-export * from "./ProfileMenuDescription";
-export { default as ProfileMenuContent } from "./ProfileMenuDescription";
+export * from "./ProfileMenu/ProfileMenuDescription";
+export { default as ProfileMenuContent } from "./ProfileMenu/ProfileMenuDescription";
 
-export * from "./ProfileMenuSectionList";
-export { default as ProfileMenuSectionList } from "./ProfileMenuSectionList";
+export * from "./ProfileMenu";
+export { default as ProfileMenu } from "./ProfileMenu";

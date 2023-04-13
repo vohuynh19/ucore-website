@@ -16,13 +16,8 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@styles": ["styles"],
-      "@styles/*": ["styles/*"],
-      "@ui": ["ui"],
-      "@ui/*": ["ui/*"],
       "@constants": ["src/constants"],
       "@constants/*": ["src/constants/*"],
-      "@src/*": ["src/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
