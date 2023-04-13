@@ -1,14 +1,19 @@
+import { Roboto } from "next/font/google";
 import { createGlobalStyle, DefaultTheme } from "styled-components";
+
+export const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+});
 
 const GlobalStyled = createGlobalStyle`
   html,
   body {
-    color: ${({ theme }) => theme.colors.primary};
     padding: 0;
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-family: ${roboto.style.fontFamily};
   }
+  
   a {
     color: inherit;
     text-decoration: none;

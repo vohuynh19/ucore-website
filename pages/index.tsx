@@ -11,7 +11,11 @@ export async function getStaticProps({ locale }: { locale: string }) {
 }
 
 const Home: NextPage = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Button>Hello world</Button>
+    </div>
+  );
 };
 
 export default Home;

@@ -1,5 +1,6 @@
 import { DefaultTheme } from "styled-components";
 import { COLORS } from "../src/constants";
+import { roboto } from "./global";
 
 const theme: DefaultTheme = {
   colors: {
@@ -11,6 +12,7 @@ const theme: DefaultTheme = {
 export const antdTheme = {
   token: {
     colorPrimary: theme.colors.primary,
+    fontFamily: roboto.style.fontFamily,
   },
 };
 
