@@ -1,17 +1,24 @@
 import IMAGES_URL from "@constants/images";
 import Image from "next/image";
+import { CSSProperties } from "react";
 import { RingLoader } from "react-spinners";
-import styled from "styled-components";
-import { flexCenter, theme, fullScreenAbsolute } from "styles";
-
-const Container = styled.div`
-  ${flexCenter}
-  ${fullScreenAbsolute}
-`;
+import { theme } from "styles";
 
 const AppLoading = () => {
+  // Use inline styles to avoid styled-components mounting effect
+  const containerStyle: CSSProperties = {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+  };
+
   return (
-    <Container>
+    <div style={containerStyle}>
       <Image
         style={{ position: "absolute" }}
         alt="logo"
@@ -21,7 +28,7 @@ const AppLoading = () => {
       />
 
       <RingLoader color={theme.colors.primary} size={160} />
-    </Container>
+    </div>
   );
 };
 

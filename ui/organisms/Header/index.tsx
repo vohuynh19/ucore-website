@@ -2,28 +2,29 @@ import IMAGES_URL from "@constants/images";
 import { HeaderMenu, ProfileMenu } from "ui/molecules";
 import { Col, Row } from "antd";
 import Image from "next/image";
+import { Container } from "styles";
+import Link from "next/link";
+import { PAGE_ROUTES } from "@constants";
 
 const Header = () => {
   return (
-    <Row>
-      <Col span={8}>
-        <Image
-          style={{ backgroundColor: "red" }}
-          alt="logo"
-          src={IMAGES_URL.LOGO}
-          width={75}
-          height={75}
-        />
-      </Col>
+    <Container>
+      <Row align="middle">
+        <Col xs={12} md={6} lg={4}>
+          <Link href={PAGE_ROUTES.HOME}>
+            <Image alt="logo" src={IMAGES_URL.LOGO} width={75} height={75} />
+          </Link>
+        </Col>
 
-      <Col span={8}>
-        <HeaderMenu />
-      </Col>
+        <Col xs={0} md={12} lg={16}>
+          <HeaderMenu />
+        </Col>
 
-      <Col span={8} style={{ backgroundColor: "yellow" }}>
-        <ProfileMenu />
-      </Col>
-    </Row>
+        <Col xs={12} md={6} lg={4}>
+          <ProfileMenu />
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
