@@ -28,7 +28,7 @@ export const GlobalStyled = createGlobalStyle`
     justify-content:center;
     align-items:center;
   }
-  .ant-btn.ant-btn-primary.ant-btn-lg{
+  .ant-btn.ant-btn-lg{
     padding: 8px 24px !important;
     border-radius: 24px !important;
   }

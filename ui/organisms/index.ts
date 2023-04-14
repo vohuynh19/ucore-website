@@ -1,5 +1,2 @@
-export { default as Header } from "./Header";
-
-export { default as Footer } from "./Footer";
-
-export { default as HeaderProfileMenu } from "./HeaderProfileMenu";
+export * from "./Home";
+export * from "./Layout";

@@ -9,6 +9,9 @@ export const theme = {
     white: COLORS.WHITE_1,
     contrastText: COLORS.WHITE_1,
     primaryBg: COLORS.PURPLE_3,
+    success: COLORS.GREEN_1,
+    error: COLORS.RED_1,
+    warning: COLORS.YELLOW_1,
   },
 };
 

@@ -1,7 +1,15 @@
-import { Button } from "antd";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
+
+import {
+  HomeCategories,
+  HomeCover,
+  HomeHotCourse,
+  HomeNews,
+  HomeStatistic,
+  HomeSubcribe,
+} from "ui";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -18,7 +26,12 @@ const Home: NextPage = () => {
         <title>Vicodemy - Viet Code Academy</title>
       </Head>
 
-      <Button>Hello world</Button>
+      <HomeCover />
+      <HomeCategories />
+      <HomeHotCourse />
+      <HomeStatistic />
+      <HomeNews />
+      <HomeSubcribe />
     </>
   );
 };

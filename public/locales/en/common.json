@@ -6,5 +6,15 @@
     "password":"Password",
     "passwordConfirmation":"Password Confirmation",
     "courseList":"Course List",
-    "instructors":"Instructors"
+    "instructors":"Instructors",
+    "quickLinks":"Quick Links",
+    "aboutUs":"About Us",
+    "blog":"Blog",
+    "contact":"Contact",
+    "resources":"Resources",
+    "courses":"Courses",
+    "support":"Support",
+    "community":"Community",
+    "privacyPolicy":"Privacy Policy",
+    "termsAndConditions":"Terms and Conditions"
 }

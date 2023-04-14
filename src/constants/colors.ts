@@ -12,7 +12,7 @@ const COLORS = {
   GREY_3: "#cdcfd5",
   GREY_4: "#41454F",
   GREEN_1: "#24A148",
-  ORANGE_1: "#ED9700",
+  YELLOW_1: "#ED9700",
   RED_1: "#F44337",
 };
 

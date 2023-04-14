@@ -47,7 +47,12 @@ const NavigationLayout = ({ children }: PropsWithChildren) => {
         width="330px"
       >
         <SiderProfileContainer>
-          <Button type="text" icon={<CloseOutlined />} onClick={toggleNav} />
+          <Button
+            style={{ float: "right", marginBottom: 16 }}
+            type="text"
+            icon={<CloseOutlined />}
+            onClick={toggleNav}
+          />
           <FullWidthButton size="large" type="primary">
             {t("signIn")}
           </FullWidthButton>

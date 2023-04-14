@@ -1,4 +1,5 @@
 import { Col, Row } from "antd";
+import { TFunction, useTranslation } from "next-i18next";
 import Link from "next/link";
 import styled from "styled-components";
 
@@ -8,50 +9,51 @@ type MenuItem = {
   children?: MenuItem[];
 };
 
-const menuItems: MenuItem[] = [
+type GetMenuType = (t: TFunction) => MenuItem[];
+const menuItems: GetMenuType = (t) => [
   {
-    label: "Quick Links",
+    label: t("quickLinks"),
     children: [
       {
-        label: "About us",
+        label: t("aboutUs"),
         url: "/about-us",
       },
       {
-        label: "Blog",
+        label: t("blog"),
         url: "/blog",
       },
       {
-        label: "Contact",
+        label: t("contact"),
         url: "/contact",
       },
     ],
   },
   {
-    label: "Resources",
+    label: t("resources"),
     children: [
       {
-        label: "Courses",
+        label: t("courses"),
         url: "/course-list",
       },
       {
-        label: "Instructors",
+        label: t("instructors"),
         url: "/instructors",
       },
     ],
   },
   {
-    label: "Support",
+    label: t("support"),
     children: [
       {
-        label: "Comunity",
-        url: "/comunity",
+        label: t("community"),
+        url: "/community",
       },
       {
-        label: "Privacy Policy",
+        label: t("privacyPolicy"),
         url: "/privacy-policy",
       },
       {
-        label: "Terms And Conditions",
+        label: t("termsAndConditions"),
         url: "/terms-and-conditions",
       },
     ],
@@ -72,11 +74,13 @@ const Container = styled(Row)`
 `;
 
 const FooterMenu = () => {
+  const { t } = useTranslation("common");
+
   return (
     <Container>
-      {menuItems.map((item) => {
+      {menuItems(t).map((item) => {
         return (
-          <Col key={item.label} span={24 / menuItems.length}>
+          <Col key={item.label} xs={24} md={24 / menuItems(t).length}>
             <>
               <h2>{item.label}</h2>
               {item.children?.map((child) => (
