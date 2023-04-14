@@ -1,10 +1,11 @@
 import IMAGES_URL from "@constants/images";
 import { HeaderMenu, ProfileMenu } from "ui/molecules";
-import { Col, Row } from "antd";
+import { Button, Col, Row } from "antd";
 import Image from "next/image";
 import { Container } from "styles";
 import Link from "next/link";
 import { PAGE_ROUTES } from "@constants";
+import { Cart } from "ui/atoms";
 
 const Header = () => {
   return (
@@ -21,7 +22,8 @@ const Header = () => {
         </Col>
 
         <Col xs={12} md={6} lg={4}>
-          <ProfileMenu />
+          <Cart />
+          <Button>Sign in</Button>
         </Col>
       </Row>
     </Container>

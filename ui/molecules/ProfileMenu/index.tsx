@@ -1,15 +1,15 @@
 import { Container } from "styles";
 import ProfileMenuDescription from "./ProfileMenuDescription";
-import ProfileMenuSectionList from "./ProfileMenuList";
+import ProfileMenuList from "./ProfileMenuList";
 
 const ProfileMenu = () => {
   return (
     <Container>
       <ProfileMenuDescription />
-      <ProfileMenuDescription />
+      <ProfileMenuList />
     </Container>
   );
 };
 
 export default ProfileMenu;
-export { ProfileMenuDescription, ProfileMenuSectionList };
+export { ProfileMenuDescription, ProfileMenuList };
