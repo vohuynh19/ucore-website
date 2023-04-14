@@ -16,9 +16,15 @@ export const flexCenter = css`
   align-items: center;
 `;
 
+export const flexCenterEnd = css`
+  display: flex;
+  justify-content: end;
+  align-items: center;
+`;
+
 export const container = css`
   width: 100%;
-  padding: 0 32px;
+  padding: 0 64px;
 `;
 
 export const horizontalSpaceBetween = css`

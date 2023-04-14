@@ -1,1 +1,10 @@
-{}
+{
+    "signIn":"Sign In",
+    "register":"Register",
+    "logout":"Logout",
+    "email":"Email",
+    "password":"Password",
+    "passwordConfirmation":"Password Confirmation",
+    "courseList":"Course List",
+    "instructors":"Instructors"
+}

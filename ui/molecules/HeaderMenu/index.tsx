@@ -27,6 +27,9 @@ const StyledMenu = styled(Menu)`
     svg {
       font-size: 16px !important;
     }
+    .ant-menu-item::after {
+      border: none !important;
+    }
   }
 `;
 

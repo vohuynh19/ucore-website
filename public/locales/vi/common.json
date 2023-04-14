@@ -1,1 +1,10 @@
-{}
+{
+    "login":"Đăng nhập",
+    "register":"Đăng ký",
+    "logout":"Đăng xuất",
+    "email":"Email",
+    "password":"Mật khẩu",
+    "passwordConfirmation":"Xác nhận mật khẩu",
+    "courseList":"Khoá học",
+    "instructors":"Hướng dẫn viên"
+}

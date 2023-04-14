@@ -21,4 +21,21 @@ export const GlobalStyled = createGlobalStyle`
   * {
     box-sizing: border-box;
   }
+
+  // Antd button custom style
+  .ant-btn{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .ant-btn.ant-btn-primary.ant-btn-lg{
+    padding: 8px 24px !important;
+    border-radius: 24px !important;
+  }
+
+  // Layout custom style
+  .ant-layout-header{
+    height: auto;
+    padding-inline: 0;
+  }
 `;

@@ -1,4 +1,4 @@
-import { DefaultTheme } from "styled-components";
+import { ThemeConfig } from "antd";
 import { COLORS } from "../src/constants";
 import { roboto } from "./global";
 
@@ -10,9 +10,14 @@ export const theme = {
   },
 };
 
-export const antdTheme = {
+export const antdTheme: ThemeConfig = {
   token: {
     colorPrimary: theme.colors.primary,
     fontFamily: roboto.style.fontFamily,
+  },
+  components: {
+    Layout: {
+      colorBgHeader: "white",
+    },
   },
 };
