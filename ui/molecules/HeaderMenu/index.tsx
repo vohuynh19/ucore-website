@@ -33,7 +33,12 @@ const StyledMenu = styled(Menu)`
   }
 `;
 
-const HeaderMenu = () => {
+type HeaderMenuProps = {
+  mode?: MenuProps["mode"];
+  onMenuPress?: () => void;
+};
+
+const HeaderMenu = ({ mode = "horizontal", onMenuPress }: HeaderMenuProps) => {
   const [current, setCurrent] = useState("");
   const router = useRouter();
 
@@ -47,13 +52,14 @@ const HeaderMenu = () => {
   const onClick: MenuProps["onClick"] = (e) => {
     setCurrent(e.key);
     router.push(e.key);
+    onMenuPress?.();
   };
 
   return (
     <StyledMenu
       onClick={onClick}
       selectedKeys={[current]}
-      mode="horizontal"
+      mode={mode}
       items={items}
     />
   );

@@ -7,6 +7,8 @@ export const theme = {
     primary: COLORS.PURPLE_1,
     secondary: COLORS.BLACK_2,
     white: COLORS.WHITE_1,
+    contrastText: COLORS.WHITE_1,
+    primaryBg: COLORS.PURPLE_3,
   },
 };
 

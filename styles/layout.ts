@@ -25,6 +25,10 @@ export const flexCenterEnd = css`
 export const container = css`
   width: 100%;
   padding: 0 64px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
 `;
 
 export const horizontalSpaceBetween = css`
