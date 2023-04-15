@@ -1,21 +1,24 @@
 import { Button } from "antd";
+import { useTranslation } from "react-i18next";
 import { ShadowCard } from "ui/atoms/Card";
 import { Container } from "./styled";
 
 const HomeCoverBox = () => {
+  const { t } = useTranslation("home");
+
   return (
     <Container>
       <ShadowCard title={null}>
-        <h2>Viet Code Academy</h2>
-        <p>Học tập và kết nối Mentor qua các khoá học lập trình trực tuyến.</p>
+        <h2>{t("vietcodeAcademy")}</h2>
+        <p>{t("desc1")}</p>
         <br />
-        <p>Để lại Feedback: Hoàng Hiệp – CEO</p>
-        <p>Email: hiep.cbla5@gmail.com</p>
-        <p>Chúng tôi chưa có cổng thanh toán.— SĐT: 036 908 8090</p>
+        <p>{t("desc2")}</p>
+        <p>{t("desc3")}</p>
+        <p>{t("desc4")}</p>
         <br />
 
         <Button size="large" type="primary">
-          Xem các khoá học
+          {t("moreCourses")}
         </Button>
       </ShadowCard>
     </Container>

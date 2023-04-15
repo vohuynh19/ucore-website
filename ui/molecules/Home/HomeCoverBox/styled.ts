@@ -14,6 +14,15 @@ export const Container = styled.div`
 
   @media (max-width: 768px) {
     width: 100%;
+    p {
+      font-size: 10px;
+    }
+    br {
+      display: none;
+    }
+    .ant-card-body {
+      padding: 8px;
+    }
   }
 
   @media (max-width: 576px) {
