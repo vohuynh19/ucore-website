@@ -10,6 +10,11 @@ export const flex = css`
   display: flex;
 `;
 
+export const verticalCenter = css`
+  display: flex;
+  align-items: center;
+`;
+
 export const flexCenter = css`
   display: flex;
   justify-content: center;

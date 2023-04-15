@@ -1,6 +1,7 @@
 import { ThemeConfig } from "antd";
 import { COLORS } from "../src/constants";
 import { roboto } from "./global";
+import { pxToCalc } from "./helper";
 
 export const theme = {
   colors: {
@@ -12,6 +13,9 @@ export const theme = {
     success: COLORS.GREEN_1,
     error: COLORS.RED_1,
     warning: COLORS.YELLOW_1,
+  },
+  utils: {
+    pxToCalc: pxToCalc,
   },
 };
 
