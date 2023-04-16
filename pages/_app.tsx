@@ -6,24 +6,31 @@ import { ConfigProvider } from "antd";
 import { AppLoading, NavigationLayout } from "ui";
 import { GlobalStyled, theme, antdTheme } from "styles";
 import { useMounted } from "src/hooks";
+import Head from "next/head";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isMounted } = useMounted(300);
 
   return (
-    <ThemeProvider theme={theme}>
-      <ConfigProvider theme={antdTheme}>
-        <GlobalStyled />
+    <>
+      <Head>
+        <title> Vicodemy - Viet Code Academy</title>
+      </Head>
 
-        {isMounted && (
-          <NavigationLayout>
-            <Component {...pageProps} />
-          </NavigationLayout>
-        )}
+      <ThemeProvider theme={theme}>
+        <ConfigProvider theme={antdTheme}>
+          <GlobalStyled />
 
-        {!isMounted && <AppLoading />}
-      </ConfigProvider>
-    </ThemeProvider>
+          {isMounted && (
+            <NavigationLayout>
+              <Component {...pageProps} />
+            </NavigationLayout>
+          )}
+
+          {!isMounted && <AppLoading />}
+        </ConfigProvider>
+      </ThemeProvider>
+    </>
   );
 }
 
