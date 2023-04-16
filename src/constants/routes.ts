@@ -7,6 +7,8 @@ const PAGE_ROUTES = {
   REGISTER: "/register",
   LOGIN: "/login",
   FORGOT_PASSWORD: "/forgot-password",
+  TERM_OF_USE: "/term-of-use",
+  PRIVACY_POLICY: "/privacy-policy",
 };
 
 export default PAGE_ROUTES;

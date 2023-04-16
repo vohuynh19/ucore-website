@@ -16,11 +16,11 @@ const RegisterAction = () => {
 
       <p>
         By signing up, you agree to our{" "}
-        <Link href={PAGE_ROUTES.FORGOT_PASSWORD}>
+        <Link href={PAGE_ROUTES.TERM_OF_USE}>
           <u>Terms of Use</u>
         </Link>{" "}
         and{" "}
-        <Link href={PAGE_ROUTES.FORGOT_PASSWORD}>
+        <Link href={PAGE_ROUTES.PRIVACY_POLICY}>
           <u>Privacy Policy</u>
         </Link>
         .
