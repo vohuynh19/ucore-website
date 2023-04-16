@@ -10,7 +10,7 @@ export const flex = css`
   display: flex;
 `;
 
-export const verticalCenter = css`
+export const flexVerticalCenter = css`
   display: flex;
   align-items: center;
 `;
@@ -41,6 +41,10 @@ export const container = css`
   }
 `;
 
+export const widthRestrict = css`
+  max-width: 1200px;
+`;
+
 export const horizontalSpaceBetween = css`
   width: 100%;
   display: flex;
@@ -68,4 +72,8 @@ export const fullScreenAbsolute = css`
 
 export const Container = styled.div`
   ${container}
+`;
+
+export const WidthRestrict = styled.div`
+  ${widthRestrict}
 `;

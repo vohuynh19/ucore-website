@@ -13,6 +13,8 @@ export const theme = {
     success: COLORS.GREEN_1,
     error: COLORS.RED_1,
     warning: COLORS.YELLOW_1,
+    text: COLORS.WHITE_1,
+    textSecondary: COLORS.GREY_2,
   },
   utils: {
     pxToCalc: pxToCalc,

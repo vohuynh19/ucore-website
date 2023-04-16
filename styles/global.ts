@@ -32,6 +32,10 @@ export const GlobalStyled = createGlobalStyle`
     padding: 8px 24px !important;
     border-radius: 24px !important;
   }
+  .ant-btn.ant-btn-background-ghost{
+    border-color: ${({ theme }) => theme.colors.primary};
+    color:  ${({ theme }) => theme.colors.primary};
+  }
 
   // Layout custom style
   .ant-layout-header{
