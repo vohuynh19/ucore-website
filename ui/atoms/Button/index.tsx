@@ -12,6 +12,7 @@ const SButton = styled(Button)<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
+  width: ${({ isFullWidth }) => (isFullWidth ? "100%" : "auto")};
 
   &&.ant-btn-background-ghost {
     border-color: ${({ theme }) => theme.colors.primary};
@@ -20,7 +21,7 @@ const SButton = styled(Button)<Props>`
 
   &&.ant-btn-lg {
     padding: 8px 24px !important;
-    border-radius: 24px !important;
+    /* border-radius: 24px !important; */
   }
 `;
 

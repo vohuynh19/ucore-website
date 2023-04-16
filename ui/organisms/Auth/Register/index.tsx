@@ -1,6 +1,8 @@
-import { Container } from "./styled";
-import { RegisterAction, RegisterForm } from "ui/molecules";
 import { Card } from "antd";
+
+import { RegisterAction, RegisterForm } from "ui/molecules";
+
+import { Container } from "../styled";
 
 const Register = () => {
   return (

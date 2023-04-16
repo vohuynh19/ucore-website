@@ -1,5 +1,5 @@
 import { Roboto } from "next/font/google";
-import { createGlobalStyle, DefaultTheme } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 
 export const roboto = Roboto({
   subsets: ["latin"],
@@ -17,25 +17,14 @@ export const GlobalStyled = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+    color: ${({ theme }) => theme.colors.primary};
+    &:hover{
+      color: ${({ theme }) => theme.colors.primary}
+    }
   }
   * {
     box-sizing: border-box;
   }
-
-  /* // Antd button custom style
-  .ant-btn{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
-  .ant-btn.ant-btn-lg{
-    padding: 8px 24px !important;
-    border-radius: 24px !important;
-  }
-  .ant-btn.ant-btn-background-ghost{
-    border-color: ${({ theme }) => theme.colors.primary};
-    color:  ${({ theme }) => theme.colors.primary};
-  } */
 
   // Layout custom style
   .ant-layout-header{

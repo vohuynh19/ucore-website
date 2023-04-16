@@ -2,6 +2,14 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   button {
-    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+  .ant-divider {
+    margin: 12px 0;
   }
 `;

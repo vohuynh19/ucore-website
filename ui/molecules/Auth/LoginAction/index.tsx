@@ -1,7 +1,10 @@
-import { PAGE_ROUTES } from "@constants";
 import { Divider } from "antd";
 import Link from "next/link";
+
+import { PAGE_ROUTES } from "@constants";
+
 import { Button } from "ui/atoms";
+
 import { Container } from "./styled";
 
 const LoginAction = () => {
@@ -11,16 +14,16 @@ const LoginAction = () => {
         Sign in
       </Button>
 
-      <div>
+      <p>
         or <Link href={PAGE_ROUTES.FORGOT_PASSWORD}>Forgot Password</Link>
-      </div>
+      </p>
 
       <Divider />
 
-      <div>
+      <p>
         Do not have an account?{" "}
         <Link href={PAGE_ROUTES.REGISTER}>Register</Link>
-      </div>
+      </p>
     </Container>
   );
 };

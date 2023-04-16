@@ -1,6 +1,8 @@
-import { Container } from "./styled";
-import { ForgotPasswordAction, ForgotPasswordForm } from "ui/molecules";
 import { Card } from "antd";
+
+import { ForgotPasswordAction, ForgotPasswordForm } from "ui/molecules";
+
+import { Container } from "../styled";
 
 const ForgotPassword = () => {
   return (

@@ -1,6 +1,7 @@
-import { Container } from "./styled";
-import { LoginAction, LoginForm } from "ui/molecules";
 import { Card } from "antd";
+
+import { LoginAction, LoginForm } from "ui/molecules";
+import { Container } from "../styled";
 
 const Login = () => {
   return (
