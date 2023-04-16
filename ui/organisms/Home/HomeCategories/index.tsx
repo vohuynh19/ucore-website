@@ -22,32 +22,32 @@ const HomeCategories = () => {
       {
         label: t("programming"),
         image: "/images/course-category-5.png",
-        destination: PAGE_ROUTES.HOME,
+        destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("design"),
         image: "/images/course-category-1.png",
-        destination: PAGE_ROUTES.HOME,
+        destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("game"),
         image: "/images/course-category-2.png",
-        destination: PAGE_ROUTES.HOME,
+        destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("javascript"),
         image: "/images/course-category-3.png",
-        destination: PAGE_ROUTES.HOME,
+        destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("uxui"),
         image: "/images/course-category-4.png",
-        destination: PAGE_ROUTES.HOME,
+        destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("ai"),
         image: "/images/course-category-1.png",
-        destination: PAGE_ROUTES.HOME,
+        destination: PAGE_ROUTES.COURSE_LIST,
       },
     ],
     [t]

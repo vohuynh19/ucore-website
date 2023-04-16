@@ -9,15 +9,9 @@ import styled, { css } from "styled-components";
 export const flex = css`
   display: flex;
 `;
-
-export const flexVerticalCenter = css`
+export const flexCol = css`
   display: flex;
-  align-items: center;
-`;
-
-export const extend = css`
-  width: 100%;
-  height: 100%;
+  flex-direction: column;
 `;
 
 export const flexCenter = css`
@@ -30,6 +24,23 @@ export const flexCenterEnd = css`
   display: flex;
   justify-content: end;
   align-items: center;
+`;
+
+export const flexVerticalCenter = css`
+  display: flex;
+  align-items: center;
+`;
+
+export const flexColCenter = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const extend = css`
+  width: 100%;
+  height: 100%;
 `;
 
 export const container = css`
@@ -64,6 +75,22 @@ export const fullScreenAbsolute = css`
   left: 0;
 `;
 
+export const spacer = css`
+  flex: 1;
+`;
+
+export const shadow = css`
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+`;
+
+export const getScaledText = (fontSize: number, isImportant = false) => css`
+  font-size: ${({ theme }) => theme.utils.pxToCalc(fontSize)}
+    ${isImportant && "!important"};
+  @media (max-width: 768px) {
+    font-size: ${`${fontSize}px`} ${isImportant && "!important"};
+  }
+`;
+
 /**
  *
  *  Styled Components
@@ -76,4 +103,27 @@ export const Container = styled.div`
 
 export const WidthRestrict = styled.div`
   ${widthRestrict}
+`;
+
+type TPadding = {
+  vertical?: number;
+  horizontal?: number;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+export const ScaledPadding = styled.div<TPadding>`
+  padding-top: ${({ vertical, theme, top }) =>
+    theme.utils.pxToCalc(top || vertical || 16)};
+  padding-bottom: ${({ vertical, theme, bottom }) =>
+    theme.utils.pxToCalc(bottom || vertical || 16)};
+  padding-left: ${({ horizontal, theme, left }) =>
+    theme.utils.pxToCalc(left || horizontal || 16)};
+  padding-right: ${({ horizontal, theme, right }) =>
+    theme.utils.pxToCalc(right || horizontal || 16)};
+`;
+
+export const Spacer = styled.div`
+  ${spacer}
 `;

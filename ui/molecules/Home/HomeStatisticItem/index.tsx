@@ -8,8 +8,8 @@ type THomeStatisticItem = {
 const HomeStatisticItem = ({ label, value }: THomeStatisticItem) => {
   return (
     <Container>
-      <h1>{label}</h1>
-      <p>{value}</p>
+      <h1>{value}</h1>
+      <p>{label}</p>
     </Container>
   );
 };

@@ -44,10 +44,12 @@ export const RightContent = styled.div`
     width: ${({ theme }) => theme.utils.pxToCalc(160)};
     height: ${({ theme }) => theme.utils.pxToCalc(48)} !important;
     border-radius: ${({ theme }) => theme.utils.pxToCalc(48)} !important;
+    font-size: ${({ theme }) => theme.utils.pxToCalc(16)} !important;
     @media (max-width: 768px) {
       width: 160px;
       height: 48px !important;
       border-radius: 48px !important;
+      font-size: 16px !important;
     }
   }
 `;

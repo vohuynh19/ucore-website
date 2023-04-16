@@ -1,5 +1,6 @@
 import { Card } from "antd";
 import styled from "styled-components";
+import { getScaledText } from "styles";
 
 export const StyledCard = styled(Card)`
   .ant-rate {
@@ -13,6 +14,11 @@ export const StyledCard = styled(Card)`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal;
+    ${getScaledText(16)}
+  }
+
+  .ant-card-meta-description {
+    ${getScaledText(14)}
   }
 `;
 

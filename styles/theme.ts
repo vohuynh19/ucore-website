@@ -15,6 +15,8 @@ export const theme = {
     warning: COLORS.YELLOW_1,
     text: COLORS.WHITE_1,
     textSecondary: COLORS.GREY_2,
+    textPrimarySecondary: COLORS.BLACK_1,
+    textDarkPrimary: COLORS.PURPLE_2,
     linearGradientBg: `linear-gradient(180deg, #EAF1F880 30%, #EAF1F800 100%)`,
   },
   utils: {

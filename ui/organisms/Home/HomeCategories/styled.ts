@@ -19,5 +19,5 @@ export const Container = styled.section`
     }
   }
   width: 100%;
-  padding: 40px 24px;
+  padding: 64px 24px;
 `;
