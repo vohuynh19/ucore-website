@@ -22,7 +22,7 @@ export const GlobalStyled = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  // Antd button custom style
+  /* // Antd button custom style
   .ant-btn{
     display:flex;
     justify-content:center;
@@ -35,7 +35,7 @@ export const GlobalStyled = createGlobalStyle`
   .ant-btn.ant-btn-background-ghost{
     border-color: ${({ theme }) => theme.colors.primary};
     color:  ${({ theme }) => theme.colors.primary};
-  }
+  } */
 
   // Layout custom style
   .ant-layout-header{

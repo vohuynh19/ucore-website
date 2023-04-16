@@ -18,7 +18,7 @@ const LoginPage: NextPage = () => {
         <title>Log in - Vicodemy</title>
       </Head>
 
-      <RestrictWidthLayout>
+      <RestrictWidthLayout maxWidth="400px">
         <Login />
       </RestrictWidthLayout>
     </>

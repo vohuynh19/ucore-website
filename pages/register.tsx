@@ -18,7 +18,7 @@ const RegisterPage: NextPage = () => {
         <title>Register Page- Vicodemy</title>
       </Head>
 
-      <RestrictWidthLayout>
+      <RestrictWidthLayout maxWidth="400px">
         <Register />
       </RestrictWidthLayout>
     </>

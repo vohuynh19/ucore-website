@@ -1,4 +1,4 @@
-import { Container } from "styles";
+import { Container } from "./styled";
 
 const ForgotPasswordAction = () => {
   return <Container>ForgotPasswordAction</Container>;

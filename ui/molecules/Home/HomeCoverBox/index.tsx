@@ -1,5 +1,5 @@
 import { PAGE_ROUTES } from "@constants";
-import { Button } from "antd";
+import { Button } from "ui/atoms";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 import { ShadowCard } from "ui/atoms/Card";

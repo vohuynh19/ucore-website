@@ -4,6 +4,9 @@ const PAGE_ROUTES = {
   COURSE_DETAIL: "/course-detail",
   INSTRUCTORS: "/instructors",
   BLOG: "/blog",
+  REGISTER: "/register",
+  LOGIN: "/login",
+  FORGOT_PASSWORD: "/forgot-password",
 };
 
 export default PAGE_ROUTES;

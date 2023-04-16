@@ -1,4 +1,4 @@
-import { Button, Image, Layout, Space } from "antd";
+import { Image, Layout, Space } from "antd";
 import { PropsWithChildren } from "react";
 import { CloseOutlined } from "@mui/icons-material";
 
@@ -14,7 +14,7 @@ import {
   StyledHeader,
   StyledSider,
 } from "./styled";
-import { FullWidthButton } from "ui/atoms";
+import { Button } from "ui/atoms";
 import { useTranslation } from "react-i18next";
 
 const NavigationLayout = ({ children }: PropsWithChildren) => {
@@ -53,10 +53,12 @@ const NavigationLayout = ({ children }: PropsWithChildren) => {
             icon={<CloseOutlined />}
             onClick={toggleNav}
           />
-          <FullWidthButton size="large" type="primary">
+          <Button isFullWidth size="large" type="primary">
             {t("signIn")}
-          </FullWidthButton>
-          <FullWidthButton size="large">{t("register")}</FullWidthButton>
+          </Button>
+          <Button isFullWidth size="large">
+            {t("register")}
+          </Button>
         </SiderProfileContainer>
 
         <HeaderMenu mode="vertical" onMenuPress={toggleNav} />

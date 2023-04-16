@@ -28,6 +28,7 @@ export const antdTheme: ThemeConfig = {
   token: {
     colorPrimary: theme.colors.primary,
     fontFamily: roboto.style.fontFamily,
+    borderRadius: 8,
   },
   components: {
     Layout: {

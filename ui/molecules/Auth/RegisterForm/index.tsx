@@ -1,4 +1,4 @@
-import { Container } from "styles";
+import { Container } from "./styled";
 
 const RegisterForm = () => {
   return <Container>RegisterForm</Container>;

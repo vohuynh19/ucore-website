@@ -1,4 +1,5 @@
-import { Button, Input } from "antd";
+import { Input } from "antd";
+import { Button } from "ui/atoms";
 import { Container, ContentContainer } from "./styled";
 
 const HomeSubscribe = () => {

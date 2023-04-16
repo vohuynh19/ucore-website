@@ -18,7 +18,7 @@ const ForgotPasswordPage: NextPage = () => {
         <title>Forgot password - Vicodemy</title>
       </Head>
 
-      <RestrictWidthLayout>
+      <RestrictWidthLayout maxWidth="400px">
         <ForgotPassword />
       </RestrictWidthLayout>
     </>

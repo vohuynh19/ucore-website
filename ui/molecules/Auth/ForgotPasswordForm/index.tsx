@@ -1,4 +1,4 @@
-import { Container } from "styles";
+import { Container } from "./styled";
 
 const ForgotPasswordForm = () => {
   return <Container>ForgotPasswordForm</Container>;

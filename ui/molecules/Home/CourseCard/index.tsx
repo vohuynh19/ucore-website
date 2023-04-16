@@ -1,6 +1,7 @@
 import { PAGE_ROUTES } from "@constants";
-import { Button, Rate } from "antd";
+import { Rate } from "antd";
 import { useRouter } from "next/router";
+import { Button } from "ui/atoms";
 
 import { ActionContainer, StyledCard } from "./styled";
 

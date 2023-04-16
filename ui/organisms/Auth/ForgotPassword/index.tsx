@@ -1,11 +1,15 @@
-import { Container } from "styles";
+import { Container } from "./styled";
 import { ForgotPasswordAction, ForgotPasswordForm } from "ui/molecules";
+import { Card } from "antd";
 
 const ForgotPassword = () => {
   return (
     <Container>
-      <ForgotPasswordForm />
-      <ForgotPasswordAction />
+      <Card>
+        <h2>Forgot Password</h2>
+        <ForgotPasswordForm />
+        <ForgotPasswordAction />
+      </Card>
     </Container>
   );
 };

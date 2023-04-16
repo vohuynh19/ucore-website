@@ -1,10 +1,14 @@
 import { PropsWithChildren } from "react";
 import { Container, RestrictContent } from "./styled";
 
-const RestrictWidthLayout = ({ children }: PropsWithChildren) => {
+type Props = PropsWithChildren<{
+  maxWidth?: string;
+}>;
+
+const RestrictWidthLayout = ({ children, maxWidth }: Props) => {
   return (
     <Container>
-      <RestrictContent>{children}</RestrictContent>
+      <RestrictContent maxWidth={maxWidth}>{children}</RestrictContent>
     </Container>
   );
 };

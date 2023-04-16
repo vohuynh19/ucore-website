@@ -1,21 +1,24 @@
-import { Button, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import { useTranslation } from "react-i18next";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import TranslateIcon from "@mui/icons-material/Translate";
+import MenuIcon from "@mui/icons-material/Menu";
 
+import useAppStore from "src/stores/useAppStore";
 import { PAGE_ROUTES } from "@constants";
 import IMAGES_URL from "@constants/images";
 
-import { Container, theme } from "styles";
-import { Cart } from "ui/atoms";
+import { Container } from "styles";
+import { Button, Cart, SizeBox } from "ui/atoms";
 import { HeaderMenu } from "ui/molecules";
+
 import { HeaderRightContainer, MenuContainer } from "./styled";
-import SizeBox from "ui/atoms/SizeBox";
-import MenuIcon from "@mui/icons-material/Menu";
-import useAppStore from "src/stores/useAppStore";
+
 const Header = () => {
   const { t } = useTranslation("common");
+  const router = useRouter();
 
   const { toggleNav } = useAppStore((state) => ({
     toggleNav: state.toggleNav,
@@ -42,7 +45,11 @@ const Header = () => {
             <SizeBox width={16} />
             <Cart cartItemNumber={0} />
             <SizeBox width={16} />
-            <Button type="primary" size="large">
+            <Button
+              type="primary"
+              size="large"
+              onClick={() => router.push(PAGE_ROUTES.LOGIN)}
+            >
               {t("signIn")}
             </Button>
           </HeaderRightContainer>

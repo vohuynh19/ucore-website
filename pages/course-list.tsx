@@ -1,4 +1,4 @@
-import { Button } from "antd";
+import { Button } from "ui/atoms";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
