@@ -5,6 +5,10 @@ export default function Document() {
     <Html>
       <Head>
         <link rel="icon" href="/images/favicon.png" />
+        {
+          // eslint-disable-next-line @next/next/no-title-in-document-head
+          <title> Vicodemy - Viet Code Academy</title>
+        }
       </Head>
       <body>
         <Main />
