@@ -8,6 +8,7 @@ export const StyledSider = styled(Sider)`
     position: fixed !important;
     right: 0px !important;
     height: 100% !important;
+    z-index: 10000;
   }
 `;
 

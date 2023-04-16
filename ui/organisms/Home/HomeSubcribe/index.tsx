@@ -1,6 +1,23 @@
-// TODO VIC-45: Home subscribe
+import { Button, Input } from "antd";
+import { Container, ContentContainer } from "./styled";
+
 const HomeSubscribe = () => {
-  return <section style={{ height: 400 }}>HomeSubscribe</section>;
+  return (
+    <Container>
+      <ContentContainer>
+        <h1>Hãy để lại email để chúng tôi cập nhập thông tin mới nhất.</h1>
+
+        <Input
+          placeholder="Your email address here"
+          suffix={
+            <Button type="primary" size="large">
+              Subcribe
+            </Button>
+          }
+        />
+      </ContentContainer>
+    </Container>
+  );
 };
 
 export default HomeSubscribe;
