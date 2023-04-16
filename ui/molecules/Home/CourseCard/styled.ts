@@ -3,6 +3,10 @@ import styled from "styled-components";
 import { getScaledText } from "styles";
 
 export const StyledCard = styled(Card)`
+  .ant-card-cover {
+    cursor: pointer !important;
+  }
+
   .ant-rate {
     margin-bottom: 16px;
   }

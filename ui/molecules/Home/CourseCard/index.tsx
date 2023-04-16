@@ -1,12 +1,16 @@
+import { PAGE_ROUTES } from "@constants";
 import { Button, Rate } from "antd";
+import { useRouter } from "next/router";
 
 import { ActionContainer, StyledCard } from "./styled";
 
 const CourseCard = () => {
+  const router = useRouter();
   return (
     <StyledCard
       cover={
         <img
+          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL)}
           alt="example"
           src="https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png"
         />
