@@ -1,4 +1,4 @@
-import { Col, Divider, Row } from "antd";
+import { Col, Row } from "antd";
 import styled from "styled-components";
 import { getScaledText } from "styles";
 
@@ -18,11 +18,12 @@ const Container = styled.div`
 
   h2 {
     ${getScaledText(32)}
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
     text-align: center;
   }
   p {
-    color: white;
+    ${getScaledText(14)}
+    color: ${({ theme }) => theme.colors.white};
     text-align: center;
   }
 `;

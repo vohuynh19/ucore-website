@@ -1,7 +1,6 @@
 import { PropsWithChildren } from "react";
 import { BannerContainer } from "./styled";
 import { BannerTextBox } from "ui/molecules";
-import { title } from "process";
 
 type Props = PropsWithChildren<{
   title: string;

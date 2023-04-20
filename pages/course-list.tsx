@@ -1,11 +1,10 @@
-import { Button } from "ui/atoms";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import BannerLayout from "ui/templates/BannerLayout";
 import { useTranslation } from "react-i18next";
+
 import { CourseSearch } from "ui";
-import { useState } from "react";
+import BannerLayout from "ui/templates/BannerLayout";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -17,7 +16,6 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const CourseList: NextPage = () => {
   const { t } = useTranslation(["common", "sentence"]);
-  const [products, setProducts] = useState([]);
 
   return (
     <>
