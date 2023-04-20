@@ -1,10 +1,11 @@
+import { Form } from "antd";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
-import { CourseSearch } from "ui";
-import BannerLayout from "ui/templates/BannerLayout";
+import { CourseList, CourseListLeftFilter, CourseListTopFilter } from "ui";
+import { FilterLayout, BannerLayout } from "ui/templates";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -14,8 +15,11 @@ export async function getStaticProps({ locale }: { locale: string }) {
   };
 }
 
-const CourseList: NextPage = () => {
+const CourseListPage: NextPage = () => {
   const { t } = useTranslation(["common", "sentence"]);
+  const [form] = Form.useForm();
+
+  const onResetForm = () => {};
 
   return (
     <>
@@ -27,10 +31,17 @@ const CourseList: NextPage = () => {
         title={t("courses")}
         content={t("coures-list-description", { ns: "sentence" })}
       >
-        <CourseSearch />
+        <Form form={form} layout="vertical">
+          <FilterLayout
+            TopComponent={<CourseListTopFilter />}
+            LeftComponent={<CourseListLeftFilter onResetForm={onResetForm} />}
+          >
+            <CourseList />
+          </FilterLayout>
+        </Form>
       </BannerLayout>
     </>
   );
 };
 
-export default CourseList;
+export default CourseListPage;
