@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { container } from "styles";
+import { container, flex } from "styles";
 
 export const Container = styled.section`
   ${container}
-  padding-bottom: 80px;
-  background-color: black;
+  padding: 80px 80px;
 `;

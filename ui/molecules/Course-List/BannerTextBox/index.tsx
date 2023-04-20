@@ -4,6 +4,10 @@ import { getScaledText } from "styles";
 
 const Container = styled.div`
   padding: 50px 10px 65px 10px;
+  background-image: url("/images/marketplace-hero-1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   justify-content: center;
   width: 100%;

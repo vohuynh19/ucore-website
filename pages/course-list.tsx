@@ -5,6 +5,7 @@ import Head from "next/head";
 import BannerLayout from "ui/templates/BannerLayout";
 import { useTranslation } from "react-i18next";
 import { CourseSearch } from "ui";
+import { useState } from "react";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -16,6 +17,7 @@ export async function getStaticProps({ locale }: { locale: string }) {
 
 const CourseList: NextPage = () => {
   const { t } = useTranslation(["common", "sentence"]);
+  const [products, setProducts] = useState([]);
 
   return (
     <>
@@ -27,7 +29,7 @@ const CourseList: NextPage = () => {
         title={t("courses")}
         content={t("coures-list-description", { ns: "sentence" })}
       >
-        <CourseSearch></CourseSearch>
+        <CourseSearch />
       </BannerLayout>
     </>
   );

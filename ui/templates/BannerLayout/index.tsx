@@ -12,6 +12,7 @@ const BannerLayout = ({ children, title, content }: Props) => {
   return (
     <BannerContainer>
       <BannerTextBox title={title} content={content} />
+      {children}
     </BannerContainer>
   );
 };
