@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import TranslateIcon from "@mui/icons-material/Translate";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import useAppStore from "src/stores/useAppStore";
+import useAppStore from "stores/useAppStore";
 import { PAGE_ROUTES } from "@constants";
 import IMAGES_URL from "@constants/images";
 

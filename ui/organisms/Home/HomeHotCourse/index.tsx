@@ -1,12 +1,15 @@
 import { Col, Row } from "antd";
 
+import { COURSES_QUERY, useCourseQuery } from "hooks";
+
 import { SizeBox } from "ui/atoms";
 import { CourseCard, HottestCourseHeader } from "ui/molecules";
 
 import { Container } from "./styled";
-import { courseList } from "./mock";
 
 const HomeHotCourse = () => {
+  const { data } = useCourseQuery(COURSES_QUERY.TOP_COURSES);
+
   return (
     <Container>
       <HottestCourseHeader />
@@ -14,7 +17,7 @@ const HomeHotCourse = () => {
       <SizeBox height={48} />
 
       <Row gutter={[32, 32]}>
-        {courseList.map((course) => (
+        {(data || []).map((course) => (
           <Col key={course.id} xs={24} sm={12} md={8} lg={6}>
             <CourseCard />
           </Col>

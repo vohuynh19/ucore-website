@@ -83,6 +83,13 @@ export const shadow = css`
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
 `;
 
+export const backgroundCenterCover = (url: string) => css`
+  background-image: url(${url});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+`;
+
 export const getScaledText = (fontSize: number, isImportant = false) => css`
   font-size: ${({ theme }) => theme.utils.pxToCalc(fontSize)}
     ${isImportant && "!important"};

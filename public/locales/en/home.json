@@ -13,6 +13,10 @@
     "moreCourses": "More courses",
     "topCoursesTitle":"Top courses",
     "topCoursesDesc":"Choose from online videos courses with lots of newly published content",
-    "findCourses":"Find courses"
+    "findCourses":"Find courses",
+    "all": "All",
+    "gameDevelopment": "Game Development",
+    "webDevelopment": "Web Developement",
+    "vlog": "Vlog"
 }
 

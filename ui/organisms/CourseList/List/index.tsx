@@ -1,11 +1,32 @@
 import { Col, Row } from "antd";
+import { useMemo } from "react";
 
 import { CourseCard } from "ui/molecules";
-import { courseList } from "../mock";
 
 interface Props {}
 
 const CourseSearch = ({}: Props) => {
+  const courseList = useMemo(
+    () => [
+      {
+        id: 1,
+      },
+      {
+        id: 2,
+      },
+      {
+        id: 3,
+      },
+      {
+        id: 4,
+      },
+      {
+        id: 5,
+      },
+    ],
+    []
+  );
+
   return (
     <Row gutter={[32, 32]}>
       {courseList.map((course) => (

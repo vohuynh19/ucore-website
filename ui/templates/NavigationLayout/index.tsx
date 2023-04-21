@@ -1,11 +1,13 @@
-import { Image, Layout, Space } from "antd";
 import { PropsWithChildren } from "react";
+import { Layout } from "antd";
 import { CloseOutlined } from "@mui/icons-material";
+import { useTranslation } from "react-i18next";
 
-import useAppStore from "src/stores/useAppStore";
+import useAppStore from "stores/useAppStore";
 
 import { HeaderMenu } from "ui/molecules";
 import { Footer, Header } from "ui/organisms";
+import { Button } from "ui/atoms";
 
 import {
   SiderProfileContainer,
@@ -14,8 +16,6 @@ import {
   StyledHeader,
   StyledSider,
 } from "./styled";
-import { Button } from "ui/atoms";
-import { useTranslation } from "react-i18next";
 
 const NavigationLayout = ({ children }: PropsWithChildren) => {
   const { t } = useTranslation("common");
