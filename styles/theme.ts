@@ -18,6 +18,7 @@ export const theme = {
     textPrimarySecondary: COLORS.BLACK_1,
     textDarkPrimary: COLORS.PURPLE_2,
     linearGradientBg: `linear-gradient(180deg, #EAF1F880 30%, #EAF1F800 100%)`,
+    secondaryBg: COLORS.GREY_5,
   },
   utils: {
     pxToCalc: pxToCalc,

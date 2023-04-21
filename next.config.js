@@ -10,6 +10,16 @@ const nextConfig = {
   devIndicators: {
     buildActivityPosition: "top-right",
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "img-c.udemycdn.com",
+      },
+    ],
+  },
 };
 
-module.exports = nextConfig;
+//img-c.udemycdn.com
+
+https: module.exports = nextConfig;

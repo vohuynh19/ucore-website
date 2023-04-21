@@ -3,7 +3,8 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
-import { RestrictWidthLayout, Checkout } from "ui";
+import { RestrictWidthLayout, PaymentCheckout, PaymentInformation } from "ui";
+import DualColorLayout from "ui/templates/DualColorLayout";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -22,8 +23,11 @@ const CourseList: NextPage = () => {
         <title>Checkout - Vicodemy</title>
       </Head>
 
-      <RestrictWidthLayout maxWidth="1000px">
-        <Checkout />
+      <RestrictWidthLayout maxWidth="880px">
+        <DualColorLayout
+          LeftComponent={<PaymentInformation />}
+          RightComponent={<PaymentCheckout />}
+        />
       </RestrictWidthLayout>
     </>
   );
