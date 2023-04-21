@@ -112,6 +112,19 @@ export const WidthRestrict = styled.div`
   ${widthRestrict}
 `;
 
+export const Flex = styled.div`
+  display: flex;
+`;
+
+export const FlexSpaceBetween = styled.div`
+  ${flexVerticalCenter};
+  justify-content: space-between;
+`;
+
+export const FlexVerticalCenter = styled.div`
+  ${flexVerticalCenter};
+`;
+
 type TPadding = {
   vertical?: number;
   horizontal?: number;
@@ -129,6 +142,13 @@ export const ScaledPadding = styled.div<TPadding>`
     theme.utils.pxToCalc(left || horizontal || 16)};
   padding-right: ${({ horizontal, theme, right }) =>
     theme.utils.pxToCalc(right || horizontal || 16)};
+`;
+
+export const Padding = styled.div<TPadding>`
+  padding-top: ${({ vertical, top }) => `${top || vertical || 16}px`};
+  padding-bottom: ${({ vertical, bottom }) => `${bottom || vertical || 16}px`};
+  padding-left: ${({ horizontal, left }) => `${left || horizontal || 16}px`};
+  padding-right: ${({ horizontal, right }) => `${right || horizontal || 16}px`};
 `;
 
 export const Spacer = styled.div`
