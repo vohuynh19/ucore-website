@@ -20,5 +20,14 @@
   "mostPopular": "Most Popular",
   "highestRate": "Highest Rate",
   "newest": "Newest",
-  "clearFilter": "Clear Filters"
+  "clearFilter": "Clear Filters",
+  "checkout": "Checkout",
+  "paymentMethod": "Payment Method",
+  "orderDetails": "Order Details",
+  "summary": "Summary",
+  "originalPrice": "Original Price",
+  "discounts": "Discounts",
+  "total": "Total",
+  "complete": "Complete",
+  "completeCheckout": "Complete Checkout"
 }
