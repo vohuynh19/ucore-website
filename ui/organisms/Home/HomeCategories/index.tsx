@@ -2,7 +2,7 @@ import { useRouter } from "next/router";
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
-import { PAGE_ROUTES } from "@constants";
+import { IMAGES_URL, PAGE_ROUTES } from "@constants";
 import { CourseCategoryItem } from "ui/molecules";
 import { Container } from "./styled";
 import { Col, Row } from "antd";
@@ -21,32 +21,32 @@ const HomeCategories = () => {
     () => [
       {
         label: t("programming"),
-        image: "/images/course-category-5.png",
+        image: IMAGES_URL.CATEGORY_5,
         destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("design"),
-        image: "/images/course-category-1.png",
+        image: IMAGES_URL.CATEGORY_1,
         destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("game"),
-        image: "/images/course-category-2.png",
+        image: IMAGES_URL.CATEGORY_2,
         destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("javascript"),
-        image: "/images/course-category-3.png",
+        image: IMAGES_URL.CATEGORY_3,
         destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("uxui"),
-        image: "/images/course-category-4.png",
+        image: IMAGES_URL.CATEGORY_4,
         destination: PAGE_ROUTES.COURSE_LIST,
       },
       {
         label: t("ai"),
-        image: "/images/course-category-1.png",
+        image: IMAGES_URL.CATEGORY_1,
         destination: PAGE_ROUTES.COURSE_LIST,
       },
     ],

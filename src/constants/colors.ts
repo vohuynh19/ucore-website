@@ -4,6 +4,7 @@ const COLORS = {
   PURPLE_3: "#1e1e2c",
   PURPLE_4: "#3e64de",
   PURPLE_5: "#395bca",
+  PURPLE_6: "#E9F1F8",
   WHITE_1: "#fff",
   BLACK_1: "#57586E",
   BLACK_2: "#212327",

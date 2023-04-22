@@ -21,6 +21,7 @@ export const theme = {
     textDarkPrimary: COLORS.PURPLE_2,
 
     bg: COLORS.WHITE_1,
+    lightPrimaryBg: COLORS.PURPLE_6,
     primaryBg: COLORS.PURPLE_3,
     secondaryBg: COLORS.GREY_5,
     linearGradientBg: `linear-gradient(180deg, #EAF1F880 30%, #EAF1F800 100%)`,
@@ -39,6 +40,9 @@ export const antdTheme: ThemeConfig = {
   components: {
     Layout: {
       colorBgHeader: "white",
+    },
+    Card: {
+      boxShadowTertiary: "0px 2px 4px 0px rgba(0, 0, 0, 0.08)",
     },
   },
 };
