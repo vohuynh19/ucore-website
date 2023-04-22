@@ -5,7 +5,8 @@ import { CourseCard } from "ui/molecules";
 
 interface Props {}
 
-const CourseSearch = ({}: Props) => {
+const CourseSearch = (props: Props) => {
+  console.log("props", props);
   const courseList = useMemo(
     () => [
       {

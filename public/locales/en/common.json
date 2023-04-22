@@ -29,5 +29,14 @@
   "discounts": "Discounts",
   "total": "Total",
   "complete": "Complete",
-  "completeCheckout": "Complete Checkout"
+  "completeCheckout": "Complete Checkout",
+  "free":"Free",
+  "paid":"Paid",
+  "filter":"Filter",
+  "search":"Search",
+  "category":"Category",
+  "categoryPlaceholder":"Select category",
+  "price":"Price",
+  "sort": "Sort",
+  "sortPlaceholder":"Select sorting option"
 }

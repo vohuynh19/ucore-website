@@ -3,15 +3,6 @@ import styled from "styled-components";
 
 const { Sider, Content, Header, Footer } = Layout;
 
-export const StyledSider = styled(Sider)`
-  && {
-    position: fixed !important;
-    right: 0px !important;
-    height: 100% !important;
-    z-index: 10000;
-  }
-`;
-
 export const StyledContent = styled(Content)`
   && {
     min-height: 50vh !important;
@@ -28,10 +19,3 @@ export const StyledFooter = styled(Footer)`
 `;
 
 export const SiderContainer = styled.div``;
-
-export const SiderProfileContainer = styled.div`
-  padding: 8px 16px;
-  .ant-btn {
-    margin-top: 12px;
-  }
-`;

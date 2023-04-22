@@ -4,7 +4,12 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "react-i18next";
 
-import { CourseList, CourseListLeftFilter, CourseListTopFilter } from "ui";
+import {
+  CourseList,
+  CourseListLeftFilter as LeftFilter,
+  CourseListSiderFilter as SiderFilter,
+  CourseListTopFilter as TopFilter,
+} from "ui";
 import { FilterLayout, BannerLayout } from "ui/templates";
 
 export async function getStaticProps({ locale }: { locale: string }) {
@@ -19,7 +24,9 @@ const CourseListPage: NextPage = () => {
   const { t } = useTranslation(["common", "sentence"]);
   const [form] = Form.useForm();
 
-  const onResetForm = () => {};
+  const onResetForm = () => {
+    form.resetFields();
+  };
 
   return (
     <>
@@ -33,8 +40,9 @@ const CourseListPage: NextPage = () => {
       >
         <Form form={form} layout="vertical">
           <FilterLayout
-            TopComponent={<CourseListTopFilter />}
-            LeftComponent={<CourseListLeftFilter onResetForm={onResetForm} />}
+            SiderComponent={<SiderFilter onResetForm={onResetForm} />}
+            TopComponent={<TopFilter />}
+            LeftComponent={<LeftFilter onResetForm={onResetForm} />}
           >
             <CourseList />
           </FilterLayout>
