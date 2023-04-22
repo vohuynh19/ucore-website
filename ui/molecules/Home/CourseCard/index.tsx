@@ -11,7 +11,7 @@ const CourseCard = () => {
     <StyledCard
       cover={
         <img
-          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL(1))}
+          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL("1"))}
           alt="example"
           src="https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png"
         />
