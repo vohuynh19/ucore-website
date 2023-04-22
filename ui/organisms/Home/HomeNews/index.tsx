@@ -8,9 +8,10 @@ import { useBlogQuery, BLOG_QUERY } from "hooks";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
 
+const maxItem = 3;
+
 const HomeNews = () => {
   const { data } = useBlogQuery(BLOG_QUERY.LATEST_BLOG);
-
   const router = useRouter();
 
   return (
@@ -19,7 +20,7 @@ const HomeNews = () => {
 
       <HomeNewsContainer>
         <Row gutter={[32, 32]}>
-          {(data || []).map((news, index) => (
+          {(data || []).slice(0, maxItem).map((news, index) => (
             <Col key={index} xs={24} md={8}>
               <HomeNewsItem
                 date={news.updatedAt}

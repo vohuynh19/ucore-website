@@ -1,2 +1,2 @@
-export { default as PaymentCheckout } from "./Checkout";
+export { default as PaymentSummaryCheckout } from "./SummaryCheckout";
 export { default as PaymentInformation } from "./Information";

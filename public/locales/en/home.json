@@ -17,6 +17,10 @@
     "all": "All",
     "gameDevelopment": "Game Development",
     "webDevelopment": "Web Developement",
-    "vlog": "Vlog"
+    "vlog": "Vlog",
+    "learners":"Learners",
+    "courses":"Courses",
+    "instructors":"Instructors",
+    "coursesPublished":"Courses Published"
 }
 

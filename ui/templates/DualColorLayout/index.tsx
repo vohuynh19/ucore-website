@@ -1,6 +1,7 @@
-import { Col, Row } from "antd";
+import { Col } from "antd";
 import { ReactNode } from "react";
-import { Padding } from "styles";
+import { OnlyPCPadding } from "styles";
+import { StyledRow } from "./styled";
 
 type Props = {
   LeftComponent: ReactNode;
@@ -9,19 +10,19 @@ type Props = {
 
 const DualColorLayout = ({ LeftComponent, RightComponent }: Props) => {
   return (
-    <Row>
-      <Col xs={24} lg={14} span={14}>
-        <Padding horizontal={24} vertical={24}>
+    <StyledRow>
+      <Col xs={24} md={14} className="left-layout">
+        <OnlyPCPadding vertical={8} horizontal={32}>
           {LeftComponent}
-        </Padding>
+        </OnlyPCPadding>
       </Col>
 
-      <Col xs={24} lg={10} span={10}>
-        <Padding horizontal={24} vertical={24}>
+      <Col xs={24} md={10} className="right-layout">
+        <OnlyPCPadding vertical={8} horizontal={32}>
           {RightComponent}
-        </Padding>
+        </OnlyPCPadding>
       </Col>
-    </Row>
+    </StyledRow>
   );
 };
 

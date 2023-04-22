@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { Register, RestrictWidthLayout } from "ui";
+import { Register, RestrictLayout } from "ui";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -18,9 +18,9 @@ const RegisterPage: NextPage = () => {
         <title>Register Page- Vicodemy</title>
       </Head>
 
-      <RestrictWidthLayout maxWidth="400px">
+      <RestrictLayout maxWidth="400px">
         <Register />
-      </RestrictWidthLayout>
+      </RestrictLayout>
     </>
   );
 };

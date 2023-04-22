@@ -1,13 +1,12 @@
-import { Divider, Form, Radio, Space, Typography } from "antd";
+import { Form, Radio, Space, Typography } from "antd";
 import Image from "next/image";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import PaymentIcon from "@mui/icons-material/Payment";
 
-import { orderDetails } from "../Checkout/mock";
-import { SelectPaymentItem } from "ui/molecules";
 import { IMAGES_URL } from "@constants";
-import { Flex, FlexSpaceBetween, FlexVerticalCenter } from "styles";
+
+import { PaymentOrderItem, SelectPaymentItem } from "ui/molecules";
 
 const paymentMethods = [
   {
@@ -18,39 +17,46 @@ const paymentMethods = [
   },
 ];
 
+export const orderDetails = [
+  {
+    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
+    title: "Beginer Game Developer",
+    price: 200000,
+    priceSymbol: "đ",
+  },
+  {
+    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
+    title: "Subscription",
+    price: 200000,
+    priceSymbol: "đ",
+  },
+  {
+    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
+    title:
+      "Beginer Game Developer Beginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game Developer",
+    price: 200000,
+    priceSymbol: "đ",
+  },
+  {
+    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
+    title: "Subscription",
+    price: 200000,
+    priceSymbol: "đ",
+  },
+];
+
 const defaultValue = paymentMethods[0].value;
 
 const PaymentInformation = () => {
   const { t } = useTranslation(["common", "sentence"]);
   const [selected, setSelected] = useState<string>(defaultValue);
 
-  const renderOrderItem = (order: any) => {
-    return (
-      <FlexSpaceBetween style={{ marginBottom: 24 }}>
-        <Flex style={{ flex: 1 }}>
-          <Image
-            alt="order"
-            src={order.image}
-            width={40}
-            height={40}
-            style={{ marginRight: 12 }}
-          />
-
-          <Typography.Text style={{ paddingRight: 24 }}>
-            {order.title}
-          </Typography.Text>
-        </Flex>
-
-        <p>{`${order.price} ${order.priceSymbol}`}</p>
-      </FlexSpaceBetween>
-    );
-  };
-
   return (
-    <>
+    <div style={{ height: "100%", overflow: "auto" }}>
       <Typography.Title level={2}>{t("checkout")}</Typography.Title>
 
       <Typography.Title level={4}>{t("paymentMethod")}</Typography.Title>
+
       <Form.Item name="paymentMethod">
         <Radio.Group
           defaultValue={defaultValue}
@@ -59,13 +65,11 @@ const PaymentInformation = () => {
         >
           <Space direction="vertical" style={{ width: "100%" }}>
             {paymentMethods.map((method) => (
-              <>
-                <SelectPaymentItem
-                  {...method}
-                  key={method.value}
-                  isSelected={method.value === selected}
-                />
-              </>
+              <SelectPaymentItem
+                {...method}
+                key={method.value}
+                isSelected={method.value === selected}
+              />
             ))}
           </Space>
         </Radio.Group>
@@ -73,8 +77,16 @@ const PaymentInformation = () => {
 
       <Typography.Title level={4}>{t("orderDetails")}</Typography.Title>
 
-      {orderDetails.map((order) => renderOrderItem(order))}
-    </>
+      {orderDetails.map((order, index) => (
+        <PaymentOrderItem
+          key={index}
+          src={order.image}
+          title={order.title}
+          currency={order.priceSymbol}
+          price={order.price}
+        />
+      ))}
+    </div>
   );
 };
 

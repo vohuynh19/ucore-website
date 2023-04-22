@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { ForgotPassword, RestrictWidthLayout } from "ui";
+import { ForgotPassword, RestrictLayout } from "ui";
 
 export async function getStaticProps({ locale }: { locale: string }) {
   return {
@@ -18,9 +18,9 @@ const ForgotPasswordPage: NextPage = () => {
         <title>Forgot password - Vicodemy</title>
       </Head>
 
-      <RestrictWidthLayout maxWidth="400px">
+      <RestrictLayout maxWidth="400px">
         <ForgotPassword />
-      </RestrictWidthLayout>
+      </RestrictLayout>
     </>
   );
 };

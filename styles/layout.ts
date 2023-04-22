@@ -151,6 +151,17 @@ export const Padding = styled.div<TPadding>`
   padding-right: ${({ horizontal, right }) => `${right || horizontal || 16}px`};
 `;
 
+export const OnlyPCPadding = styled.div<TPadding>`
+  padding-top: ${({ vertical, top }) => `${top || vertical || 16}px`};
+  padding-bottom: ${({ vertical, bottom }) => `${bottom || vertical || 16}px`};
+  padding-left: ${({ horizontal, left }) => `${left || horizontal || 16}px`};
+  padding-right: ${({ horizontal, right }) => `${right || horizontal || 16}px`};
+
+  @media (max-width: 778px) {
+    padding: 0;
+  }
+`;
+
 export const Spacer = styled.div`
   ${spacer}
 `;

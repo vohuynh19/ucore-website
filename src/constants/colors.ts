@@ -12,6 +12,7 @@ const COLORS = {
   GREY_3: "#cdcfd5",
   GREY_4: "#41454F",
   GREY_5: "#F6F9FA",
+  GREY_6: "#EAECEF",
   GREEN_1: "#24A148",
   YELLOW_1: "#ED9700",
   RED_1: "#F44337",
