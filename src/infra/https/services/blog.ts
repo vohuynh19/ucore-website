@@ -1,4 +1,4 @@
-import { mockBlogs } from "../entities/blog.mock";
+import { mockBlogs } from "../entities/blog/blog.mock";
 
 const BlogService = {
   getLatestBlog: (): Promise<Blog[]> =>

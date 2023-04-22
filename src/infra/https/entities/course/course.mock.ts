@@ -1,4 +1,4 @@
-import { userMock } from "./user.mock";
+import { userMock } from "../user/user.mock";
 
 export const mockCourses: Course[] = [
   {

@@ -1,4 +1,4 @@
-import { mockCourses } from "../entities/course.mock";
+import { mockCourses } from "../entities/course/course.mock";
 
 const CourseService = {
   getCourses: (): Promise<Course[]> =>

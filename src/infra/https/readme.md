@@ -3,3 +3,4 @@
 2. Add new react query key in `/react-query`
 3. Add response's entity in `/entities` 
 4. Define api method in `/services`
+5. Please do not forget to export module in each `index.ts`
