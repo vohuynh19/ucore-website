@@ -1,7 +1,7 @@
 const PAGE_ROUTES = {
   HOME: "/",
   COURSE_LIST: "/course-list",
-  COURSE_DETAIL: "/course-detail",
+  COURSE_DETAIL: (id: string) => `/course-detail/${id}`,
   INSTRUCTORS: "/instructors",
   BLOG: "/blog",
   REGISTER: "/register",

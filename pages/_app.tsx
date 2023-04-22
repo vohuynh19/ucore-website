@@ -11,6 +11,7 @@ import { queryClientInstance } from "src/infra/https";
 import { AppLoading, NavigationLayout } from "ui";
 
 import { GlobalStyled, theme, antdTheme } from "styles";
+import "plyr-react/plyr.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { isMounted } = useMounted(300);
