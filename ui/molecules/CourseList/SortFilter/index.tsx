@@ -3,7 +3,11 @@ import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { SORT_OPTION } from "ui/organisms/CourseList/types";
 
-const SortFilter = () => {
+type Props = {
+  showLabel?: boolean;
+};
+
+const SortFilter = ({ showLabel = true }: Props) => {
   const { t } = useTranslation("common");
 
   const sortList = useMemo(
@@ -25,7 +29,7 @@ const SortFilter = () => {
   );
 
   return (
-    <Form.Item name="sort" label={t("sort")}>
+    <Form.Item name="sort" label={showLabel ? t("sort") : ""}>
       <Select
         size="large"
         placeholder={t("sortPlaceholder")}

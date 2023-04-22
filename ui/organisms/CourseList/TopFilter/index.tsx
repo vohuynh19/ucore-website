@@ -29,7 +29,7 @@ const TopFilter = () => {
         </Col>
 
         <Col span={0} xs={0} lg={6}>
-          <SortFilter />
+          <SortFilter showLabel={false} />
         </Col>
       </Row>
 
