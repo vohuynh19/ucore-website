@@ -1,4 +1,4 @@
-import { Divider, Typography } from "antd";
+import { Divider, Tour, TourProps, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 
@@ -6,6 +6,7 @@ import { PAGE_ROUTES } from "@constants";
 
 import { Button, SizeBox } from "ui/atoms";
 import { PriceItem } from "ui/molecules";
+import { useState } from "react";
 
 export const SummaryPayment = {
   originalPrice: 200000,
@@ -19,8 +20,46 @@ interface Props {}
 const Checkout: React.FC<Props> = ({}) => {
   const { t } = useTranslation(["common", "sentence"]);
 
+  const [open, setOpen] = useState<boolean>(false);
+
+  const steps: TourProps["steps"] = [
+    {
+      title: "Payment",
+      description: "Have you done payment",
+      target: null,
+    },
+    {
+      title: "Join Private Discord",
+      description: (
+        <Typography.Paragraph>
+          {t("Join discord: ")}
+          <Link href={"https://discord.gg/dDQHmcKY"}>
+            SIReal's private channel
+          </Link>
+          <p>{t("Your Code: ")}</p>
+        </Typography.Paragraph>
+      ),
+      target: null,
+    },
+    {
+      title: "Access",
+      description: (
+        <Typography.Paragraph>
+          {t(
+            "Go to channel Vicodemy and message /verify {your email} {your code}"
+          )}
+        </Typography.Paragraph>
+      ),
+      target: null,
+    },
+  ];
+
   const handleCompleteCheckout = () => {
-    // TODO
+    window.open(
+      "https://payment.momo.vn/v2/gateway/store?t=UEFZTUVOVF9MSU5LX1YyfDFlOWM3ZGEwLWZjN2EtNDIwZi1hYTNlLTIzNjVlNzJmMWUxOA==",
+      "_blank"
+    );
+    setOpen(true);
   };
 
   return (
@@ -69,6 +108,12 @@ const Checkout: React.FC<Props> = ({}) => {
       >
         {t("completeCheckout")}
       </Button>
+      <Tour
+        placement="top"
+        open={open}
+        onClose={() => setOpen(false)}
+        steps={steps}
+      />
 
       <p style={{ textAlign: "center" }}>
         {t("moneyBackGurantee", { ns: "sentence" })}
