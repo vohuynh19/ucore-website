@@ -30,7 +30,13 @@ const Header = () => {
         <Col xs={20} md={6} lg={3}>
           <Link href={PAGE_ROUTES.HOME} style={{ width: 75, height: 75 }}>
             <div style={{ width: 75, height: 75 }}>
-              <Image alt="logo" src={IMAGES_URL.LOGO} width={75} height={75} />
+              <Image
+                alt="logo"
+                src={IMAGES_URL.LOGO}
+                width={75}
+                height={75}
+                priority
+              />
             </div>
           </Link>
         </Col>

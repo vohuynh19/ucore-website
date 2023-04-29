@@ -2,6 +2,7 @@ const IMAGES_URL = {
   LOGO: "/images/logo.png",
   LOGO_FOOTER: "/images/logo-footer.png",
   BANNER_COVER: "/images/home/banner-cover.png",
+  HOME_COVER: "/images/home/home-cover.png",
   MOMO: "/images/Logo-MoMo.png",
   CATEGORY_1: "/images/home/course-category-1.png",
   CATEGORY_2: "/images/home/course-category-2.png",

@@ -1,5 +1,15 @@
 import { userMock } from "../user/user.mock";
 
+export const mockCourse: Course = {
+  id: "1",
+  name: "Course Name 1",
+  description: "Courses Description Courses Description Courses Description 1",
+  thumbnailUrl:
+    "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
+  author: userMock[0],
+  avgRating: 4,
+};
+
 export const mockCourses: Course[] = [
   {
     id: "1",

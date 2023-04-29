@@ -3,7 +3,7 @@ import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import { ThemeProvider } from "styled-components";
 import { ConfigProvider } from "antd";
-import { QueryClientProvider } from "react-query";
+import { Hydrate, QueryClientProvider } from "react-query";
 
 import { useMounted } from "hooks";
 import { queryClientInstance } from "src/infra/https";
@@ -23,19 +23,21 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <QueryClientProvider client={queryClientInstance}>
-        <ThemeProvider theme={theme}>
-          <ConfigProvider theme={antdTheme}>
-            <GlobalStyled />
+        <Hydrate state={pageProps.dehydratedState}>
+          <ThemeProvider theme={theme}>
+            <ConfigProvider theme={antdTheme}>
+              <GlobalStyled />
 
-            {isMounted && (
-              <NavigationLayout>
-                <Component {...pageProps} />
-              </NavigationLayout>
-            )}
+              {isMounted && (
+                <NavigationLayout>
+                  <Component {...pageProps} />
+                </NavigationLayout>
+              )}
 
-            {!isMounted && <AppLoading />}
-          </ConfigProvider>
-        </ThemeProvider>
+              {!isMounted && <AppLoading />}
+            </ConfigProvider>
+          </ThemeProvider>
+        </Hydrate>
       </QueryClientProvider>
     </>
   );

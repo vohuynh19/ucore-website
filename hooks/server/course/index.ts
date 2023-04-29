@@ -1,4 +1,5 @@
 import { UseQueryResult } from "react-query";
+import useCourseDetail from "./useCourseDetail";
 import useTopCourses from "./useTopCourses";
 
 /**
@@ -12,6 +13,7 @@ import useTopCourses from "./useTopCourses";
 enum COURSES_QUERY {
   TOP_COURSES = "TOP_COURSES",
   LIST_COURSES = "LIST_COURSES",
+  COURSE_DETAIL = "COURSE_DETAIL",
 }
 enum COURSES_MUTATE {
   JOIN_COURSE = "JOIN_COURSE",
@@ -19,11 +21,29 @@ enum COURSES_MUTATE {
 
 type HookType = COURSES_QUERY | COURSES_MUTATE;
 
+type ParamsMap = {
+  [COURSES_QUERY.TOP_COURSES]: never;
+  [COURSES_QUERY.LIST_COURSES]: never;
+  [COURSES_QUERY.COURSE_DETAIL]: {
+    id: string;
+  };
+
+  [COURSES_MUTATE.JOIN_COURSE]: {
+    id: string;
+  };
+};
+
 type ResultMap = {
   [COURSES_QUERY.TOP_COURSES]: Course[];
   [COURSES_QUERY.LIST_COURSES]: Course[];
+  [COURSES_QUERY.COURSE_DETAIL]: Course;
+
   [COURSES_MUTATE.JOIN_COURSE]: string;
 };
+
+type Params<T extends HookType> = T extends keyof ParamsMap
+  ? ParamsMap[T]
+  : never;
 
 type Result<T extends HookType> = T extends keyof ResultMap
   ? ResultMap[T]
@@ -39,11 +59,14 @@ type Result<T extends HookType> = T extends keyof ResultMap
 
 const useCourseQuery = <T extends HookType>(
   type: T
-): UseQueryResult<Result<T>, ApiError> => {
+): ((params: Params<T>) => UseQueryResult<Result<T>, ApiError>) => {
+  type ReturnType = (params: Params<T>) => UseQueryResult<Result<T>, ApiError>;
+
   switch (type) {
     case COURSES_QUERY.TOP_COURSES:
-      const queryData = useTopCourses();
-      return queryData as UseQueryResult<Result<T>, ApiError>;
+      return useTopCourses as ReturnType;
+    case COURSES_QUERY.COURSE_DETAIL:
+      return useCourseDetail as ReturnType;
 
     default:
       throw new Error(`Invalid COURSES_QUERY value: ${type}`);

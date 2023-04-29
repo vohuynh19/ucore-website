@@ -20,6 +20,7 @@ const FooterDescription = () => {
             src={IMAGES_URL.LOGO_FOOTER}
             width={125}
             height={125}
+            priority
           />
         </div>
       </Link>

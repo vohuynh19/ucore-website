@@ -9,10 +9,10 @@ import {
   CourseListLeftFilter as LeftFilter,
   CourseListSiderFilter as SiderFilter,
   CourseListTopFilter as TopFilter,
-} from "ui";
+} from "ui/organisms";
 import { FilterLayout, BannerLayout } from "ui/templates";
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getStaticProps({ locale }: StaticProps) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "sentence"])),

@@ -13,7 +13,9 @@ const paymentMethods = [
     paymentMethod: "Momo",
     value: "MOMO",
     icon: <PaymentIcon />,
-    avatar: <Image alt="logo" src={IMAGES_URL.MOMO} width={25} height={25} />,
+    avatar: (
+      <Image alt="logo" src={IMAGES_URL.MOMO} width={25} height={25} priority />
+    ),
   },
 ];
 

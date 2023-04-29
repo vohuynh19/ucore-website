@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 
 import { BannerLayout, BecomeInstructor, InstructorList } from "ui";
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getStaticProps({ locale }: StaticProps) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "sentence"])),

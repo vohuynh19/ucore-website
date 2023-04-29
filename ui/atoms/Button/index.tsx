@@ -8,11 +8,14 @@ type Props = {
 } & ButtonProps &
   React.RefAttributes<HTMLElement>;
 
-const SButton = styled(Button)<Props>`
+const SButton = styled(Button).withConfig({
+  shouldForwardProp: (prop) =>
+    !["isFullWidth", "borderRadius", "isScaled"].includes(prop),
+})<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${({ isFullWidth }) => (isFullWidth ? "100%" : "auto")};
+  width: ${({ isFullWidth = false }) => (isFullWidth ? "100%" : "auto")};
 
   &&.ant-btn-background-ghost {
     border-color: ${({ theme }) => theme.colors.primary};

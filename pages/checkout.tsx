@@ -4,10 +4,10 @@ import Head from "next/head";
 import { useTranslation } from "react-i18next";
 import { Container } from "styles";
 
-import { RestrictLayout, PaymentInformation, PaymentSummaryCheckout } from "ui";
-import DualColorLayout from "ui/templates/DualColorLayout";
+import { PaymentInformation, PaymentSummaryCheckout } from "ui/organisms";
+import { DualColorLayout, RestrictLayout } from "ui/templates";
 
-export async function getStaticProps({ locale }: { locale: string }) {
+export async function getStaticProps({ locale }: StaticProps) {
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "sentence"])),

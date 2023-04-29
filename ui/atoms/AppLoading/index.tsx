@@ -25,6 +25,7 @@ const AppLoading = () => {
         src={IMAGES_URL.LOGO}
         width={75}
         height={75}
+        priority
       />
 
       <RingLoader color={theme.colors.primary} size={160} />

@@ -1,9 +1,14 @@
-import { mockCourses } from "../entities/course/course.mock";
+import { mockCourses, mockCourse } from "../entities/course/course.mock";
 
 const CourseService = {
   getCourses: (): Promise<Course[]> =>
     new Promise((resolve) => {
       resolve(mockCourses);
+    }),
+
+  getCoursesDetail: (id: string): Promise<Course> =>
+    new Promise((resolve) => {
+      resolve(mockCourse);
     }),
 };
 
