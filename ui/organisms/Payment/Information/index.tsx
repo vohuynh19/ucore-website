@@ -22,26 +22,19 @@ const paymentMethods = [
 export const orderDetails = [
   {
     image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title: "Beginer Game Developer",
+    title: "Unity Beginer Game Developer",
     price: 200000,
     priceSymbol: "đ",
   },
   {
     image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title: "Subscription",
+    title: "Subscription To SIReal",
     price: 200000,
     priceSymbol: "đ",
   },
   {
     image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title:
-      "Beginer Game Developer Beginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game DeveloperBeginer Game Developer",
-    price: 200000,
-    priceSymbol: "đ",
-  },
-  {
-    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title: "Subscription",
+    title: "C# Beginer Game Developer",
     price: 200000,
     priceSymbol: "đ",
   },
