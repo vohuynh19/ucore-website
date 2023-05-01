@@ -40,5 +40,6 @@
   "categoryPlaceholder":"Select category",
   "price":"Price",
   "sort": "Sort",
-  "sortPlaceholder":"Select sorting option"
+  "sortPlaceholder":"Select sorting option",
+  "categories":"Categories"
 }

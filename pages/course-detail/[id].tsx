@@ -44,13 +44,20 @@ const CourseDetailPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const data = useCourseQuery(COURSES_QUERY.COURSE_DETAIL)({
+  const { data } = useCourseQuery(COURSES_QUERY.COURSE_DETAIL)({
     id: id as string,
   });
 
   return (
     <CourseLayout
-      HeaderComponent={<CourseHeader />}
+      HeaderComponent={
+        <CourseHeader
+          courseId={data?.id || ""}
+          rating={data?.avgRating || 1}
+          title={data?.name || ""}
+          categories={data?.categories || []}
+        />
+      }
       RightComponent={<CourseMaterial />}
     >
       <Video />

@@ -5,4 +5,5 @@ type Course = {
   thumbnailUrl: string;
   author: User;
   avgRating: number;
+  categories: CourseCategory[];
 };

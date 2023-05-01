@@ -1,4 +1,5 @@
 import { userMock } from "../user/user.mock";
+import { mockCourseCategories } from "./course-category.mock";
 
 export const mockCourse: Course = {
   id: "1",
@@ -8,6 +9,7 @@ export const mockCourse: Course = {
     "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
   author: userMock[0],
   avgRating: 4,
+  categories: mockCourseCategories,
 };
 
 export const mockCourses: Course[] = [
@@ -20,6 +22,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[0],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "2",
@@ -30,6 +33,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[0],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "3",
@@ -40,6 +44,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "4",
@@ -50,6 +55,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "5",
@@ -60,6 +66,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "6",
@@ -70,6 +77,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "7",
@@ -80,6 +88,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "8",
@@ -90,6 +99,7 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
   {
     id: "9",
@@ -100,5 +110,6 @@ export const mockCourses: Course[] = [
       "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
     author: userMock[1],
     avgRating: 4,
+    categories: mockCourseCategories,
   },
 ];
