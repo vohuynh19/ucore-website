@@ -5,10 +5,11 @@ import Head from "next/head";
 import {
   HomeCategories,
   HomeCover,
+  HomeTopInstructor,
   HomeHotCourse,
   HomeNews,
   HomeStatistic,
-  HomeSubcribe,
+  HomeSubcribe
 } from "ui/organisms";
 
 export async function getStaticProps({ locale }: StaticProps) {
@@ -28,6 +29,7 @@ const Home: NextPage = () => {
 
       <HomeCover />
       <HomeCategories />
+      <HomeTopInstructor />
       <HomeHotCourse />
       <HomeStatistic />
       <HomeNews />
