@@ -10,7 +10,7 @@ import { Container } from "./styled";
 const maxDisplayCourse = 4;
 
 const HomeHotCourse = () => {
-  const { data } = useCourseQuery(COURSES_QUERY.TOP_COURSES);
+  const { data } = useCourseQuery(COURSES_QUERY.TOP_COURSES)({});
 
   return (
     <Container>

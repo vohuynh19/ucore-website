@@ -56,9 +56,20 @@ const CourseDetailPage = () => {
           rating={data?.avgRating || 1}
           title={data?.name || ""}
           categories={data?.categories || []}
+          lastUpdate={data?.lastUpdate || ""}
         />
       }
-      RightComponent={<CourseMaterial />}
+      RightComponent={
+        <CourseMaterial
+          price={data?.price || ""}
+          difficultLevel={data?.difficultLevel || ""}
+          numberOfStudent={data?.numberOfStudent || 0}
+          author={data?.author || { id: "", name: "" }}
+          materialsIncluded={data?.materialsIncluded || ""}
+          requirements={data?.requirements || ""}
+          targetedAudience={data?.targetedAudience || ""}
+        />
+      }
     >
       <Video />
 
@@ -68,7 +79,13 @@ const CourseDetailPage = () => {
           {
             key: "1",
             label: `Tab 1`,
-            children: <CourseInformation />,
+            children: (
+              <CourseInformation
+                aboutCourse={data?.aboutCourse || ""}
+                whatWillLearn={data?.whatWillLearn || ""}
+                courseVideo={data?.courseVideo || []}
+              />
+            ),
           },
           {
             key: "2",
