@@ -16,6 +16,7 @@ import {
   CourseAnnouncement,
 } from "ui/organisms";
 import { CourseLayout } from "ui/templates";
+import { SizeBox } from "ui";
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   return {
@@ -72,7 +73,7 @@ const CourseDetailPage = () => {
           price={data?.price || ""}
           difficultLevel={data?.difficultLevel || ""}
           numberOfStudent={data?.numberOfStudent || 0}
-          author={data?.author || { id: "", name: "" }}
+          author={data?.author || { id: "", name: "", avatar: "" }}
           materialsIncluded={data?.materialsIncluded || ""}
           requirements={data?.requirements || ""}
           targetedAudience={data?.targetedAudience || ""}
@@ -81,12 +82,14 @@ const CourseDetailPage = () => {
     >
       <Video />
 
+      <SizeBox height="24px" />
+
       <Tabs
         defaultActiveKey="1"
         items={[
           {
             key: "1",
-            label: `Tab 1`,
+            label: `Course Info`,
             children: (
               <CourseInformation
                 aboutCourse={data?.aboutCourse || ""}
@@ -97,12 +100,12 @@ const CourseDetailPage = () => {
           },
           {
             key: "2",
-            label: `Tab 2`,
+            label: `Review`,
             children: <CourseReview />,
           },
           {
             key: "3",
-            label: `Tab 3`,
+            label: `Announcement`,
             children: <CourseAnnouncement />,
           },
         ]}
