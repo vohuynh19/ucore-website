@@ -4,7 +4,7 @@ import { mockCourseCategories } from "./course-category.mock";
 
 export const mockCourse: Course = {
   id: "1",
-  name: "Course Name 1",
+  name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down",
   description: "",
   thumbnailUrl:
     "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
@@ -24,10 +24,34 @@ export const mockCourse: Course = {
 };
 
 export const mockCourses: Course[] = [
-  { ...mockCourse, id: "1", name: "Course Name 1" },
-  { ...mockCourse, id: "2", name: "Course Name 2" },
-  { ...mockCourse, id: "3", name: "Course Name 3" },
-  { ...mockCourse, id: "4", name: "Course Name 4" },
-  { ...mockCourse, id: "5", name: "Course Name 5" },
-  { ...mockCourse, id: "6", name: "Course Name 6" },
+  {
+    ...mockCourse,
+    id: "1",
+    name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down 1",
+  },
+  {
+    ...mockCourse,
+    id: "2",
+    name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down 2",
+  },
+  {
+    ...mockCourse,
+    id: "3",
+    name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down 3",
+  },
+  {
+    ...mockCourse,
+    id: "4",
+    name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down 4",
+  },
+  {
+    ...mockCourse,
+    id: "5",
+    name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down 5",
+  },
+  {
+    ...mockCourse,
+    id: "6",
+    name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down 6",
+  },
 ];

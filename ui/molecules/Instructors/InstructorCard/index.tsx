@@ -16,7 +16,7 @@ type InstructorCardProps = {
 };
 
 // Todo: Translation
-const InstructorCard: FC<InstructorCardProps> = ({
+const InstructorCard: FC<Partial<InstructorCardProps>> = ({
   name,
   imgLink,
   discordLink,

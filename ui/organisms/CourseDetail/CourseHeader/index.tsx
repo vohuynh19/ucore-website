@@ -40,9 +40,6 @@ const CourseHeader = (props: Props) => {
           );
         })}
       </Text>
-
-      {/* New Add */}
-      <Text>Nearest update: {props.lastUpdate}</Text>
     </Container>
   );
 };

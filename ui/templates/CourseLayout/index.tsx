@@ -11,16 +11,34 @@ type Props = PropsWithChildren<{
 
 const Container = styled.div`
   ${container};
-  margin: 40px 0;
+  padding-top: 32px;
+`;
+
+const ChildrenContainer = styled.div``;
+
+const HeaderContainer = styled.div`
+  margin-bottom: 32px;
+`;
+
+const RightContainer = styled.div`
+  padding-left: 40px;
 `;
 
 const CourseLayout = ({ HeaderComponent, RightComponent, children }: Props) => {
   return (
     <Container>
       <Row>
-        <Col span={24}>{HeaderComponent}</Col>
-        <Col span={18}>{children}</Col>
-        <Col span={6}>{RightComponent}</Col>
+        <Col span={24}>
+          <HeaderContainer>{HeaderComponent}</HeaderContainer>
+        </Col>
+
+        <Col span={16}>
+          <ChildrenContainer>{children}</ChildrenContainer>
+        </Col>
+
+        <Col span={8}>
+          <RightContainer>{RightComponent}</RightContainer>
+        </Col>
       </Row>
     </Container>
   );

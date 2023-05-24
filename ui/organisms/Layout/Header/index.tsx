@@ -10,11 +10,10 @@ import useAppStore from "stores/useAppStore";
 import { PAGE_ROUTES } from "@constants";
 import IMAGES_URL from "@constants/images";
 
-import { Container } from "styles";
 import { Button, Cart, SizeBox } from "ui/atoms";
 import { HeaderMenu } from "ui/molecules";
 
-import { HeaderRightContainer, MenuContainer } from "./styled";
+import { HeaderRightContainer, MenuContainer, Container } from "./styled";
 
 const Header = () => {
   const { t } = useTranslation("common");

@@ -1,4 +1,7 @@
-import Plyr from "plyr-react";
+import dynamic from "next/dynamic";
+const Plyr = dynamic(() => import("plyr-react"), {
+  loading: () => <p>Loading...</p>,
+});
 
 const Video = () => {
   return (

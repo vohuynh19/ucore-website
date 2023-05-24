@@ -68,6 +68,7 @@ const CourseDetailPage = () => {
       }
       RightComponent={
         <CourseMaterial
+          id={id as string}
           price={data?.price || ""}
           difficultLevel={data?.difficultLevel || ""}
           numberOfStudent={data?.numberOfStudent || 0}

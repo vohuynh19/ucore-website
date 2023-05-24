@@ -1,1 +1,2 @@
-export { default as useInstructorsQuery } from "./useInstructorQuery";
+export { default as useInstructorsQuery } from "./useInstructorsQuery";
+export { default as useInstructorQuery } from "./useInstructorQuery";
