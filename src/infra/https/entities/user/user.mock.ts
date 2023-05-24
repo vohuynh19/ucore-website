@@ -1,4 +1,9 @@
-export const userMock = [
+export const userMock: User = {
+  id: "123",
+  name: "Hoang Hiep",
+};
+
+export const usersMock: User[] = [
   {
     id: "123",
     name: "Hoang Hiep",
