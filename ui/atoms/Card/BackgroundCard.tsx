@@ -26,7 +26,9 @@ const Content = styled.div`
   z-index: 2;
 `;
 
-const StyledCard = styled(Card)<Props>`
+const StyledCard = styled(Card).withConfig({
+  shouldForwardProp: (prop) => !["backgroundLink"].includes(prop),
+})<Props>`
   && {
     background-image: ${({ backgroundLink }) => `url(${backgroundLink})`};
     background-size: cover;

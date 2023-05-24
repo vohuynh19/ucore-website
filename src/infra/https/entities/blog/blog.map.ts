@@ -6,3 +6,7 @@ export const blogMapping = (blog: SBlog): Blog => {
     title: blog.title,
   };
 };
+
+export const blogsMapping = (blogs: SBlog[]): Blog[] => {
+  return blogs.map(blogMapping);
+};

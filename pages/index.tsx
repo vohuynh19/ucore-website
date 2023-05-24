@@ -9,7 +9,7 @@ import {
   HomeHotCourse,
   HomeNews,
   HomeStatistic,
-  HomeSubcribe
+  HomeSubcribe,
 } from "ui/organisms";
 
 export async function getStaticProps({ locale }: StaticProps) {
