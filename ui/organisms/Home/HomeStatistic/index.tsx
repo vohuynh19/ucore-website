@@ -1,17 +1,16 @@
 import { Col, Row } from "antd";
 import { useTranslation } from "react-i18next";
 
-import { STATISTIC_QUERY, useStatisticQuery } from "hooks";
-
 import { HomeNorms, HomeStatisticItem } from "ui/molecules";
 
 import { ScaledPadding } from "styles";
 import { Container } from "./styled";
+import { useHomeStatisticQuery } from "hooks";
 
 const HomeStatistic = () => {
   const { t } = useTranslation("common");
 
-  const { data } = useStatisticQuery(STATISTIC_QUERY.HOME_STATISTIC);
+  const { data } = useHomeStatisticQuery();
 
   return (
     <Container>

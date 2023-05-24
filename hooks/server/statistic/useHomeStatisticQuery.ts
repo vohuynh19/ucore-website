@@ -1,7 +1,7 @@
 import { useQuery } from "react-query";
 import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
 
-const useHomeStatistic = () => {
+const useHomeStatisticQuery = () => {
   const queryData = useQuery<HomeStatistic, ApiError>(
     REACT_QUERY_KEYS.GET_HOME_STATISTIC,
     API_SERVICES.STATISTIC.getHomeStatistic
@@ -10,4 +10,4 @@ const useHomeStatistic = () => {
   return queryData;
 };
 
-export default useHomeStatistic;
+export default useHomeStatisticQuery;

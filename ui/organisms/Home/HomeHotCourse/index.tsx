@@ -1,16 +1,15 @@
 import { Col, Row } from "antd";
 
-import { COURSES_QUERY, useCourseQuery } from "hooks";
-
 import { SizeBox } from "ui/atoms";
 import { CourseCard, HottestCourseHeader } from "ui/molecules";
 
 import { Container } from "./styled";
+import { useTopCoursesQuery } from "hooks";
 
 const maxDisplayCourse = 4;
 
 const HomeHotCourse = () => {
-  const { data } = useCourseQuery(COURSES_QUERY.TOP_COURSES)({});
+  const { data } = useTopCoursesQuery();
 
   return (
     <Container>

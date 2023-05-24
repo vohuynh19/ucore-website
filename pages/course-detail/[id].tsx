@@ -5,7 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "react-query";
 
 import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
-import { COURSES_QUERY, useCourseQuery } from "hooks";
+import { useCourseDetailQuery } from "hooks";
 
 import { Video } from "ui/molecules";
 import {
@@ -17,9 +17,16 @@ import {
 } from "ui/organisms";
 import { CourseLayout } from "ui/templates";
 
-export const getStaticPaths: GetStaticPaths<{ slug: string }> = async () => {
+export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   return {
-    paths: [],
+    paths: [
+      {
+        params: { id: "1" },
+      },
+      {
+        params: { id: "2" },
+      },
+    ],
     fallback: "blocking",
   };
 };
@@ -44,7 +51,7 @@ const CourseDetailPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data } = useCourseQuery(COURSES_QUERY.COURSE_DETAIL)({
+  const { data } = useCourseDetailQuery({
     id: id as string,
   });
 

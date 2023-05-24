@@ -1,12 +1,9 @@
 import { Col, Row } from "antd";
 
-import { COURSES_QUERY, useCourseQuery } from "hooks";
-
 import { SizeBox } from "ui/atoms";
 import { InstructorCard, SettingAccountForm } from "ui/molecules";
 
 import { Container } from "./styled";
-import { Key } from "react";
 
 const maxDisplayCourse = 3;
 

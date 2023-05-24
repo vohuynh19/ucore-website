@@ -4,14 +4,14 @@ import { Container, HomeNewsContainer } from "./styled";
 
 import { Col, Row } from "antd";
 
-import { useBlogQuery, BLOG_QUERY } from "hooks";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
+import { useLatestBlogQuery } from "hooks";
 
 const maxItem = 3;
 
 const HomeNews = () => {
-  const { data } = useBlogQuery(BLOG_QUERY.LATEST_BLOG);
+  const { data } = useLatestBlogQuery();
   const router = useRouter();
 
   return (

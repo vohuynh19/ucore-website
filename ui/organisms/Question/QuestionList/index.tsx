@@ -1,12 +1,9 @@
 import { Col, Row } from "antd";
 
-import { COURSES_QUERY, useCourseQuery } from "hooks";
-
 import { SizeBox } from "ui/atoms";
-import { InstructorCard, QuestionItem } from "ui/molecules";
+import { QuestionItem } from "ui/molecules";
 
 import { Container } from "./styled";
-import { Key } from "react";
 
 const maxDisplayCourse = 3;
 
@@ -28,8 +25,6 @@ const data = [
 ];
 
 const QuestionList = () => {
-  // const { data } = useCourseQuery(COURSES_QUERY.TOP_COURSES)({});
-
   return (
     <Container>
       <SizeBox height={48} />
