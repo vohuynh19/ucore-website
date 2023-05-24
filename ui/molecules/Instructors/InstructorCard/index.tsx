@@ -90,7 +90,9 @@ const InstructorCard = () => {
       }
       actions={[
         <ActionContainer key={1}>
-          <Button ghost>Try Chat Discord</Button>
+          <Button ghost href="https://discord.gg/8u9yycGg">
+            Try Chat Discord
+          </Button>
         </ActionContainer>,
       ]}
     >

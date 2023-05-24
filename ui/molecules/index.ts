@@ -6,3 +6,4 @@ export * from "./Payment";
 export * from "./Instructors";
 export * from "./CourseDetail";
 export * from "./MyAccount";
+export * from "./Question";

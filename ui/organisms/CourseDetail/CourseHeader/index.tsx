@@ -6,6 +6,7 @@ type Props = {
   courseId: string;
   rating: number;
   title: string;
+  lastUpdate: string;
   categories: {
     name: string;
     id: string;
@@ -39,6 +40,9 @@ const CourseHeader = (props: Props) => {
           );
         })}
       </Text>
+
+      {/* New Add */}
+      <Text>Nearest update: {props.lastUpdate}</Text>
     </Container>
   );
 };
