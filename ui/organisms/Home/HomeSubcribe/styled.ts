@@ -28,6 +28,15 @@ export const ContentContainer = styled.div`
     }
   }
 
+  .textinput {
+    display: flex;
+    align-items: center;
+    svg {
+      margin-right: 16px;
+    }
+    margin-top: 12px;
+  }
+
   @media (max-width: 768px) {
     width: 100%;
     padding-top: 24px;
