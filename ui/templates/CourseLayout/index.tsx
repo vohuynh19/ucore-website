@@ -22,6 +22,12 @@ const HeaderContainer = styled.div`
 
 const RightContainer = styled.div`
   padding-left: 40px;
+  position: sticky;
+  top: 40px;
+
+  @media (max-width: 991px) {
+    position: static;
+  }
 `;
 
 const CourseLayout = ({ HeaderComponent, RightComponent, children }: Props) => {
