@@ -5,8 +5,6 @@ import { Container } from "./styled";
 import { CourseUploadTips, UploadMaterial } from "ui/molecules";
 
 const CourseUpload = () => {
-  const { t } = useTranslation("common");
-
   return (
     <CourseLayout
       HeaderComponent={undefined}

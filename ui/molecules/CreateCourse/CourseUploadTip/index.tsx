@@ -26,7 +26,7 @@ const CourseUploadTips = () => {
             <SizeBox height={8} />
           </li>
           <li>
-            <Text>{t("courseUploadTip8")}</Text>
+            <Text>{t("courseUploadTip4")}</Text>
             <SizeBox height={8} />
           </li>
           <li>
