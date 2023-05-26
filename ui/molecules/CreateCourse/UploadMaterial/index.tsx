@@ -1,8 +1,10 @@
-import { Typography } from "antd";
+import { Form, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 import { Container } from "./styled";
 import { SizeBox } from "ui/atoms";
 import DropdownCourseInfo from "../DropdownCourseInfo";
+import DropdownCourseMaterial from "../DropdownCourseMaterial";
+import DropdownCourseAdditionData from "../DropdownCourseAdditionData";
 
 const availableCategories: CourseCategory[] = [
   { id: "1", name: "Game" },
@@ -22,6 +24,8 @@ const CourseUploadTips = () => {
         difficultLevel={"easy"}
         availableCategories={availableCategories}
       />
+      <DropdownCourseMaterial courseIntroVideo={""} />
+      <DropdownCourseAdditionData />
     </Container>
   );
 };

@@ -1,4 +1,4 @@
-import { Collapse, Form, Input, Select } from "antd";
+import { Collapse, Divider, Form, Input, Select } from "antd";
 import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 
@@ -28,6 +28,7 @@ const DropdownCourseInfo = ({
   return (
     <Collapse defaultActiveKey={["1"]} onChange={onChange} size="large" ghost>
       <Collapse.Panel header={t("courseInfo")} key="1">
+        <Divider></Divider>
         <Form.Item
           name={"title"}
           label={t("courseTitle")}
