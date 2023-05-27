@@ -25,6 +25,7 @@
   "topicSummary":"Topic Summary",
   "topicSummaryNote":"Add a summary of short text to prepare students for the activities for the topic. The text is shown on the course page beside the tooltip beside the topic name.",
   "lesson":"Lesson",
+  "updateLesson":"Update Lesson",
   "lessionWithVideo": "Lesson (video)",
   "lessonName":"Lesson Name",
   "lessonNameNote":"Lesson titles are displayed publicly wherever required.",

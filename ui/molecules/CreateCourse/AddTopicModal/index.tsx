@@ -34,7 +34,7 @@ const AddTopicModal = ({
         name={"topicName"}
         label={t("topicName")}
       >
-        <Input value={selectedTopic.title} />
+        <Input />
       </Form.Item>
       <Text type="secondary">{t("topicNameNote")}</Text>
 

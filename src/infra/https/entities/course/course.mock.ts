@@ -1,5 +1,5 @@
 import { userMock } from "../user/user.mock";
-import { mockCourseVideos } from "../course-video/course-video.mock";
+import { mockCourseVideos } from "../course-lesson/course-lesson.mock";
 import { mockCourseCategories } from "./course-category.mock";
 
 export const mockCourse: Course = {

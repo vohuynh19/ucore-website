@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 type Props = {
   header: string;
-  items: CourseVideo[];
+  items: CourseLessonVideo[];
 };
 
 const DropdownMenu = ({ header, items }: Props) => {
@@ -52,7 +52,7 @@ const DropdownMenuItemContainer = styled.div`
   }
 `;
 
-const DropdownMenuItem = (props: CourseVideo) => {
+const DropdownMenuItem = (props: CourseLessonVideo) => {
   return (
     <DropdownMenuItemContainer>
       <div className="left">

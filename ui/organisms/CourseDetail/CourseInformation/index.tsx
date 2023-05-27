@@ -6,7 +6,7 @@ import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
 type Props = {
   aboutCourse: string;
   whatWillLearn: string;
-  courseVideo: CourseVideo[];
+  courseVideo: CourseLessonVideo[];
 };
 
 const { Title, Text } = Typography;
