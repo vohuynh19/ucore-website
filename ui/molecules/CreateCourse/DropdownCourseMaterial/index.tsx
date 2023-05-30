@@ -37,7 +37,7 @@ const DropdownCourseMaterial = ({ courseIntroVideo }: Props) => {
   const [selectedTopic, setSelectedTopic] = useState<CourseTopic>();
   const [isTopicModalOpen, setisTopicModalOpen] = useState(false);
   const [isLessonModalOpen, setIsLessonModalOpen] = useState(false);
-  const [selectedLesson, setSelectedLesson] = useState<CourseLessonVideo>();
+  const [selectedLesson, setSelectedLesson] = useState<CourseLesson>();
   const [addTopicForm] = Form.useForm();
   const [addLessonForm] = Form.useForm();
 
@@ -91,7 +91,7 @@ const DropdownCourseMaterial = ({ courseIntroVideo }: Props) => {
     setIsLessonModalOpen(false);
   };
 
-  const handleModifyLesson = (lesson: CourseLessonVideo) => {
+  const handleModifyLesson = (lesson: CourseLesson) => {
     setSelectedLesson(lesson);
     addLessonForm.setFieldValue("lessonName", lesson.title);
     addLessonForm.setFieldValue("lessonVideo", lesson.videoUrl);
@@ -134,7 +134,7 @@ const DropdownCourseMaterial = ({ courseIntroVideo }: Props) => {
     );
   };
 
-  const genExtraLesson = (lesson: CourseLessonVideo) => {
+  const genExtraLesson = (lesson: CourseLesson) => {
     return (
       <div>
         <IconButton
@@ -168,7 +168,7 @@ const DropdownCourseMaterial = ({ courseIntroVideo }: Props) => {
     );
   };
 
-  const DropdownLessonItem = (props: CourseLessonVideo) => {
+  const DropdownLessonItem = (props: CourseLesson) => {
     return (
       <LessonItemContainer>
         <div className="left">
@@ -269,6 +269,7 @@ const DropdownCourseMaterial = ({ courseIntroVideo }: Props) => {
               id: "",
               title: "",
               summary: "",
+              courseLessons: mockCourseVideos,
             }
           }
         />

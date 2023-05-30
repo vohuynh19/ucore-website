@@ -5,3 +5,5 @@ export { default as BannerLayout } from "./BannerLayout";
 export { default as FilterLayout } from "./FilterLayout";
 export { default as CourseLayout } from "./CourseLayout";
 export { default as DualColorLayout } from "./DualColorLayout";
+export { default as LessonLayout } from "./LessonLayout";
+

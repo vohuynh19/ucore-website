@@ -3,17 +3,17 @@ import { Collapse } from "antd";
 import styled from "styled-components";
 
 type Props = {
-  items: CourseTopic[];
+  courseTopics: CourseTopic[];
 };
 
-const DropdownMenu = ({ items }: Props) => {
+const DropdownCourseContent = ({ courseTopics }: Props) => {
   const onChange = (key: string | string[]) => {
     console.log(key);
   };
 
   return (
-    <Collapse defaultActiveKey={["1"]} onChange={onChange}>
-      {items.map((topic) => (
+    <Collapse defaultActiveKey={["1"]} onChange={onChange} ghost>
+      {courseTopics.map((topic) => (
         <Collapse.Panel header={topic.title} key={topic.id}>
           {topic.courseLessons.map((lesson) => (
             <DropdownMenuItem key={lesson.id} {...lesson} />
@@ -59,4 +59,4 @@ const DropdownMenuItem = (props: CourseLesson) => {
   );
 };
 
-export default DropdownMenu;
+export default DropdownCourseContent;

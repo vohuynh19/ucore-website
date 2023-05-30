@@ -1,5 +1,6 @@
 import { userMock } from "../user/user.mock";
 import { mockCourseVideos } from "../course-lesson/course-lesson.mock";
+import { mockCourseTopics } from "../course-topic/course-topic.mock";
 import { mockCourseCategories } from "./course-category.mock";
 
 export const mockCourse: Course = {
@@ -17,7 +18,7 @@ export const mockCourse: Course = {
   difficultLevel: "Easy",
   aboutCourse: "Courses Description Courses Description Courses Description 1",
   whatWillLearn: "CPPDD DDS",
-  courseVideo: mockCourseVideos,
+  courseTopic: mockCourseTopics,
   materialsIncluded: "Test",
   requirements: "Test",
   targetedAudience: "Test",

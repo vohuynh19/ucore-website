@@ -18,7 +18,7 @@ type Props = {
   isModalOpen: boolean;
   handleOk: () => void;
   handleCancel: () => void;
-  selectedLesson: CourseLessonVideo;
+  selectedLesson: CourseLesson;
 };
 
 const AddLessonModal = ({
