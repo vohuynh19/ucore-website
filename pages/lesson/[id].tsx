@@ -65,7 +65,7 @@ const LessonPage = () => {
   return (
     <LessonLayout
       RightComponent={<CourseContentTab course={mockCourse}></CourseContentTab>}
-      VideoComponent={undefined}
+      VideoComponent={<Video></Video>}
     >
       <SizeBox height="24px" />
 

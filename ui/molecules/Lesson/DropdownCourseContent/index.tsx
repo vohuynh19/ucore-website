@@ -1,5 +1,5 @@
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import { Collapse } from "antd";
+import { Collapse, Checkbox, Col, Space } from "antd";
 import styled from "styled-components";
 
 type Props = {
@@ -40,6 +40,10 @@ const DropdownMenuItemContainer = styled.div`
   .right {
     display: flex;
     align-items: center;
+    svg {
+      margin-left: 8px;
+      margin-right: 8px;
+    }
   }
 
   &:hover {
@@ -51,10 +55,15 @@ const DropdownMenuItem = (props: CourseLesson) => {
   return (
     <DropdownMenuItemContainer>
       <div className="left">
-        <YouTubeIcon /> {props.title}
+        <Space>
+          <Checkbox></Checkbox>
+          {props.title}
+        </Space>
       </div>
 
-      <div className="right">{`${props.time / 60}:00`}</div>
+      <div className="right">
+        {`${props.time / 60}:00`} <YouTubeIcon />
+      </div>
     </DropdownMenuItemContainer>
   );
 };

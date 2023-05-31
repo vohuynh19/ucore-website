@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import "plyr-react/plyr.css";
 const Plyr = dynamic(() => import("plyr-react"), {
   loading: () => <p>Loading...</p>,
 });
@@ -11,7 +12,7 @@ const Video = () => {
         sources: [
           {
             provider: "youtube",
-            src: "https://youtu.be/gu_F25rcqnI",
+            src: "gu_F25rcqnI",
             type: "video/mp4",
           },
         ],

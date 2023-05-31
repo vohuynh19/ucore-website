@@ -3203,7 +3203,7 @@ picomatch@^2.3.0, picomatch@^2.3.1:
 
 plyr-react@^5.2.0:
   version "5.2.0"
-  resolved "https://registry.npmjs.org/plyr-react/-/plyr-react-5.2.0.tgz"
+  resolved "https://registry.yarnpkg.com/plyr-react/-/plyr-react-5.2.0.tgz#6774e0c84caf98b8744aeb0370edafd7a6c82e6e"
   integrity sha512-Y3wkY8FQQyPw1timhuRbaHo4jqP5csImbAgN7LwaDLwf4ewSdHVpDrO+F0XVDsRAbCzZxMA6NEiStgguos5uYg==
   dependencies:
     plyr "^3.7.7"
