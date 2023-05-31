@@ -9,7 +9,7 @@ import {
   Select,
   Typography,
 } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
 import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOutlined";

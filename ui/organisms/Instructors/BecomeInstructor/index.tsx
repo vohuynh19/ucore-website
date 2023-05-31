@@ -1,6 +1,6 @@
 import { IMAGES_URL } from "@constants";
 import { Typography } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { Container } from "./styled";
 
 import { Button } from "ui/atoms";

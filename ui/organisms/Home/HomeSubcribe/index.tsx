@@ -1,7 +1,7 @@
 import { Input, Typography, Row, Col, Form } from "antd";
 import { Button, SizeBox } from "ui/atoms";
 import { Container, ContentContainer } from "./styled";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 const HomeSubscribe = () => {
   const { t } = useTranslation("home");

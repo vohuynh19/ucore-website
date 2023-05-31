@@ -1,5 +1,5 @@
 import { Divider, Form, Input, Modal, Row, Typography } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import { SizeBox } from "ui/atoms";
 

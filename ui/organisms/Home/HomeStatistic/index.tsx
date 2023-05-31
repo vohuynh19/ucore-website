@@ -1,5 +1,5 @@
 import { Col, Row } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 import { HomeNorms, HomeStatisticItem } from "ui/molecules";
 

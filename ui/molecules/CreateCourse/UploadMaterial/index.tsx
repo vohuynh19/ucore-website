@@ -1,5 +1,5 @@
 import { Form, Typography } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { Container } from "./styled";
 import { SizeBox } from "ui/atoms";
 import DropdownCourseInfo from "../DropdownCourseInfo";

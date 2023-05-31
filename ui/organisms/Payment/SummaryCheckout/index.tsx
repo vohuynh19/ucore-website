@@ -1,5 +1,5 @@
 import { Divider, Tour, TourProps, Typography } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import Link from "next/link";
 
 import { PAGE_ROUTES } from "@constants";

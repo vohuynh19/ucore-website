@@ -1,6 +1,6 @@
 import { Col, Row } from "antd";
 import { Fragment } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import FilterListIcon from "@mui/icons-material/FilterList";
 
 import { CourseListSortFilter as SortFilter } from "ui/molecules";

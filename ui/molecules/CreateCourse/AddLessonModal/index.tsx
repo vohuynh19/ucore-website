@@ -8,7 +8,7 @@ import {
   Select,
   Typography,
 } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { SizeBox } from "ui/atoms";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 
