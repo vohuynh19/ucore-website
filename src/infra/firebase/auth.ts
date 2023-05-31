@@ -1,5 +1,5 @@
 import { signInWithCustomToken, signOut } from "firebase/auth";
-import { auth } from ".";
+import { auth } from "./index";
 
 const signInFirebase = (token: string) => signInWithCustomToken(auth, token);
 

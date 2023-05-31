@@ -1,6 +1,6 @@
 import { CloseOutlined } from "@mui/icons-material";
 import { Input } from "antd";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 import { Button } from "ui/atoms";
 import {

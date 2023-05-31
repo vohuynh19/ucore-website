@@ -1,7 +1,7 @@
 import { Form, Radio, Space, Typography } from "antd";
 import Image from "next/image";
 import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import PaymentIcon from "@mui/icons-material/Payment";
 
 import { IMAGES_URL } from "@constants";

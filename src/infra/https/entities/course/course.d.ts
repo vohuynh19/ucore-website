@@ -14,7 +14,7 @@ type Course = {
   numberOfStudent: number;
   aboutCourse: string;
   whatWillLearn: string;
-  courseVideo: CourseVideo[];
+  courseTopic: CourseTopic[];
 
   materialsIncluded: string;
   requirements: string;

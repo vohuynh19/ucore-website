@@ -41,5 +41,9 @@
   "price":"Price",
   "sort": "Sort",
   "sortPlaceholder":"Select sorting option",
-  "categories":"Categories"
+  "categories":"Categories",
+  "easy":"Easy",
+  "intermediate":"Intermediate",
+  "advanced":"Advanced",
+  "allLevel":"All Level"
 }

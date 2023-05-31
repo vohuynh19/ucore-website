@@ -7,3 +7,5 @@ export * from "./Instructors";
 export * from "./CourseDetail";
 export * from "./MyAccount";
 export * from "./Question";
+export * from "./CreateCourse";
+export * from "./Lesson";

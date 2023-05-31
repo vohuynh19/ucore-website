@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 import { IMAGES_URL, PAGE_ROUTES } from "@constants";
 import { CourseCategoryItem } from "ui/molecules";

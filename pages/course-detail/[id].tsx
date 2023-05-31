@@ -94,7 +94,7 @@ const CourseDetailPage = () => {
               <CourseInformation
                 aboutCourse={data?.aboutCourse || ""}
                 whatWillLearn={data?.whatWillLearn || ""}
-                courseVideo={data?.courseVideo || []}
+                courseTopic={data?.courseTopic || []}
               />
             ),
           },

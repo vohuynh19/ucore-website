@@ -28,11 +28,11 @@ const Home: NextPage = () => {
       </Head>
 
       <HomeCover />
-      <HomeCategories />
       <HomeTopInstructor />
       <HomeHotCourse />
+      <HomeCategories />
       <HomeStatistic />
-      <HomeNews />
+      {/* <HomeNews /> */}
       <HomeSubcribe />
     </>
   );

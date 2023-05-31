@@ -1,6 +1,6 @@
 import { Form, Select } from "antd";
 import { useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { CATEGORY_OPTION } from "ui/organisms/CourseList/types";
 
 const CategoryFilter = () => {

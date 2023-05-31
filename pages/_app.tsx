@@ -5,16 +5,20 @@ import { ThemeProvider } from "styled-components";
 import { ConfigProvider } from "antd";
 import { Hydrate, QueryClientProvider } from "react-query";
 
-import { useMounted } from "hooks";
 import { queryClientInstance } from "src/infra/https";
 
-import { AppLoading, NavigationLayout } from "ui";
+import { NavigationLayout } from "ui";
 
 import { GlobalStyled, theme, antdTheme } from "styles";
 import "plyr-react/plyr.css";
+import { useMounted } from "hooks";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { isMounted } = useMounted(300);
+  const { isMounted } = useMounted();
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
@@ -27,14 +31,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <ConfigProvider theme={antdTheme}>
               <GlobalStyled />
-
-              {isMounted && (
-                <NavigationLayout>
-                  <Component {...pageProps} />
-                </NavigationLayout>
-              )}
-
-              {!isMounted && <AppLoading />}
+              <NavigationLayout>
+                <Component {...pageProps} />
+              </NavigationLayout>
             </ConfigProvider>
           </ThemeProvider>
         </Hydrate>

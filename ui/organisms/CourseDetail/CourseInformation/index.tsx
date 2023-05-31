@@ -6,7 +6,7 @@ import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
 type Props = {
   aboutCourse: string;
   whatWillLearn: string;
-  courseVideo: CourseVideo[];
+  courseTopic: CourseTopic[];
 };
 
 const { Title, Text } = Typography;
@@ -26,10 +26,7 @@ const CourseInformation = (props: Props) => {
 
       <Title level={3}>Course Content</Title>
 
-      <DropdownMenu
-        header="Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down"
-        items={props.courseVideo || []}
-      />
+      <DropdownMenu items={props.courseTopic || []} />
 
       <br />
     </Container>

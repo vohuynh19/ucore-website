@@ -3,28 +3,23 @@ import { Collapse } from "antd";
 import styled from "styled-components";
 
 type Props = {
-  header: string;
-  items: CourseVideo[];
+  items: CourseTopic[];
 };
 
-const DropdownMenu = ({ header, items }: Props) => {
+const DropdownMenu = ({ items }: Props) => {
   const onChange = (key: string | string[]) => {
     console.log(key);
   };
 
   return (
     <Collapse defaultActiveKey={["1"]} onChange={onChange}>
-      <Collapse.Panel header={header} key="1">
-        {items.map((item) => (
-          <DropdownMenuItem key={item.id} {...item} />
-        ))}
-      </Collapse.Panel>
-
-      <Collapse.Panel header={header} key="2">
-        {items.map((item) => (
-          <DropdownMenuItem key={item.id} {...item} />
-        ))}
-      </Collapse.Panel>
+      {items.map((topic) => (
+        <Collapse.Panel header={topic.title} key={topic.id}>
+          {topic.courseLessons.map((lesson) => (
+            <DropdownMenuItem key={lesson.id} {...lesson} />
+          ))}
+        </Collapse.Panel>
+      ))}
     </Collapse>
   );
 };
@@ -52,7 +47,7 @@ const DropdownMenuItemContainer = styled.div`
   }
 `;
 
-const DropdownMenuItem = (props: CourseVideo) => {
+const DropdownMenuItem = (props: CourseLesson) => {
   return (
     <DropdownMenuItemContainer>
       <div className="left">

@@ -1,4 +1,4 @@
-type CourseVideo = {
+type CourseLesson = {
   id: string;
   title: string;
   description: string;

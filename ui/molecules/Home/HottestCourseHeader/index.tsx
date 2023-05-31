@@ -1,7 +1,7 @@
 import { PAGE_ROUTES } from "@constants";
 import { Button } from "ui/atoms";
 import { useRouter } from "next/router";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { Container, LeftContent, RightContent } from "./styled";
 
 const HottestCourseHeader = () => {
