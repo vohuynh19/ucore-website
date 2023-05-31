@@ -14,14 +14,24 @@ import { Button, Cart, SizeBox } from "ui/atoms";
 import { HeaderMenu } from "ui/molecules";
 
 import { HeaderRightContainer, MenuContainer, Container } from "./styled";
+import { API_SERVICES } from "src/infra/https";
+import { useEffect } from "react";
+import { useExchangeToken } from "hooks/server/auth";
+
 
 const Header = () => {
   const { t } = useTranslation("common");
   const router = useRouter();
+  const {mutate: exchangeTokenMutate} = useExchangeToken();
 
   const { toggleNav } = useAppStore((state) => ({
     toggleNav: state.toggleNav,
   }));
+
+  useEffect(() => {
+    const {code, email} = router.query;
+    if(code && email) exchangeTokenMutate({code, email })
+  }, [exchangeTokenMutate, router.query])
 
   return (
     <Container>
@@ -50,13 +60,15 @@ const Header = () => {
             <SizeBox width={16} />
             <Cart cartItemNumber={0} />
             <SizeBox width={16} />
-            <Button
-              type="primary"
-              size="large"
-              onClick={() => router.push(PAGE_ROUTES.LOGIN)}
-            >
-              {t("signIn")}
-            </Button>
+            <Link href='https://vicodemy.tech/auth/login?redirectUri=http://localhost:3000'>
+              <Button
+                type="primary"
+                size="large"
+                // onClick={() =>}
+              > 
+                {t("signIn")}
+              </Button>
+            </Link>
           </HeaderRightContainer>
         </Col>
 
