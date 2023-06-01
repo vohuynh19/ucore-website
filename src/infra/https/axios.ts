@@ -9,6 +9,8 @@ const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+axiosInstance.defaults.withCredentials = true;
+
 axios.interceptors.request.use(
   async (config) => {
     return config;
