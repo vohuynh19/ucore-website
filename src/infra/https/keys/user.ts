@@ -11,7 +11,7 @@ export const userQueryKeys = createQueryKeys("user", {
     queryKey: [userId],
     queryFn: () => API_SERVICES.USER.getUserDetail(userId),
   }),
-  list: (filters: UserFilter) => ({
+  list: (filters: PaginationType) => ({
     queryKey: [{ filters }],
     queryFn: () => API_SERVICES.USER.getUserList(filters),
   }),

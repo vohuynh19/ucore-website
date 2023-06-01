@@ -81,7 +81,9 @@ const Header = () => {
             <Cart cartItemNumber={0} />
             <SizeBox width={16} />
             <Link
-              href={`${API_HOST}${API_ENDPONTS.LOGIN(window.location.href)}`}
+              href={`${API_HOST}${API_ENDPONTS.auth.LOGIN(
+                window.location.href
+              )}`}
             >
               <Button type="primary" size="large">
                 {data ? data.id : t("signIn")}

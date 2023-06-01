@@ -8,19 +8,22 @@ import { usersMapping, userMapping } from "../entities/user/user.mapping";
 const UserService = {
   getUser: async () => {
     return axiosInstance
-      .get<SUser>(APIS.USER)
+      .get<SUser>(APIS.user.USER)
       .then((res) => userMapping(res.data));
   },
   getUserDetail: async (id: string) => {
     return axiosInstance
-      .get<SUser>(APIS.USER_DETAIL(id))
+      .get<SUser>(APIS.user.USER_DETAIL(id))
       .then((res) => userMapping(res.data));
   },
-  getUserList: async (filter: UserFilter) => {
+  getUserList: async (filter: PaginationType) => {
     return axiosInstance
-      .get<SUser, AxiosResponse<SUser[]>, UserFilter>(APIS.FIND_USERS, {
-        data: filter,
-      })
+      .get<SUser, AxiosResponse<SUser[]>, PaginationType>(
+        APIS.user.FIND_USERS,
+        {
+          data: filter,
+        }
+      )
       .then((res) => usersMapping(res.data));
   },
 };
