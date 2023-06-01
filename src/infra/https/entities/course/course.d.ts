@@ -20,3 +20,16 @@ type Course = {
   requirements: string;
   targetedAudience: string;
 };
+
+type SCourse = {
+  teacherId: string;
+  name: string;
+  description: string;
+  achievementDes: string;
+  prerequisiteDes: string;
+  rating: Array<number>;
+  price: number;
+  totalDuration: number;
+  numberEnrolled: number;
+  isPublish: boolean;
+};

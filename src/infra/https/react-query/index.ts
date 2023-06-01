@@ -1,4 +1,4 @@
-import { QueryClient } from "react-query";
+import { QueryClient } from "@tanstack/react-query";
 
 import COURSE_KEYS from "./course";
 import BLOG_KEYS from "./blog";

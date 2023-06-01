@@ -1,7 +1,7 @@
 import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-import { dehydrate, QueryClient } from "react-query";
+import { dehydrate, QueryClient } from "@tanstack/react-query";
 
 import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
 import { useCourseDetailQuery } from "hooks";

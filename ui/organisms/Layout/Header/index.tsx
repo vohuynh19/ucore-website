@@ -3,35 +3,55 @@ import { useTranslation } from "next-i18next";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useCallback, useEffect } from "react";
 import TranslateIcon from "@mui/icons-material/Translate";
 import MenuIcon from "@mui/icons-material/Menu";
 
-import useAppStore from "stores/useAppStore";
-import { PAGE_ROUTES } from "@constants";
-import IMAGES_URL from "@constants/images";
+import { useAppStore } from "stores";
+import { IMAGES_URL, API_HOST, PAGE_ROUTES } from "@constants";
+import { useExchangeToken, useMyProfile } from "hooks";
+import { API_ENDPONTS } from "src/infra/https";
 
 import { Button, Cart, SizeBox } from "ui/atoms";
 import { HeaderMenu } from "ui/molecules";
 
 import { HeaderRightContainer, MenuContainer, Container } from "./styled";
-import { API_SERVICES } from "src/infra/https";
-import { useEffect } from "react";
-import { useExchangeToken } from "hooks/server/auth";
-
 
 const Header = () => {
   const { t } = useTranslation("common");
   const router = useRouter();
-  const {mutate: exchangeTokenMutate} = useExchangeToken();
+  const { mutate: exchangeTokenMutate } = useExchangeToken();
+  const { data } = useMyProfile();
 
   const { toggleNav } = useAppStore((state) => ({
     toggleNav: state.toggleNav,
   }));
 
+  const removeQueryParam = useCallback(
+    (delParams: string[]) => {
+      const { pathname, query }: any = router;
+      const params = new URLSearchParams(query);
+      delParams.forEach((param) => params.delete(param));
+
+      router.replace({ pathname, query: params.toString() }, undefined, {
+        shallow: true,
+      });
+    },
+    [router]
+  );
+
   useEffect(() => {
-    const {code, email} = router.query;
-    if(code && email) exchangeTokenMutate({code, email })
-  }, [exchangeTokenMutate, router.query])
+    const { code, email } = router.query;
+    if (code && email)
+      exchangeTokenMutate(
+        { code, email },
+        {
+          onSuccess: () => {
+            removeQueryParam(["code", "email"]);
+          },
+        }
+      );
+  }, [exchangeTokenMutate, router.query, removeQueryParam]);
 
   return (
     <Container>
@@ -60,13 +80,13 @@ const Header = () => {
             <SizeBox width={16} />
             <Cart cartItemNumber={0} />
             <SizeBox width={16} />
-            <Link href='https://vicodemy.tech/auth/login?redirectUri=http://localhost:3000'>
-              <Button
-                type="primary"
-                size="large"
-                // onClick={() =>}
-              > 
-                {t("signIn")}
+            <Link
+              href={`${API_HOST}${API_ENDPONTS.auth.LOGIN(
+                window.location.href
+              )}`}
+            >
+              <Button type="primary" size="large">
+                {data ? data.id : t("signIn")}
               </Button>
             </Link>
           </HeaderRightContainer>
