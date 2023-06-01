@@ -5,12 +5,6 @@ import axiosInstance from "../axios";
 
 import { usersMapping, userMapping } from "../entities/user/user.mapping";
 
-import { PaginationType } from "../types";
-
-export type UserFilter = PaginationType & {
-  search: string;
-};
-
 const UserService = {
   getUser: async () => {
     return axiosInstance

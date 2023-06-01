@@ -3,7 +3,7 @@ import Head from "next/head";
 import { appWithTranslation } from "next-i18next";
 import { ThemeProvider } from "styled-components";
 import { ConfigProvider } from "antd";
-import { Hydrate, QueryClientProvider } from "react-query";
+import { Hydrate, QueryClientProvider } from "@tanstack/react-query";
 
 import { queryClientInstance } from "src/infra/https";
 

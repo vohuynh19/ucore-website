@@ -3,3 +3,4 @@ export * from "./blog";
 export * from "./statistic";
 export * from "./instructor";
 export * from "./auth";
+export * from "./user";

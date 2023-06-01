@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
 
 const useInstructorQuery = (params: { id: string }) => {

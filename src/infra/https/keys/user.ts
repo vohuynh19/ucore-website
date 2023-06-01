@@ -1,7 +1,6 @@
 import { createQueryKeys } from "@lukemorales/query-key-factory";
 
 import API_SERVICES from "../services";
-import { UserFilter } from "../services/user";
 
 export const userQueryKeys = createQueryKeys("user", {
   getSelf: () => ({

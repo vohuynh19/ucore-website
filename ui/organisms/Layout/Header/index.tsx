@@ -9,7 +9,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 import { useAppStore } from "stores";
 import { IMAGES_URL, API_HOST, PAGE_ROUTES } from "@constants";
-import { useExchangeToken } from "hooks";
+import { useExchangeToken, useMyProfile } from "hooks";
 import { API_ENDPONTS } from "src/infra/https";
 
 import { Button, Cart, SizeBox } from "ui/atoms";
@@ -21,6 +21,7 @@ const Header = () => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const { mutate: exchangeTokenMutate } = useExchangeToken();
+  const { data } = useMyProfile();
 
   const { toggleNav } = useAppStore((state) => ({
     toggleNav: state.toggleNav,
@@ -83,7 +84,7 @@ const Header = () => {
               href={`${API_HOST}${API_ENDPONTS.LOGIN(window.location.href)}`}
             >
               <Button type="primary" size="large">
-                {t("signIn")}
+                {data ? data.id : t("signIn")}
               </Button>
             </Link>
           </HeaderRightContainer>
