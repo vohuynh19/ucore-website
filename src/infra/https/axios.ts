@@ -1,7 +1,8 @@
+import { API_HOST } from "@constants/arbitrary";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_URI,
+  baseURL: API_HOST,
 });
 
 export default axiosInstance;
