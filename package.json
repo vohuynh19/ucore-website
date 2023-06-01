@@ -12,6 +12,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
+    "@lukemorales/query-key-factory": "^1.2.0",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.11.16",
     "antd": "^5.4.0",
