@@ -42,7 +42,8 @@ const Header = () => {
 
   useEffect(() => {
     const { code, email } = router.query;
-    if (code && email)
+    code &&
+      email &&
       exchangeTokenMutate(
         { code, email },
         {
@@ -51,7 +52,7 @@ const Header = () => {
           },
         }
       );
-  }, [exchangeTokenMutate, router.query, removeQueryParam]);
+  }, [router.query, exchangeTokenMutate, removeQueryParam]);
 
   return (
     <Container>
