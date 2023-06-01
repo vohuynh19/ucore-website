@@ -2,8 +2,14 @@ import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
-
-import { QuestionList } from "ui";
+import {
+  QuestionLayout,
+  QuestionList,
+  QuestionRightFilter,
+  QuestionTopFilter,
+} from "ui";
+import { Form } from "antd";
+import TopFilter from "ui/organisms/CourseList/TopFilter";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -14,7 +20,12 @@ export async function getStaticProps({ locale }: StaticProps) {
 }
 
 const MyAccount: NextPage = () => {
-  const { t } = useTranslation("sentence");
+  const { t } = useTranslation(["common", "sentence"]);
+  const [form] = Form.useForm();
+
+  const onResetForm = () => {
+    form.resetFields();
+  };
 
   return (
     <>
@@ -22,7 +33,13 @@ const MyAccount: NextPage = () => {
         <title>Question - Vicodemy</title>
       </Head>
 
-      <QuestionList />
+      <QuestionLayout
+        RightComponent={<QuestionRightFilter onResetForm={onResetForm} />}
+        TopComponent={<QuestionTopFilter />}
+        SiderComponent={undefined}
+      >
+        <QuestionList />
+      </QuestionLayout>
     </>
   );
 };

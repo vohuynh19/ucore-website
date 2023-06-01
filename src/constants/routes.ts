@@ -9,6 +9,7 @@ const PAGE_ROUTES = {
   FORGOT_PASSWORD: "/forgot-password",
   TERM_OF_USE: "/term-of-use",
   PRIVACY_POLICY: "/privacy-policy",
+  QUESTION: "/question",
 };
 
 export default PAGE_ROUTES;

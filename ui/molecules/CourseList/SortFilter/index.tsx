@@ -13,16 +13,16 @@ const SortFilter = ({ showLabel = true }: Props) => {
   const sortList = useMemo(
     () => [
       {
+        label: t("newest"),
+        value: SORT_OPTION.NEWEST,
+      },
+      {
         label: t("mostPopular"),
         value: SORT_OPTION.MOST_POPULAR,
       },
       {
         label: t("highestRate"),
         value: SORT_OPTION.HIGHEST_RATE,
-      },
-      {
-        label: t("newest"),
-        value: SORT_OPTION.NEWEST,
       },
     ],
     [t]

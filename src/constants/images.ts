@@ -5,6 +5,7 @@ const IMAGES_URL = {
   HOME_COVER: "/images/home/home-cover.png",
   MOMO: "/images/Logo-MoMo.png",
   FACEBOOK_CIRCLE: "/images/facebook-circle.svg",
+  DISCORD_CIRCLE: "/images/discord-circle.svg",
   YOUTUBE_CIRCLE: "/images/youtube-circle.svg",
   CATEGORY_1: "/images/home/course-category-1.png",
   CATEGORY_2: "/images/home/course-category-2.png",

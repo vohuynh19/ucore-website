@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
+import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
 import SchoolIcon from "@mui/icons-material/School";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
@@ -17,6 +18,11 @@ const items: MenuProps["items"] = [
     label: "Instructors",
     key: PAGE_ROUTES.INSTRUCTORS,
     icon: <SettingsAccessibilityIcon />,
+  },
+  {
+    label: "Cheat Sheets",
+    key: PAGE_ROUTES.QUESTION,
+    icon: <IntegrationInstructionsIcon />,
   },
 ];
 

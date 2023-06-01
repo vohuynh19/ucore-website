@@ -18,7 +18,8 @@ const data = [
   {
     id: 2,
     asker: "Hoang Hiep 2",
-    question: "How to code right? 2",
+    question:
+      "How to code right? 2 How to code right? 2 How to code right? 2 How to code right? 2 How to code right? 2 How to code right? 2 How to code right? 2 How to code right? 2",
     answer: "ok",
     resolve: false,
   },
@@ -27,9 +28,7 @@ const data = [
 const QuestionList = () => {
   return (
     <Container>
-      <SizeBox height={48} />
-
-      <Col offset={2}>
+      <Col>
         {(data || []).slice(0, maxDisplayCourse).map((question) => (
           <Row key={question.id}>
             <QuestionItem

@@ -73,6 +73,7 @@ const CourseMaterial = (props: Props) => {
             <UserProfile
               avatarLink={props.author.avatar}
               name={props.author.name}
+              discordFollower={5}
             />
           </>
         }
