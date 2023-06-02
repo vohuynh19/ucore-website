@@ -1,16 +1,36 @@
 import styled from "styled-components";
-import { container, flexCenter, getScaledText } from "styles";
+import { flexCenter, getScaledText } from "styles";
 
 export const Container = styled.div`
-  ${container}
   ${flexCenter}
+  background: ${({ theme }) => theme.colors.linearGradientBg};
+  padding: 80px 24px;
+
+  .subcribe-title {
+    font-size: ${({ theme }) => theme.utils.pxToCalc(52)};
+    max-width: 50%;
+    color: ${({ theme }) => theme.colors.textDarkPrimary};
+    padding-right: 80px;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  @media (max-width: 776px) {
+    padding: 32px 0;
+    flex-direction: column;
+    .subcribe-title {
+      padding-right: 0px;
+      max-width: 320px;
+    }
+  }
 `;
 
 export const ContentContainer = styled.div`
   width: ${({ theme }) => theme.utils.pxToCalc(540)};
   text-align: center;
-  padding: 80px 0;
-
+  padding: 24px;
+  background-color: ${({ theme }) => theme.colors.white};
+  border-radius: 24px;
   h1 {
     ${getScaledText(28)}
     font-weight: 400;

@@ -13,9 +13,10 @@ const HomeSubscribe = () => {
 
   return (
     <Container>
-      <ContentContainer>
-        <h1>{t("feedbackSen1")}</h1>
+      <h1 className="subcribe-title">{t("feedbackSen1")}</h1>
 
+      <ContentContainer>
+        <h1>Thông tin của bạn</h1>
         <Form {...layout}>
           <Form.Item name={"email"} rules={[{ required: true }]}>
             <Input size="large" placeholder="Your email address here" />
