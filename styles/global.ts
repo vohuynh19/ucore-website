@@ -31,4 +31,15 @@ export const GlobalStyled = createGlobalStyle`
     height: auto;
     padding-inline: 0;
   }
+
+  .ant-popover-inner{
+    padding: 0 !important;
+  }
+
+  .text-contrast{
+    color: ${({ theme }) => theme.colors.contrastText} !important
+  }
+  .text-contrast-secondary{
+    color: ${({ theme }) => theme.colors.contrastText} !important
+  }
 `;

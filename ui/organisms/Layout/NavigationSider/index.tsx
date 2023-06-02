@@ -1,7 +1,13 @@
 import { CloseOutlined } from "@mui/icons-material";
 import { useTranslation } from "next-i18next";
-import { Button } from "ui/atoms";
-import { HeaderMenu } from "ui/molecules";
+import Link from "next/link";
+
+import { useMyProfile } from "hooks";
+import { API_HOST } from "@constants";
+import { API_ENDPONTS } from "src/infra/https";
+
+import { Button, SizeBox } from "ui/atoms";
+import { HeaderMenu, UserHeaderProfile } from "ui/molecules";
 import { SiderProfileContainer, StyledSider } from "./styled";
 
 type Props = {
@@ -11,6 +17,7 @@ type Props = {
 
 const NavigationSider = ({ collapsed, closeHandler }: Props) => {
   const { t } = useTranslation("common");
+  const { data } = useMyProfile();
 
   return (
     <StyledSider
@@ -27,12 +34,24 @@ const NavigationSider = ({ collapsed, closeHandler }: Props) => {
           icon={<CloseOutlined />}
           onClick={closeHandler}
         />
-        <Button isFullWidth size="large" type="primary">
-          {t("signIn")}
-        </Button>
-        <Button isFullWidth size="large">
-          {t("register")}
-        </Button>
+
+        {data ? (
+          <>
+            <SizeBox height={24} />
+            <UserHeaderProfile />
+            <Button isFullWidth size="large">
+              {t("logout")}
+            </Button>
+          </>
+        ) : (
+          <Link
+            href={`${API_HOST}${API_ENDPONTS.auth.LOGIN(window.location.href)}`}
+          >
+            <Button isFullWidth size="large" type="primary">
+              {t("signIn")}
+            </Button>
+          </Link>
+        )}
       </SiderProfileContainer>
 
       <HeaderMenu mode="vertical" onMenuPress={closeHandler} />

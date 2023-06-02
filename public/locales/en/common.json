@@ -45,5 +45,13 @@
   "easy":"Easy",
   "intermediate":"Intermediate",
   "advanced":"Advanced",
-  "allLevel":"All Level"
+  "allLevel":"All Level",
+  "dashboard":"Dashboard",
+  "myProfile":"My Profile",
+  "enrolledCourse":"Enrolled Courses",
+  "wishlist":"Wishlist",
+  "reviews":"Reviews",
+  "orderHistory":"Order History",
+  "questionAndAnswer":"Question And Answer",
+  "settings":"Settings"
 }

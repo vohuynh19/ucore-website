@@ -7,3 +7,4 @@ export { default as LinkItem } from "./LinkItem";
 export { default as AppLoading } from "./AppLoading";
 export { default as SizeBox } from "./SizeBox";
 export { default as Button } from "./Button";
+export { default as Drawer } from "./Drawer";

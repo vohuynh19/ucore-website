@@ -1,6 +1,9 @@
+const prefix = "/auth";
+
 export const AUTH_API = {
-  LOGIN: (redirectUri: string) => `/auth/login?redirectUri=${redirectUri}`,
+  LOGOUT: `${prefix}/logout`,
+  REFRESH_TOKEN: "${prefix}/refresh-token",
+  LOGIN: (redirectUri: string) => `${prefix}/login?redirectUri=${redirectUri}`,
   EXCHANGE_TOKEN: (code: string, email: string) =>
-    `/auth/exchange-token?code=${code}&email=${email}`,
-  REFRESH_TOKEN: "/auth/refresh-token",
+    `${prefix}/exchange-token?code=${code}&email=${email}`,
 };

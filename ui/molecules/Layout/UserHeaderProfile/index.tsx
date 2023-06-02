@@ -1,10 +1,12 @@
 import { Avatar, Typography } from "antd";
-import { useMyProfile } from "hooks";
 import styled from "styled-components";
+
+import { useMyProfile } from "hooks";
 import { flexVerticalCenter } from "styles";
 
 const Container = styled.div`
   ${flexVerticalCenter}
+  cursor: pointer;
 `;
 const UserHeaderProfile = () => {
   const { data } = useMyProfile();

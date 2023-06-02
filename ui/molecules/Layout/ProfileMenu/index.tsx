@@ -1,6 +1,6 @@
-import { Container } from "styles";
 import ProfileMenuDescription from "./ProfileMenuDescription";
 import ProfileMenuList from "./ProfileMenuList";
+import { Container } from "./styled";
 
 const ProfileMenu = () => {
   return (

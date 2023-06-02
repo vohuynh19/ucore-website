@@ -17,6 +17,7 @@ export const theme = {
     contrastText: COLORS.WHITE_1,
     text: COLORS.WHITE_1,
     textSecondary: COLORS.GREY_2,
+
     textPrimarySecondary: COLORS.BLACK_1,
     textDarkPrimary: COLORS.PURPLE_2,
 
@@ -25,6 +26,7 @@ export const theme = {
     primaryBg: COLORS.PURPLE_3,
     secondaryBg: COLORS.GREY_5,
     linearGradientBg: `linear-gradient(180deg, #EAF1F880 30%, #EAF1F800 100%)`,
+    purpleGradientBg: `linear-gradient(318.61deg, #686ae3, #6e2b89 96.92%), #fff`,
 
     cardHighlightHeader: COLORS.GREY_7,
   },
@@ -45,6 +47,10 @@ export const antdTheme: ThemeConfig = {
     },
     Card: {
       boxShadowTertiary: "0px 2px 4px 0px rgba(0, 0, 0, 0.08)",
+    },
+    Popover: {
+      padding: 0,
+      paddingSM: 0,
     },
   },
 };
