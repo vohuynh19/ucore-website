@@ -10,7 +10,11 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { useAppStore } from "stores";
 import { IMAGES_URL, API_HOST, PAGE_ROUTES } from "@constants";
 import { useExchangeToken, useMyProfile } from "hooks";
-import { API_ENDPONTS } from "src/infra/https";
+import {
+  API_ENDPONTS,
+  queryClientInstance,
+  userQueryKeys,
+} from "src/infra/https";
 
 import { Button, Cart, Drawer, SizeBox } from "ui/atoms";
 import { HeaderMenu, ProfileMenu, UserHeaderProfile } from "ui/molecules";
@@ -48,8 +52,12 @@ const Header = () => {
       exchangeTokenMutate(
         { code: code as string, email: email as string },
         {
-          onSuccess: () => {
+          onSuccess: (user) => {
             removeQueryParam(["code", "email"]);
+            queryClientInstance.setQueryData(
+              userQueryKeys.getSelf().queryKey,
+              user
+            );
           },
         }
       );

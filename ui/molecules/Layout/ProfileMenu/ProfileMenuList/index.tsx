@@ -1,6 +1,6 @@
 import { PAGE_ROUTES } from "@constants";
 import { TFunction } from "next-i18next";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import ProfileMenuItem from "./ProfileMenuItem";
 import styled from "styled-components";
 import { Col, Row, message } from "antd";

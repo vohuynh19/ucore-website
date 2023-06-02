@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
+import { ProfileCourseList, ProfileLayout } from "ui";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -17,7 +18,9 @@ const WishlistPage: NextPage = () => {
         <title>Wishlists - Vicodemy</title>
       </Head>
 
-      <div> Wishlists </div>
+      <ProfileLayout>
+        <ProfileCourseList />
+      </ProfileLayout>
     </>
   );
 };

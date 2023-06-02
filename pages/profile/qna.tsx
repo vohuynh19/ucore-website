@@ -1,6 +1,8 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
+import { ProfileLayout } from "ui";
+import QuestionAndAnswer from "ui/organisms/Profile/QuestionAndAnswer";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -17,7 +19,9 @@ const QuestionAndAnswerPage: NextPage = () => {
         <title> Q&A - Vicodemy</title>
       </Head>
 
-      <div> Q&A </div>
+      <ProfileLayout>
+        <QuestionAndAnswer />
+      </ProfileLayout>
     </>
   );
 };

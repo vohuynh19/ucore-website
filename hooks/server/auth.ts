@@ -8,7 +8,7 @@ export const useLogout = () => {
 };
 
 export const useExchangeToken = () => {
-  return useMutation<unknown, unknown, ExchangeCodeParams>({
+  return useMutation<User, unknown, ExchangeCodeParams>({
     ...authMutationKeys.exchangeToken(),
   });
 };

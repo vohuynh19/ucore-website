@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
+import { ProfileLayout, ProfileSetting } from "ui";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -17,7 +18,9 @@ const SettingPage: NextPage = () => {
         <title>Settings - Vicodemy</title>
       </Head>
 
-      <div> Settings </div>
+      <ProfileLayout>
+        <ProfileSetting />
+      </ProfileLayout>
     </>
   );
 };

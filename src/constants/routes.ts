@@ -19,7 +19,7 @@ const PAGE_ROUTES = {
     REVIEWS: "/profile/review",
     ORDER_HISTORY: "/profile/order-history",
     QNA: "/profile/qna",
-    SETTING: "/setting",
+    SETTING: "/profile/setting",
   },
 };
 

@@ -7,3 +7,4 @@ export { default as CourseLayout } from "./CourseLayout";
 export { default as DualColorLayout } from "./DualColorLayout";
 export { default as LessonLayout } from "./LessonLayout";
 export { default as QuestionLayout } from "../organisms/Question/QuestionLayout";
+export { default as ProfileLayout } from "./ProfileLayout";
