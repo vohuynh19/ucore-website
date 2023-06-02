@@ -1,4 +1,7 @@
-import { createQueryKeys } from "@lukemorales/query-key-factory";
+import {
+  createQueryKeys,
+  createMutationKeys,
+} from "@lukemorales/query-key-factory";
 
 import API_SERVICES from "../services";
 
@@ -14,5 +17,12 @@ export const userQueryKeys = createQueryKeys("user", {
   list: (filters: PaginationType) => ({
     queryKey: [{ filters }],
     queryFn: () => API_SERVICES.USER.getUserList(filters),
+  }),
+});
+
+export const userMutationKeys = createMutationKeys("user", {
+  registerInstructor: () => ({
+    mutationKey: ["register-instructor"],
+    mutationFn: () => API_SERVICES.COURSE.registerInstructor(),
   }),
 });
