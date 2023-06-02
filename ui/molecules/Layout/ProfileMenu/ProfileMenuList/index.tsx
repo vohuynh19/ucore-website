@@ -4,10 +4,10 @@ import { useTranslation } from "react-i18next";
 import ProfileMenuItem from "./ProfileMenuItem";
 import styled from "styled-components";
 import { Col, Row, message } from "antd";
-import { Button } from "ui/atoms";
 import Link from "next/link";
 import { useLogout } from "hooks";
 import { useRouter } from "next/router";
+import { queryClientInstance, userQueryKeys } from "src/infra/https";
 
 const menuList1 = (t: TFunction) => [
   {
@@ -112,6 +112,7 @@ const ProfileMenuList = () => {
                   onSuccess: () => {
                     message.success("Log out success");
                     router.push(PAGE_ROUTES.HOME);
+                    queryClientInstance.resetQueries(userQueryKeys.getSelf());
                   },
                 });
               }}
