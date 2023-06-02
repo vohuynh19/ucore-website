@@ -16,7 +16,7 @@ const BecomeInstructor = () => {
 
   const becomeInstructor = () => {
     confirm({
-      title: "Do you want to delete these items?",
+      title: "Do you want to become an instructor?",
       icon: <ExclamationCircleFilled />,
       okText: "Confirm",
       cancelText: "Cancel",

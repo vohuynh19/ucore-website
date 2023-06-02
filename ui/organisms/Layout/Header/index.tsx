@@ -13,7 +13,7 @@ import { useExchangeToken, useMyProfile } from "hooks";
 import { API_ENDPONTS } from "src/infra/https";
 
 import { Button, Cart, SizeBox } from "ui/atoms";
-import { HeaderMenu } from "ui/molecules";
+import { HeaderMenu, UserHeaderProfile } from "ui/molecules";
 
 import { HeaderRightContainer, MenuContainer, Container } from "./styled";
 
@@ -71,25 +71,33 @@ const Header = () => {
           </Link>
         </Col>
 
-        <Col xs={0} md={12} lg={16}>
+        <Col xs={0} md={12} lg={14}>
           <HeaderMenu />
         </Col>
 
-        <Col xs={0} md={6} lg={5}>
+        <Col xs={0} md={6} lg={7}>
           <HeaderRightContainer>
             <Button type="text" icon={<TranslateIcon />} />
+
             <SizeBox width={16} />
+
             <Cart cartItemNumber={0} />
+
             <SizeBox width={16} />
-            <Link
-              href={`${API_HOST}${API_ENDPONTS.auth.LOGIN(
-                window.location.href
-              )}`}
-            >
-              <Button type="primary" size="large">
-                {data ? data.id : t("signIn")}
-              </Button>
-            </Link>
+
+            {data ? (
+              <UserHeaderProfile />
+            ) : (
+              <Link
+                href={`${API_HOST}${API_ENDPONTS.auth.LOGIN(
+                  window.location.href
+                )}`}
+              >
+                <Button type="primary" size="large">
+                  {t("signIn")}
+                </Button>
+              </Link>
+            )}
           </HeaderRightContainer>
         </Col>
 
