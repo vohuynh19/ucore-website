@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
-import IntegrationInstructionsIcon from "@mui/icons-material/IntegrationInstructions";
+import CastForEducationIcon from "@mui/icons-material/CastForEducation";
 import SchoolIcon from "@mui/icons-material/School";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
@@ -20,9 +20,9 @@ const items: MenuProps["items"] = [
     icon: <SettingsAccessibilityIcon />,
   },
   {
-    label: "Cheat Sheets",
-    key: PAGE_ROUTES.QUESTION,
-    icon: <IntegrationInstructionsIcon />,
+    label: "Instructor Management",
+    key: PAGE_ROUTES.INSTRUCTOR_DASHBOARD.DASHBOARD,
+    icon: <CastForEducationIcon />,
   },
 ];
 

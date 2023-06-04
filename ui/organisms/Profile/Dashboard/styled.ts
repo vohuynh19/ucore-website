@@ -6,6 +6,17 @@ export const Container = styled.div`
   h3 {
     font-weight: 500;
     margin: 0;
+    margin-bottom: 24px;
+  }
+
+  .statistic-item {
+    &:first-child {
+      margin-right: 24px;
+    }
+
+    &:last-child {
+      margin-left: 24px;
+    }
   }
 `;
 

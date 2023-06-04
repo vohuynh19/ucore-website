@@ -21,6 +21,11 @@ const PAGE_ROUTES = {
     QNA: "/profile/qna",
     SETTING: "/profile/setting",
   },
+  INSTRUCTOR_DASHBOARD: {
+    DASHBOARD: "/instructor-dashboard",
+    COURSES: "/instructor-dashboard/course",
+    LESSONS: "/instructor-dashboard/lesson",
+  },
 };
 
 export default PAGE_ROUTES;

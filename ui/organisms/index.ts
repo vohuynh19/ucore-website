@@ -10,3 +10,4 @@ export * from "./Question";
 export * from "./CreateCourse";
 export * from "./Lesson";
 export * from "./Profile";
+export * from "./InstructorDashboard";
