@@ -1,5 +1,9 @@
 import { API_ENDPONTS } from "..";
 import axiosInstance from "../axios";
+import {
+  courseCategoriesMapping,
+  courseCategoryMapping,
+} from "../entities/course/course-category.mapping";
 import { mockCourses, mockCourse } from "../entities/course/course.mock";
 
 type CourseCreateParams = {
@@ -34,7 +38,9 @@ const CourseService = {
   registerInstructor: () =>
     axiosInstance.post(API_ENDPONTS.course.REGISTER_INSTRUCTOR),
   getCoursePagination: (filter: CoursePagination) =>
-    axiosInstance.get(API_ENDPONTS.course.COURSE, { data: filter }),
+    axiosInstance
+      .get(API_ENDPONTS.course.COURSE, { data: filter })
+      .then((res) => res.data),
   createCourse: (params: CourseCreateParams) =>
     axiosInstance.post(API_ENDPONTS.course.COURSE, { ...params }),
   rateCourse: (params: CourseRateParams) =>
@@ -43,6 +49,20 @@ const CourseService = {
     }),
   enrollCourse: (params: EnrollCourse) =>
     axiosInstance.post(API_ENDPONTS.course.ENROLL_COURSE(params.courseId)),
+
+  getCourseCategory: () =>
+    axiosInstance
+      .get<SCourseCategory[]>(API_ENDPONTS.course.COURSE_CATEGORY)
+      .then((res) => courseCategoriesMapping(res.data)),
+  createCourseCategory: (payload: CourseCategoryPayload) =>
+    axiosInstance.post(API_ENDPONTS.course.COURSE_CATEGORY, { ...payload }),
+  updateCourseCategory: (payload: CourseCategoryPayload) =>
+    axiosInstance.patch(
+      `${API_ENDPONTS.course.COURSE_CATEGORY}/${payload.id}`,
+      {
+        name: payload.name,
+      }
+    ),
 };
 
 export default CourseService;
