@@ -1,9 +1,6 @@
 import { API_ENDPONTS } from "..";
 import axiosInstance from "../axios";
-import {
-  courseCategoriesMapping,
-  courseCategoryMapping,
-} from "../entities/course/course-category.mapping";
+import { courseCategoriesMapping } from "../entities/course/course-category.mapping";
 import { mockCourses, mockCourse } from "../entities/course/course.mock";
 
 type CourseCreateParams = {
@@ -37,9 +34,9 @@ const CourseService = {
 
   registerInstructor: () =>
     axiosInstance.post(API_ENDPONTS.course.REGISTER_INSTRUCTOR),
-  getCoursePagination: (filter: CoursePagination) =>
+  getCoursePagination: (filter: PaginationType) =>
     axiosInstance
-      .get(API_ENDPONTS.course.COURSE, { data: filter })
+      .get(API_ENDPONTS.course.COURSE, { params: filter })
       .then((res) => res.data),
   createCourse: (params: CourseCreateParams) =>
     axiosInstance.post(API_ENDPONTS.course.COURSE, { ...params }),

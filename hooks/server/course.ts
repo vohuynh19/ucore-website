@@ -3,6 +3,7 @@ import {
   API_SERVICES,
   REACT_QUERY_KEYS,
   courseMutationKeys,
+  courseQueryKeys,
 } from "src/infra/https";
 
 // Query
@@ -21,6 +22,12 @@ export const useTopCoursesQuery = () => {
     API_SERVICES.COURSE.getCourses
   );
   return queryData;
+};
+
+export const useCourses = (params: PaginationType) => {
+  return useQuery({
+    ...courseQueryKeys.list(params),
+  });
 };
 
 // Mutation

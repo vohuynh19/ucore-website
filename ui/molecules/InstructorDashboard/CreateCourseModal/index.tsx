@@ -1,6 +1,5 @@
 import {
   Col,
-  Divider,
   Form,
   Input,
   InputNumber,
@@ -10,6 +9,7 @@ import {
   Typography,
   Upload,
 } from "antd";
+
 import {
   ForwardRefRenderFunction,
   forwardRef,
@@ -18,11 +18,25 @@ import {
 } from "react";
 
 import FileUploadIcon from "@mui/icons-material/FileUpload";
+import { useCourseCategory } from "hooks";
 
 type Props = {
   onConfirm: Function;
   confirmLoading: boolean;
 };
+
+function getBase64(file: any, callback: any) {
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = function () {
+    console.log(reader.result);
+  };
+  reader.onerror = function (error) {
+    console.log("Error: ", error);
+  };
+
+  reader.onloadend = callback;
+}
 
 export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
   { onConfirm, confirmLoading },
@@ -31,14 +45,30 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({});
+  const [uploadState, setUploadState] = useState({
+    loading: false,
+    imageUrl: "",
+  });
+
+  const { data } = useCourseCategory();
 
   useImperativeHandle(ref, () => ({
     setData: (data: any) => setModalData(data),
     openModal: () => setOpen(true),
+    closeModal: () => onCancel(),
   }));
 
   const onOk = () => {
     onConfirm(form.getFieldsValue());
+  };
+
+  const onCancel = () => {
+    setOpen(false);
+    form.resetFields();
+  };
+
+  const handleChange = (value: string[]) => {
+    console.log(`selected ${value}`);
   };
 
   return (
@@ -47,7 +77,7 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
       onOk={onOk}
       open={open}
       closable
-      onCancel={() => setOpen(false)}
+      onCancel={onCancel}
       width={800}
     >
       <Typography.Title level={3}>Create Course</Typography.Title>
@@ -64,13 +94,25 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
             </Form.Item>
 
             <Form.Item name="categoryId" label="Category">
-              <Select placeholder="Selet course category" />
+              <Select
+                mode="multiple"
+                allowClear
+                style={{ width: "100%" }}
+                placeholder="Selet course category"
+                onChange={handleChange}
+                options={(data || []).map((e) => ({
+                  label: e.name,
+                  value: e.id,
+                }))}
+              />
             </Form.Item>
 
-            <Form.Item name="thumnail" label="Thumbnail name">
-              <Upload listType="picture-card">
+            <Form.Item name="thumnail" label="Thumbnail image">
+              {/* <Upload listType="picture-card" name="avatar">
                 Upload <FileUploadIcon />
-              </Upload>
+              </Upload> */}
+
+              <Input placeholder="Please enter thumbnail image" />
             </Form.Item>
           </Col>
 

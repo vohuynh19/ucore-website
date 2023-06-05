@@ -92,7 +92,10 @@ const CourseCategoryModal: ForwardRefRenderFunction<any, any> = ({}, ref) => {
   return (
     <Modal
       open={open}
-      onCancel={() => setOpen(false)}
+      onCancel={() => {
+        setOpen(false);
+        form.resetFields();
+      }}
       footer={null}
       title="Course Category"
       width={600}

@@ -2,13 +2,15 @@ import styled from "styled-components";
 import React, { useMemo, useRef } from "react";
 import { Table, Typography, message } from "antd";
 
+import { useCourses, useCreateCourse, useTablePagination } from "hooks";
+import { courseQueryKeys, queryClientInstance } from "src/infra/https";
+
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Button } from "ui/atoms";
 import { CourseCategoryModal, CreateCourseModal } from "ui/molecules";
-import { useCreateCourse } from "hooks";
 
 interface DataType {
   key: React.Key;
@@ -45,22 +47,35 @@ const TitleContainer = styled.div`
   }
 `;
 
-const data: DataType[] = [];
-
 const CourseManagement = () => {
   const createCourseModalRef = useRef<any>(null);
   const courseCategoryModalRef = useRef<any>(null);
 
+  const { pagination, filter } = useTablePagination(5);
   const { mutate, isLoading } = useCreateCourse();
+  const { data } = useCourses(filter);
 
   const columns: any[] = useMemo(
     () => [
       {
+        title: "",
+        dataIndex: "thumnail",
+        width: 200,
+        render: (data: string) => {
+          return (
+            <div>
+              <img alt="thumnail" src={data} style={{ maxWidth: 160 }} />
+            </div>
+          );
+        },
+      },
+
+      {
         title: "Course Name",
         dataIndex: "name",
         width: 200,
-        render: (text: string) => <a>{text}</a>,
       },
+
       {
         title: "Price",
         dataIndex: "price",
@@ -124,13 +139,26 @@ const CourseManagement = () => {
 
   const onOpenCreateModal = () => createCourseModalRef.current.openModal();
 
-  const onCreateCourse = (payload: CreateCoursePayload) => {
-    mutate(payload, {
-      onSuccess: (res) => {
-        console.log("res", res);
-        message.success("Create course success");
+  const onCreateCourse = (
+    payload: CreateCoursePayload & {
+      categoryId: string[];
+    }
+  ) => {
+    mutate(
+      {
+        ...payload,
+        categoryId: payload.categoryId[0],
       },
-    });
+      {
+        onSuccess: (res) => {
+          message.success("Create course success");
+          createCourseModalRef.current.closeModal();
+          queryClientInstance.invalidateQueries({
+            queryKey: courseQueryKeys.list(filter).queryKey,
+          });
+        },
+      }
+    );
   };
 
   return (
@@ -156,7 +184,7 @@ const CourseManagement = () => {
               selectedRows: DataType[]
             ) => {},
             getCheckboxProps: (record: DataType) => ({
-              disabled: record.name === "Disabled User", // Column configuration not to be checked
+              disabled: record.name === "Disabled User",
               name: record.name,
             }),
           }}

@@ -1,7 +1,8 @@
 type PaginationType = {
-  offset: string;
-  limit: string;
+  offset: number;
+  limit: number;
   search?: string;
+  isPopular?: boolean;
 };
 
 type CoursePagination = PaginationType & {

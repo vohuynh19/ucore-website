@@ -6,17 +6,9 @@ import {
 import API_SERVICES from "../services";
 
 export const courseQueryKeys = createQueryKeys("course", {
-  getSelf: () => ({
-    queryKey: ["self"],
-    queryFn: () => API_SERVICES.USER.getUser(),
-  }),
-  detail: (userId: string) => ({
-    queryKey: [userId],
-    queryFn: () => API_SERVICES.USER.getUserDetail(userId),
-  }),
   list: (filters: PaginationType) => ({
     queryKey: [{ filters }],
-    queryFn: () => API_SERVICES.USER.getUserList(filters),
+    queryFn: () => API_SERVICES.COURSE.getCoursePagination(filters),
   }),
 });
 
