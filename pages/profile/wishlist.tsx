@@ -1,3 +1,4 @@
+import { Typography } from "antd";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -19,7 +20,10 @@ const WishlistPage: NextPage = () => {
       </Head>
 
       <ProfileLayout>
-        <ProfileCourseList />
+        <div style={{ padding: "0 24px" }}>
+          <Typography.Title level={3}>Wishlist</Typography.Title>
+          <ProfileCourseList />
+        </div>
       </ProfileLayout>
     </>
   );

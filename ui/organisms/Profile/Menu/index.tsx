@@ -49,7 +49,6 @@ const MenuSiderList = () => {
         <ChecklistIcon />
       ),
       getItem(t("wishlist"), PAGE_ROUTES.PROFILE.WISHLIST, <FavoriteIcon />),
-      getItem(t("reviews"), PAGE_ROUTES.PROFILE.REVIEWS, <ReviewsIcon />),
       getItem(
         t("orderHistory"),
         PAGE_ROUTES.PROFILE.ORDER_HISTORY,

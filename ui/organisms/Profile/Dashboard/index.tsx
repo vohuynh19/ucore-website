@@ -11,6 +11,7 @@ import { StatisticItem, VerticalCourseCard } from "ui/molecules";
 import LocalLibraryIcon from "@mui/icons-material/LocalLibrary";
 import SchoolIcon from "@mui/icons-material/School";
 import VerifiedIcon from "@mui/icons-material/Verified";
+import { SizeBox } from "ui/atoms";
 
 const ProfileDashboard = () => {
   const { t } = useTranslation("common");
@@ -34,10 +35,13 @@ const ProfileDashboard = () => {
         />
       </StatisticContainer>
 
+      <SizeBox height={32} />
+
       <Typography.Title level={3}>In Progress Courses</Typography.Title>
 
       <ProgressCourseContainer>
         <VerticalCourseCard />
+        <SizeBox height={32} />
         <VerticalCourseCard />
       </ProgressCourseContainer>
     </Container>
