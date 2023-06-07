@@ -22,6 +22,7 @@ type Course = {
 };
 
 type SCourse = {
+  _id: string;
   teacherId: string;
   name: string;
   description: string;
@@ -32,4 +33,5 @@ type SCourse = {
   totalDuration: number;
   numberEnrolled: number;
   isPublish: boolean;
+  key?: string;
 };

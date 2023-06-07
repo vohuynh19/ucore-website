@@ -8,8 +8,7 @@ const useTablePagination = (pageSize = 10) => {
 
   const pagination = useMemo(() => {
     return {
-      current: filter.offset,
-      total: filter.limit,
+      current: filter.offset / pageSize + 1,
       pageSize: pageSize,
       onChange(page: number, pageSize: number) {
         setFilter({

@@ -24,7 +24,7 @@ export const useTopCoursesQuery = () => {
   return queryData;
 };
 
-export const useCourses = (params: PaginationType) => {
+export const useCourses = (params: PaginationType<SCourse>) => {
   return useQuery({
     ...courseQueryKeys.list(params),
   });
@@ -35,5 +35,11 @@ export const useCourses = (params: PaginationType) => {
 export const useCreateCourse = () => {
   return useMutation<any, unknown, CreateCoursePayload>({
     ...courseMutationKeys.create(),
+  });
+};
+
+export const useDeleteCourse = () => {
+  return useMutation<any, unknown, DeleteCoursePayload>({
+    ...courseMutationKeys.delete(),
   });
 };

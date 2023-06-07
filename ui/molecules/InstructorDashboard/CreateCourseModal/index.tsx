@@ -98,9 +98,9 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
                 mode="multiple"
                 allowClear
                 style={{ width: "100%" }}
-                placeholder="Selet course category"
+                placeholder="Select course category"
                 onChange={handleChange}
-                options={(data || []).map((e) => ({
+                options={(data?.data || []).map((e) => ({
                   label: e.name,
                   value: e.id,
                 }))}
