@@ -42,7 +42,7 @@ const MenuSiderList = () => {
   const items: MenuItem[] = useMemo(
     () => [
       getItem(t("dashboard"), PAGE_ROUTES.PROFILE.DASHBOARD, <DashboardIcon />),
-      getItem(t("myProfile"), PAGE_ROUTES.PROFILE.MY_PROFILE, <PersonIcon />),
+
       getItem(
         t("enrolledCourse"),
         PAGE_ROUTES.PROFILE.ENROLLED_COURSE,
