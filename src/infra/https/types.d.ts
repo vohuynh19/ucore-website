@@ -39,3 +39,11 @@ type VideoPayload = {
   isTrivial: boolean;
   duration: string;
 };
+
+type AnswerQuestionPayload = {
+  channelId: string;
+  questionId: string
+  question: string;
+  answer: string;
+  discordUserId: string;
+};
