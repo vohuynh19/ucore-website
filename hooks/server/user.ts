@@ -19,6 +19,12 @@ export const useUsers = (filter: PaginationType) => {
   });
 };
 
+export const useInstructors = (filter: PaginationType) => {
+  return useQuery({
+    ...userQueryKeys.instructors(filter),
+  });
+};
+
 export const useRegisterInstructor = () => {
   return useMutation({ ...userMutationKeys.registerInstructor() });
 };

@@ -40,13 +40,15 @@ const VerticalCourseCard = () => {
 
         <Typography.Title>Unity Beginer</Typography.Title>
 
-        <Typography.Paragraph>
+        <Typography.Paragraph>Description</Typography.Paragraph>
+
+        {/* <Typography.Paragraph>
           <Typography.Text type="secondary">Completed lessons:</Typography.Text>
 
           <Typography.Text type="secondary">10 of 100 lessons</Typography.Text>
         </Typography.Paragraph>
 
-        <Progress percent={10} />
+        <Progress percent={10} /> */}
       </div>
     </Container>
   );

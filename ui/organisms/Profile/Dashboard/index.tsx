@@ -37,7 +37,7 @@ const ProfileDashboard = () => {
 
       <SizeBox height={32} />
 
-      <Typography.Title level={3}>In Progress Courses</Typography.Title>
+      <Typography.Title level={3}>Enrolled Courses</Typography.Title>
 
       <ProgressCourseContainer>
         <VerticalCourseCard />

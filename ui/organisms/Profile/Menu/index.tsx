@@ -42,13 +42,6 @@ const MenuSiderList = () => {
   const items: MenuItem[] = useMemo(
     () => [
       getItem(t("dashboard"), PAGE_ROUTES.PROFILE.DASHBOARD, <DashboardIcon />),
-
-      getItem(
-        t("enrolledCourse"),
-        PAGE_ROUTES.PROFILE.ENROLLED_COURSE,
-        <ChecklistIcon />
-      ),
-      getItem(t("wishlist"), PAGE_ROUTES.PROFILE.WISHLIST, <FavoriteIcon />),
       getItem(
         t("orderHistory"),
         PAGE_ROUTES.PROFILE.ORDER_HISTORY,

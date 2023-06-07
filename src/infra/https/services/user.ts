@@ -1,5 +1,3 @@
-import { AxiosResponse } from "axios";
-
 import APIS from "../apis";
 import axiosInstance from "../axios";
 
@@ -16,16 +14,24 @@ const UserService = {
       .get<SUser>(APIS.user.USER_DETAIL(id))
       .then((res) => userMapping(res.data));
   },
-  getUserList: async (filter: PaginationType) => {
-    return axiosInstance
-      .get<SUser, AxiosResponse<SUser[]>, PaginationType>(
-        APIS.user.FIND_USERS,
-        {
-          data: filter,
-        }
-      )
-      .then((res) => usersMapping(res.data));
-  },
+  getUserList: async (filter: PaginationType) =>
+    axiosInstance
+      .get<PaginationResponse<SUser>>(APIS.user.FIND_USERS, {
+        params: filter,
+      })
+      .then((res) => ({
+        total: res.data.total,
+        data: usersMapping(res.data.data || []),
+      })),
+  getInstructorList: async (filter: PaginationType) =>
+    axiosInstance
+      .get<PaginationResponse<SUser>>(APIS.user.INSTRUCTORS, {
+        params: filter,
+      })
+      .then((res) => ({
+        total: res.data.total,
+        data: usersMapping(res.data.data || []),
+      })),
 };
 
 export default UserService;
