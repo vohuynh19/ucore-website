@@ -5,15 +5,15 @@ import { Button } from "ui/atoms";
 
 import { ActionContainer, StyledCard } from "./styled";
 
-const CourseCard = () => {
+const CourseCard = (props: SCourse) => {
   const router = useRouter();
   return (
     <StyledCard
       cover={
         <img
           onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL("1"))}
-          alt="example"
-          src="https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png"
+          alt="cover"
+          src={props.thumnail}
         />
       }
       actions={[
@@ -24,10 +24,7 @@ const CourseCard = () => {
     >
       <Rate />
 
-      <StyledCard.Meta
-        title="Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down"
-        description="Hoang Hiep"
-      />
+      <StyledCard.Meta title={props.name} description={props.description} />
     </StyledCard>
   );
 };

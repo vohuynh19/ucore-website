@@ -5,12 +5,12 @@ import { HomeNorms, HomeStatisticItem } from "ui/molecules";
 
 import { ScaledPadding } from "styles";
 import { Container } from "./styled";
-import { useHomeStatisticQuery } from "hooks";
+import { useHomeStatistic } from "hooks";
 
 const HomeStatistic = () => {
   const { t } = useTranslation("common");
 
-  const { data } = useHomeStatisticQuery();
+  const { data } = useHomeStatistic();
 
   return (
     <Container>
@@ -19,25 +19,25 @@ const HomeStatistic = () => {
           <Col xs={12} sm={12} md={6}>
             <HomeStatisticItem
               label={t("learners")}
-              value={data?.members || 0}
+              value={data?.data.leaners || 0}
             />
           </Col>
           <Col xs={12} sm={12} md={6}>
             <HomeStatisticItem
               label={t("courses")}
-              value={data?.courses || 0}
+              value={data?.data.courses || 0}
             />
           </Col>
           <Col xs={12} sm={12} md={6}>
             <HomeStatisticItem
               label={t("instructors")}
-              value={data?.instructors || 0}
+              value={data?.data.instructors || 0}
             />
           </Col>
           <Col xs={12} sm={12} md={6}>
             <HomeStatisticItem
               label={t("coursesPublished")}
-              value={data?.coursesPublish || 0}
+              value={data?.data.coursePublishs || 0}
             />
           </Col>
         </Row>

@@ -1,10 +1,9 @@
-import { mockHomeStatistic } from "../entities/statistic/home-statistic.mock";
+import { API_ENDPONTS } from "..";
+import axiosInstance from "../axios";
 
 const StatisticService = {
-  getHomeStatistic: (): Promise<HomeStatistic> =>
-    new Promise((resolve) => {
-      resolve(mockHomeStatistic);
-    }),
+  getHomeStatistic: () =>
+    axiosInstance.get<SHomeStatistic>(API_ENDPONTS.statistic.STATISTIC),
 };
 
 export default StatisticService;

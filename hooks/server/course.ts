@@ -16,14 +16,6 @@ export const useCourseDetailQuery = (params: { id: string }) => {
   return queryData;
 };
 
-export const useTopCoursesQuery = () => {
-  const queryData = useQuery<Course[], ApiError>(
-    REACT_QUERY_KEYS.GET_TOP_COURSE,
-    API_SERVICES.COURSE.getCourses
-  );
-  return queryData;
-};
-
 export const useCourses = (params: PaginationType<SCourse>) => {
   return useQuery({
     ...courseQueryKeys.list(params),

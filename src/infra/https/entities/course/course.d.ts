@@ -34,4 +34,6 @@ type SCourse = {
   numberEnrolled: number;
   isPublish: boolean;
   key?: string;
+  categoryInfo?: SCourseCategory[];
+  thumnail: string;
 };
