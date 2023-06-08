@@ -36,7 +36,7 @@ const VerticalCourseCard = () => {
       />
 
       <div className="content">
-        <Rate value={5} />
+        <Rate value={5} disabled />
 
         <Typography.Title>Unity Beginer</Typography.Title>
 

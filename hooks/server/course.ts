@@ -5,6 +5,7 @@ import {
   courseMutationKeys,
   courseQueryKeys,
 } from "src/infra/https";
+import { EnrollCourse } from "src/infra/https/services/course";
 
 // Query
 
@@ -16,9 +17,21 @@ export const useCourseDetailQuery = (params: { id: string }) => {
   return queryData;
 };
 
+export const useCourseDetail = (id: string) => {
+  return useQuery({
+    ...courseQueryKeys.detail(id),
+  });
+};
+
 export const useCourses = (params: PaginationType<SCourse>) => {
   return useQuery({
     ...courseQueryKeys.list(params),
+  });
+};
+
+export const useUserCourse = (id: string) => {
+  return useQuery({
+    ...courseQueryKeys.userCourse(id),
   });
 };
 
@@ -33,5 +46,11 @@ export const useCreateCourse = () => {
 export const useDeleteCourse = () => {
   return useMutation<any, unknown, DeleteCoursePayload>({
     ...courseMutationKeys.delete(),
+  });
+};
+
+export const useEnrollCourse = () => {
+  return useMutation<any, unknown, EnrollCourse>({
+    ...courseMutationKeys.enroll(),
   });
 };

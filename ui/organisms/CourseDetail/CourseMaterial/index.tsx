@@ -1,33 +1,46 @@
-import { Typography, Card } from "antd";
-
-import { useInstructorQuery } from "hooks";
+import { Typography, message } from "antd";
 
 import { Button, SizeBox } from "ui/atoms";
 import { UserProfile } from "ui/molecules";
 
 import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 import SchoolIcon from "@mui/icons-material/School";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import UpdateIcon from "@mui/icons-material/Update";
 
 import { Container, StyledCard } from "./styled";
+import { useEnrollCourse, useUserCourse } from "hooks";
+import { courseQueryKeys, queryClientInstance } from "src/infra/https";
 
 type Props = {
-  id: string;
-  price: string;
-  difficultLevel: string;
-  numberOfStudent: number;
-  author: User;
-  materialsIncluded: string;
-  requirements: string;
-  targetedAudience: string;
+  course?: SCourse;
 };
 
 const { Title, Text } = Typography;
 
-// Todo: Add Translation
-const CourseMaterial = (props: Props) => {
-  const { data } = useInstructorQuery({ id: props.id });
+const CourseMaterial = ({ course }: Props) => {
+  const { mutate } = useEnrollCourse();
+  const { data } = useUserCourse(course?._id || "");
+
+  const enrollCourse = () => {
+    mutate(
+      {
+        courseId: course?._id || "",
+      },
+      {
+        onSuccess: () => {
+          message.success("Enrolled course success");
+          queryClientInstance.invalidateQueries(
+            courseQueryKeys.userCourse(course?._id || "")
+          );
+        },
+        onError: (err: any) => {
+          message.error(
+            err?.response?.data?.message || "Internal Server Error"
+          );
+        },
+      }
+    );
+  };
 
   return (
     <Container>
@@ -35,13 +48,31 @@ const CourseMaterial = (props: Props) => {
         isHighlight
         title={
           <>
-            <Title level={3}>{props.price}</Title>
+            <Title level={3}>${course?.price}</Title>
 
-            <Button size="large" isFullWidth type="primary">
-              Enroll now
-            </Button>
+            {!data?.data ? (
+              <>
+                <Button
+                  size="large"
+                  isFullWidth
+                  type="primary"
+                  onClick={enrollCourse}
+                >
+                  Enroll now
+                </Button>
 
-            <Text className="center">30-day money-back guarantee</Text>
+                <Text className="center">30-day money-back guarantee</Text>
+              </>
+            ) : (
+              <Button
+                size="large"
+                isFullWidth
+                type="primary"
+                onClick={() => {}}
+              >
+                Start Learning
+              </Button>
+            )}
           </>
         }
       >
@@ -50,14 +81,12 @@ const CourseMaterial = (props: Props) => {
           All Levels
         </div>
         <div className="criteria">
-          <SchoolIcon />9 Total Enrolled
-        </div>
-        <div className="criteria">
-          <AccessTimeIcon />3 hours 30 minutes Duration
+          <SchoolIcon />
+          {course?.totalUserEnrolled} Total Enrolled
         </div>
         <div className="criteria">
           <UpdateIcon />
-          March 30, 2023 Last Updated
+          {course?.updatedAt} Last Updated
         </div>
       </StyledCard>
 
@@ -71,21 +100,20 @@ const CourseMaterial = (props: Props) => {
             </Title>
 
             <UserProfile
-              avatarLink={props.author.avatar}
-              name={props.author.name}
+              avatarLink={
+                "https://vicodemy.com/wp-content/uploads/2023/03/0901df4f8a204c7e1531.jpeg"
+              }
+              name={course?.teacherName || ""}
               discordFollower={5}
             />
           </>
         }
       >
-        <Title level={3}>Material Includes</Title>
-        <Text>{props.materialsIncluded}</Text>
-
         <Title level={3}>Audience</Title>
-        <Text>{props.targetedAudience}</Text>
+        <Text>All Level</Text>
 
         <Title level={3}>Requirements</Title>
-        <Text>{props.requirements}</Text>
+        <Text>{course?.prerequisiteDes}</Text>
       </StyledCard>
     </Container>
   );

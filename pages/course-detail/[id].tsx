@@ -4,8 +4,12 @@ import { Tabs } from "antd";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
-import { useCourseDetailQuery } from "hooks";
+import {
+  API_SERVICES,
+  courseQueryKeys,
+  REACT_QUERY_KEYS,
+} from "src/infra/https";
+import { useCourseDetail } from "hooks";
 
 import { Video } from "ui/molecules";
 import {
@@ -13,21 +17,23 @@ import {
   CourseMaterial,
   CourseInformation,
   CourseReview,
-  CourseAnnouncement,
 } from "ui/organisms";
 import { CourseLayout } from "ui/templates";
 import { SizeBox } from "ui";
 
-export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const queryClient = new QueryClient();
+  const data = await queryClient.fetchQuery(
+    courseQueryKeys.list({
+      offset: 0,
+      limit: 10000,
+    })
+  );
+  const paths = data.data.map((course) => ({
+    params: { id: course._id },
+  }));
   return {
-    paths: [
-      {
-        params: { id: "1" },
-      },
-      {
-        params: { id: "2" },
-      },
-    ],
+    paths: paths,
     fallback: "blocking",
   };
 };
@@ -52,33 +58,27 @@ const CourseDetailPage = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data } = useCourseDetailQuery({
-    id: id as string,
-  });
+  const { data } = useCourseDetail(id as string);
+
+  console.log("data", data);
 
   return (
     <CourseLayout
       HeaderComponent={
         <CourseHeader
-          courseId={data?.id || ""}
-          rating={data?.avgRating || 1}
+          courseId={data?._id || ""}
+          rating={Number(data?.averageRate) || 0}
           title={data?.name || ""}
-          categories={data?.categories || []}
-          lastUpdate={data?.lastUpdate || ""}
+          categories={
+            data?.categoryInfo?.map((category) => ({
+              id: category._id,
+              name: category.name,
+            })) || []
+          }
+          lastUpdate={data?.updatedAt || ""}
         />
       }
-      RightComponent={
-        <CourseMaterial
-          id={id as string}
-          price={data?.price || ""}
-          difficultLevel={data?.difficultLevel || ""}
-          numberOfStudent={data?.numberOfStudent || 0}
-          author={data?.author || { id: "", name: "", avatar: "" }}
-          materialsIncluded={data?.materialsIncluded || ""}
-          requirements={data?.requirements || ""}
-          targetedAudience={data?.targetedAudience || ""}
-        />
-      }
+      RightComponent={<CourseMaterial course={data} />}
     >
       <Video />
 
@@ -92,9 +92,9 @@ const CourseDetailPage = () => {
             label: `Course Info`,
             children: (
               <CourseInformation
-                aboutCourse={data?.aboutCourse || ""}
-                whatWillLearn={data?.whatWillLearn || ""}
-                courseTopic={data?.courseTopic || []}
+                aboutCourse={data?.description || ""}
+                whatWillLearn={data?.achievementDes || ""}
+                courseTopic={[]}
               />
             ),
           },
@@ -102,11 +102,6 @@ const CourseDetailPage = () => {
             key: "2",
             label: `Review`,
             children: <CourseReview />,
-          },
-          {
-            key: "3",
-            label: `Announcement`,
-            children: <CourseAnnouncement />,
           },
         ]}
         onChange={() => {}}

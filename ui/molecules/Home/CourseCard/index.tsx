@@ -1,5 +1,5 @@
 import { PAGE_ROUTES } from "@constants";
-import { Rate } from "antd";
+import { Rate, Typography } from "antd";
 import { useRouter } from "next/router";
 import { Button } from "ui/atoms";
 
@@ -11,7 +11,7 @@ const CourseCard = (props: SCourse) => {
     <StyledCard
       cover={
         <img
-          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL("1"))}
+          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL(props._id))}
           alt="cover"
           src={props.thumnail}
         />
@@ -22,9 +22,22 @@ const CourseCard = (props: SCourse) => {
         </ActionContainer>,
       ]}
     >
-      <Rate />
+      <Rate disabled />
 
-      <StyledCard.Meta title={props.name} description={props.description} />
+      <StyledCard.Meta
+        title={props.name}
+        description={
+          <>
+            <Typography.Paragraph
+              ellipsis={{
+                rows: 2,
+              }}
+            >
+              {props.description}
+            </Typography.Paragraph>
+          </>
+        }
+      />
     </StyledCard>
   );
 };

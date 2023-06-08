@@ -18,7 +18,7 @@ type CourseRateParams = {
   courseId: string;
 };
 
-type EnrollCourse = {
+export type EnrollCourse = {
   courseId: string;
 };
 
@@ -31,7 +31,10 @@ const CourseService = {
     new Promise((resolve) => {
       resolve(mockCourse);
     }),
-
+  getCourseDetail: (id: string) =>
+    axiosInstance
+      .get<SCourse>(API_ENDPONTS.course.COURSE_DETAIL(id))
+      .then((res) => res.data),
   registerInstructor: () =>
     axiosInstance.post(API_ENDPONTS.course.REGISTER_INSTRUCTOR),
   getCoursePagination: (filter: PaginationType) =>
@@ -75,6 +78,9 @@ const CourseService = {
         name: payload.name,
       }
     ),
+
+  userCourse: (id: string) =>
+    axiosInstance.get(API_ENDPONTS.course.USER_COURSE_INFO(id)),
 };
 
 export default CourseService;

@@ -24,7 +24,7 @@ const CourseHeader = (props: Props) => {
 
   return (
     <Container>
-      <Rate value={props.rating} onChange={onRatingClick} />
+      <Rate value={props.rating} onChange={onRatingClick} disabled />
 
       <Title level={3}>{props.title}</Title>
 

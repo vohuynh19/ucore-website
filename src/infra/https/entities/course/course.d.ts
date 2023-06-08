@@ -24,11 +24,12 @@ type Course = {
 type SCourse = {
   _id: string;
   teacherId: string;
+  teacherName: string;
   name: string;
   description: string;
   achievementDes: string;
   prerequisiteDes: string;
-  rating: Array<number>;
+  rating: number;
   price: number;
   totalDuration: number;
   numberEnrolled: number;
@@ -36,4 +37,11 @@ type SCourse = {
   key?: string;
   categoryInfo?: SCourseCategory[];
   thumnail: string;
+  createdAt: string;
+  updatedAt: string;
+
+  // Detail
+  averageRate?: string;
+  totalUserEnrolled?: string;
+  sections: [];
 };
