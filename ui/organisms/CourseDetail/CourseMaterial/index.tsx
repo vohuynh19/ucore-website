@@ -10,6 +10,7 @@ import UpdateIcon from "@mui/icons-material/Update";
 import { Container, StyledCard } from "./styled";
 import { useEnrollCourse, useUserCourse } from "hooks";
 import { courseQueryKeys, queryClientInstance } from "src/infra/https";
+import moment from "moment";
 
 type Props = {
   course?: SCourse;
@@ -48,10 +49,9 @@ const CourseMaterial = ({ course }: Props) => {
         isHighlight
         title={
           <>
-            <Title level={3}>${course?.price}</Title>
-
             {!data?.data ? (
               <>
+                <Title level={3}>${course?.price}</Title>
                 <Button
                   size="large"
                   isFullWidth
@@ -86,7 +86,8 @@ const CourseMaterial = ({ course }: Props) => {
         </div>
         <div className="criteria">
           <UpdateIcon />
-          {course?.updatedAt} Last Updated
+          {moment(course?.updatedAt || "").format("hh:mm DD/MM/YYYY")} Last
+          Updated
         </div>
       </StyledCard>
 

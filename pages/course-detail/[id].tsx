@@ -60,8 +60,6 @@ const CourseDetailPage = () => {
 
   const { data } = useCourseDetail(id as string);
 
-  console.log("data", data);
-
   return (
     <CourseLayout
       HeaderComponent={
@@ -80,7 +78,9 @@ const CourseDetailPage = () => {
       }
       RightComponent={<CourseMaterial course={data} />}
     >
-      <Video />
+      <Video
+        src={data?.courseIntro || "https://www.youtube.com/watch?v=GYkq9Rgoj8E"}
+      />
 
       <SizeBox height="24px" />
 
@@ -92,9 +92,10 @@ const CourseDetailPage = () => {
             label: `Course Info`,
             children: (
               <CourseInformation
+                courseId={data?._id || ""}
                 aboutCourse={data?.description || ""}
                 whatWillLearn={data?.achievementDes || ""}
-                courseTopic={[]}
+                sections={data?.sections || []}
               />
             ),
           },

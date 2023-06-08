@@ -107,12 +107,14 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
               />
             </Form.Item>
 
-            <Form.Item name="thumnail" label="Thumbnail image">
-              {/* <Upload listType="picture-card" name="avatar">
-                Upload <FileUploadIcon />
-              </Upload> */}
+            <Form.Item name="courseIntro" label="Course Intro Youtube Link">
+              <Input placeholder="Please enter youtube link" />
+            </Form.Item>
 
-              <Input placeholder="Please enter thumbnail image" />
+            <Form.Item name="thumnail" label="Thumbnail image">
+              <Upload listType="picture-card" name="avatar">
+                Upload <FileUploadIcon />
+              </Upload>
             </Form.Item>
           </Col>
 

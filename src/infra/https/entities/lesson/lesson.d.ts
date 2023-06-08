@@ -9,4 +9,5 @@ type SLesson = {
   duration: number;
   createdAt: string;
   updatedAt: string;
+  name: string;
 };

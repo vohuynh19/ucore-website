@@ -43,5 +43,6 @@ type SCourse = {
   // Detail
   averageRate?: string;
   totalUserEnrolled?: string;
-  sections: [];
+  sections: SSection[];
+  courseIntro: string;
 };

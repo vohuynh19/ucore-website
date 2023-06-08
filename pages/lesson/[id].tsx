@@ -4,16 +4,16 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
 import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
-import { useCourseDetailQuery } from "hooks";
+import { useCourseDetail, useCourseDetailQuery } from "hooks";
 
-import { DropdownCourseContent, Video } from "ui/molecules";
-import { LessonInformation, LessonReview } from "ui/organisms";
-import { CourseLayout, LessonLayout } from "ui/templates";
-import { SizeBox } from "ui";
-import { Tabs, Typography } from "antd";
+import { Video } from "ui/molecules";
+import { LessonLayout } from "ui/templates";
+import { Typography } from "antd";
 import { mockCourse } from "src/infra/https/entities/course/course.mock";
+import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
+import { PAGE_ROUTES } from "@constants";
 
-const { Paragraph, Text, Title } = Typography;
+const { Title } = Typography;
 
 export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
   return {
@@ -47,45 +47,60 @@ export async function getStaticProps({ locale, params }: StaticProps) {
 
 const LessonPage = () => {
   const router = useRouter();
-  const { id } = router.query;
+  const { id, sectionId, videoId } = router.query;
 
-  const { data } = useCourseDetailQuery({
-    id: id as string,
-  });
-
-  const CourseContentTab = ({ course }: { course: Course }) => {
-    return (
-      <div>
-        <Title level={5}>Course Content</Title>
-        <DropdownCourseContent courseTopics={course.courseTopic || []} />
-      </div>
-    );
+  const getSections = (course: SCourse) => {
+    return course.sections.map((section) => ({
+      label: section.sectionName,
+      value: section._id,
+      children: section.newVideo.map((vid) => ({
+        label: vid.name || vid._id,
+        value: vid._id,
+        metadata: {
+          active: vid._id === videoId,
+          time: vid.duration,
+          onClick: () =>
+            router.push(
+              {
+                pathname: PAGE_ROUTES.LESSON(course._id),
+                query: {
+                  sectionId: section._id,
+                  videoId: vid._id,
+                },
+              },
+              undefined,
+              {
+                shallow: true,
+              }
+            ),
+        },
+      })),
+    }));
   };
+
+  const { data } = useCourseDetail(id as string);
 
   return (
     <LessonLayout
-      RightComponent={<CourseContentTab course={mockCourse}></CourseContentTab>}
-      VideoComponent={<Video></Video>}
-    >
-      <SizeBox height="24px" />
-
-      <Tabs
-        defaultActiveKey="1"
-        items={[
-          {
-            key: "1",
-            label: `Overview`,
-            children: <LessonInformation />,
-          },
-          {
-            key: "2",
-            label: `Reviews`,
-            children: <LessonReview />,
-          },
-        ]}
-        onChange={() => {}}
-      />
-    </LessonLayout>
+      RightComponent={
+        <div>
+          <Title level={5}>Course Content</Title>
+          {data && (
+            <DropdownMenu
+              activeKey={sectionId as string}
+              items={data ? getSections(data) : []}
+            />
+          )}
+        </div>
+      }
+      VideoComponent={
+        <Video
+          src={
+            data?.courseIntro || "https://www.youtube.com/watch?v=GYkq9Rgoj8E"
+          }
+        />
+      }
+    ></LessonLayout>
   );
 };
 

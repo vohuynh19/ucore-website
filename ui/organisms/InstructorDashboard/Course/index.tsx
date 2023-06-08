@@ -173,24 +173,29 @@ const CourseManagement = () => {
       {
         title: "Action",
         key: "operation",
-        width: 112,
+        width: 80,
         render: (_: any, col: SCourse) => (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              icon={<ModeEditIcon fontSize={"small"} color={"primary"} />}
-            />
+          // <div
+          //   style={{
+          //     display: "flex",
+          //     alignItems: "center",
+          //     justifyContent: "space-between",
+          //   }}
+          // >
+          //   {/* <Button
+          //     icon={<ModeEditIcon fontSize={"small"} color={"primary"} />}
+          //   /> */}
 
-            <Button
-              onClick={() => onRemoteItems([col._id])}
-              icon={<RemoveCircleIcon fontSize={"small"} color={"error"} />}
-            />
-          </div>
+          //   <Button
+          //     onClick={() => onRemoteItems([col._id])}
+          //     icon={<RemoveCircleIcon fontSize={"small"} color={"error"} />}
+          //   />
+          // </div>
+
+          <Button
+            onClick={() => onRemoteItems([col._id])}
+            icon={<RemoveCircleIcon fontSize={"small"} color={"error"} />}
+          />
         ),
         fixed: "right",
       },
