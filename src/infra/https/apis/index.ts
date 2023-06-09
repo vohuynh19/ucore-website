@@ -4,6 +4,7 @@ import { STATISTIC_API } from "./statistic";
 import { INSTRUCTOR_API } from "./instructor";
 import { AUTH_API } from "./auth";
 import { USER_API } from "./user";
+import { IMAGE_API } from "./image";
 
 const APIS = {
   course: COURSE_API,
@@ -12,6 +13,7 @@ const APIS = {
   instructor: INSTRUCTOR_API,
   auth: AUTH_API,
   user: USER_API,
+  image: IMAGE_API,
 };
 
 export default APIS;

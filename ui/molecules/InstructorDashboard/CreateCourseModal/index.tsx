@@ -4,10 +4,12 @@ import {
   Input,
   InputNumber,
   Modal,
+  Progress,
   Row,
   Select,
   Typography,
   Upload,
+  message,
 } from "antd";
 
 import {
@@ -18,25 +20,13 @@ import {
 } from "react";
 
 import FileUploadIcon from "@mui/icons-material/FileUpload";
-import { useCourseCategory } from "hooks";
+import { useCourseCategory, useUploadImage } from "hooks";
+import { RcFile } from "antd/es/upload";
 
 type Props = {
   onConfirm: Function;
   confirmLoading: boolean;
 };
-
-function getBase64(file: any, callback: any) {
-  var reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = function () {
-    console.log(reader.result);
-  };
-  reader.onerror = function (error) {
-    console.log("Error: ", error);
-  };
-
-  reader.onloadend = callback;
-}
 
 export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
   { onConfirm, confirmLoading },
@@ -45,12 +35,9 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({});
-  const [uploadState, setUploadState] = useState({
-    loading: false,
-    imageUrl: "",
-  });
 
   const { data } = useCourseCategory();
+  const { uploadImage, url, reset, progress } = useUploadImage();
 
   useImperativeHandle(ref, () => ({
     setData: (data: any) => setModalData(data),
@@ -59,16 +46,48 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
   }));
 
   const onOk = () => {
-    onConfirm(form.getFieldsValue());
+    const validateFields = [
+      "name",
+      "price",
+      "categoryId",
+      "courseIntro",
+      "thumnail",
+      "description",
+      "achivementDes",
+      "prerequisiteDes",
+    ];
+
+    form
+      .validateFields(validateFields)
+      .then((value) => {
+        onConfirm({
+          ...value,
+          thumnail: url,
+        });
+      })
+      .catch((e) => {
+        console.log("e", e);
+      });
   };
 
   const onCancel = () => {
     setOpen(false);
     form.resetFields();
+    reset();
   };
 
-  const handleChange = (value: string[]) => {
-    console.log(`selected ${value}`);
+  const handleUpload = (file: RcFile) => {
+    const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
+    if (!isJpgOrPng) {
+      message.error("You can only upload JPG/PNG file!");
+    }
+    const isLt2M = file.size / 1024 / 1024 < 2;
+    if (!isLt2M) {
+      message.error("Image must smaller than 2MB!");
+    }
+
+    isJpgOrPng && isLt2M && uploadImage(file);
+    return false;
   };
 
   return (
@@ -85,21 +104,37 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
       <Form form={form} layout="vertical">
         <Row>
           <Col span={11}>
-            <Form.Item name="name" label="Course name">
+            <Form.Item
+              name="name"
+              label="Course name"
+              required
+              rules={[{ required: true }]}
+            >
               <Input placeholder="Please enter course name" />
             </Form.Item>
 
-            <Form.Item name="price" label="Course Price">
+            <Form.Item
+              name="price"
+              label="Course Price"
+              required
+              rules={[{ required: true }]}
+            >
               <InputNumber placeholder="Price" style={{ width: "100%" }} />
             </Form.Item>
 
-            <Form.Item name="categoryId" label="Category">
+            <Form.Item
+              required
+              rules={[
+                { required: true, message: "Please select course category" },
+              ]}
+              name="categoryId"
+              label="Category"
+            >
               <Select
                 mode="multiple"
                 allowClear
                 style={{ width: "100%" }}
                 placeholder="Select course category"
-                onChange={handleChange}
                 options={(data?.data || []).map((e) => ({
                   label: e.name,
                   value: e.id,
@@ -107,35 +142,84 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
               />
             </Form.Item>
 
-            <Form.Item name="courseIntro" label="Course Intro Youtube Link">
+            <Form.Item
+              required
+              rules={[{ required: true }]}
+              name="courseIntro"
+              label="Course Intro Youtube Link"
+            >
               <Input placeholder="Please enter youtube link" />
             </Form.Item>
 
-            <Form.Item name="thumnail" label="Thumbnail image">
-              <Upload listType="picture-card" name="avatar">
-                Upload <FileUploadIcon />
+            <Form.Item
+              required
+              name="thumnail"
+              label="Thumbnail image"
+              rules={[
+                {
+                  validator: () => {
+                    if (!url) {
+                      return Promise.reject("Please select image");
+                    }
+                    return Promise.resolve();
+                  },
+                },
+              ]}
+            >
+              <Upload
+                listType="picture-card"
+                name="thumnail"
+                beforeUpload={handleUpload}
+                multiple={false}
+                showUploadList={false}
+              >
+                {url ? (
+                  <img src={url} alt="avatar" style={{ width: "100%" }} />
+                ) : (
+                  <>
+                    Upload <FileUploadIcon />
+                  </>
+                )}
               </Upload>
+              {progress && (
+                <Progress percent={(progress?.progress || 0) * 100} />
+              )}
             </Form.Item>
           </Col>
 
           <Col span={1} />
 
           <Col span={12}>
-            <Form.Item name="description" label="Course Description">
+            <Form.Item
+              required
+              rules={[{ required: true }]}
+              name="description"
+              label="Course Description"
+            >
               <Input.TextArea
                 placeholder="Please enter course Description"
                 rows={4}
               />
             </Form.Item>
 
-            <Form.Item name="achivementDes" label="Course Archivement">
+            <Form.Item
+              required
+              rules={[{ required: true }]}
+              name="achivementDes"
+              label="Course Archivement"
+            >
               <Input.TextArea
                 placeholder="Please enter course Description"
                 rows={4}
               />
             </Form.Item>
 
-            <Form.Item name="prerequisiteDes" label="Course Prerequisite">
+            <Form.Item
+              required
+              rules={[{ required: true }]}
+              name="prerequisiteDes"
+              label="Course Prerequisite"
+            >
               <Input.TextArea
                 placeholder="Please enter course Description"
                 rows={4}

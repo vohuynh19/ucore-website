@@ -4,6 +4,7 @@ import StatisticService from "./statistic";
 import InstructorService from "./instructor";
 import AuthService from "./auth";
 import UserService from "./user";
+import ImageService from "./image";
 
 const API_SERVICES = {
   COURSE: CourseService,
@@ -12,6 +13,7 @@ const API_SERVICES = {
   INSTRUCTOR: InstructorService,
   AUTH: AuthService,
   USER: UserService,
+  IMAGE: ImageService,
 };
 
 export default API_SERVICES;
