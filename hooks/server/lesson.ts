@@ -7,6 +7,12 @@ export const useCourseLessons = (id: string) => {
   });
 };
 
+export const useLesson = (id: string) => {
+  return useQuery({
+    ...lessonQueryKeys.detail(id),
+  });
+};
+
 export const useLessons = (filter: PaginationType) => {
   return useQuery({
     ...lessonQueryKeys.list(filter),

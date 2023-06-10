@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { ProfileLayout } from "ui";
+import { ComingSoon, ProfileLayout } from "ui";
 import OrderHistory from "ui/organisms/Profile/OrderHistory";
 
 export async function getStaticProps({ locale }: StaticProps) {
@@ -20,7 +20,11 @@ const OrderHistoryPage: NextPage = () => {
       </Head>
 
       <ProfileLayout>
-        <OrderHistory />
+        {process.env.NEXT_PUBLIC_ENV === "production" ? (
+          <ComingSoon />
+        ) : (
+          <OrderHistory />
+        )}
       </ProfileLayout>
     </>
   );

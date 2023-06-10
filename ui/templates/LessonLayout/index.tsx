@@ -11,7 +11,8 @@ type Props = PropsWithChildren<{
 
 const Container = styled.div`
   ${container};
-  padding-top: 32px;
+  padding-top: 44px;
+  padding-bottom: 44px;
 `;
 
 const ChildrenContainer = styled.div``;

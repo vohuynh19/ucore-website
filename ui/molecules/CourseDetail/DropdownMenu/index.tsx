@@ -1,6 +1,6 @@
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { Collapse } from "antd";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 type Props = {
   items: Item[];
@@ -37,11 +37,14 @@ const DropdownMenu = ({ items, activeKey }: Props) => {
   );
 };
 
-const DropdownMenuItemContainer = styled.div<{ isActive: boolean }>`
+const DropdownMenuItemContainer = styled.div<{
+  isActive: boolean;
+  available: boolean;
+}>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 36px;
+  padding: 8px 0;
 
   .left {
     display: flex;
@@ -53,20 +56,35 @@ const DropdownMenuItemContainer = styled.div<{ isActive: boolean }>`
   .right {
     display: flex;
     align-items: center;
+    margin-left: 8px;
   }
 
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bg};
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   color: ${({ theme, isActive }) => isActive && theme.colors.primary};
+
+  ${({ available }) =>
+    !available &&
+    css`
+      cursor: not-allowed;
+      opacity: 0.4;
+      &:hover {
+        color: black;
+      }
+    `}
 `;
 
 const DropdownMenuItem = (props: any) => {
   return (
-    <DropdownMenuItemContainer onClick={props.onClick} isActive={props.active}>
+    <DropdownMenuItemContainer
+      onClick={props.onClick}
+      isActive={props.active}
+      available={props.available}
+    >
       <div className="left">
         <YouTubeIcon /> {props.title}
       </div>
