@@ -31,6 +31,10 @@ export const StyledCard = styled(Card)`
       object-fit: cover;
     }
   }
+
+  .ant-card-body {
+    height: 180px;
+  }
 `;
 
 export const ActionContainer = styled.div`
