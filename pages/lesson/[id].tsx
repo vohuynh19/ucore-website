@@ -3,7 +3,11 @@ import { useRouter } from "next/router";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import { API_SERVICES, REACT_QUERY_KEYS } from "src/infra/https";
+import {
+  API_SERVICES,
+  courseQueryKeys,
+  REACT_QUERY_KEYS,
+} from "src/infra/https";
 import { useCourseDetail, useLesson, useUserCourse } from "hooks";
 
 import { Video } from "ui/molecules";
@@ -15,9 +19,20 @@ import Head from "next/head";
 
 const { Title } = Typography;
 
-export const getStaticPaths: GetStaticPaths<{ id: string }> = async () => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  const queryClient = new QueryClient();
+  const data = await queryClient.fetchQuery(
+    courseQueryKeys.list({
+      offset: 0,
+      limit: 10000,
+    })
+  );
+  const paths = data.data.map((course) => ({
+    params: { id: course._id },
+  }));
+
   return {
-    paths: [],
+    paths: paths,
     fallback: "blocking",
   };
 };
