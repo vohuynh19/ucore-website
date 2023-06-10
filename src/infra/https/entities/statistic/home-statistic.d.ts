@@ -1,6 +1,6 @@
-type HomeStatistic = {
+type SHomeStatistic = {
+  leaners: number;
   courses: number;
-  coursesPublish: number;
-  members: number;
   instructors: number;
+  coursePublishs: number;
 };

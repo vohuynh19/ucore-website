@@ -18,6 +18,10 @@ export const userQueryKeys = createQueryKeys("user", {
     queryKey: [{ filters }],
     queryFn: () => API_SERVICES.USER.getUserList(filters),
   }),
+  instructors: (filters: PaginationType) => ({
+    queryKey: ["instructors", { filters }],
+    queryFn: () => API_SERVICES.USER.getInstructorList(filters),
+  }),
 });
 
 export const userMutationKeys = createMutationKeys("user", {

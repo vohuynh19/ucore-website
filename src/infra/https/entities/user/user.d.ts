@@ -12,7 +12,9 @@ enum Role {
 }
 
 type SUser = {
+  _id: string;
   uid: string;
   imageUri: string;
   role: Role;
+  email: string;
 };

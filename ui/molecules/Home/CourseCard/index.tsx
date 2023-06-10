@@ -1,19 +1,19 @@
 import { PAGE_ROUTES } from "@constants";
-import { Rate } from "antd";
+import { Rate, Typography } from "antd";
 import { useRouter } from "next/router";
 import { Button } from "ui/atoms";
 
 import { ActionContainer, StyledCard } from "./styled";
 
-const CourseCard = () => {
+const CourseCard = (props: SCourse) => {
   const router = useRouter();
   return (
     <StyledCard
       cover={
         <img
-          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL("1"))}
-          alt="example"
-          src="https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png"
+          onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL(props._id))}
+          alt="cover"
+          src={props.thumnail}
         />
       }
       actions={[
@@ -22,11 +22,21 @@ const CourseCard = () => {
         </ActionContainer>,
       ]}
     >
-      <Rate />
+      <Rate disabled />
 
       <StyledCard.Meta
-        title="Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down"
-        description="Hoang Hiep"
+        title={props.name}
+        description={
+          <>
+            <Typography.Paragraph
+              ellipsis={{
+                rows: 2,
+              }}
+            >
+              {props.description}
+            </Typography.Paragraph>
+          </>
+        }
       />
     </StyledCard>
   );

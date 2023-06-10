@@ -1,14 +1,22 @@
 import styled from "styled-components";
-import React, { useMemo, useRef } from "react";
-import { Table, Typography, message } from "antd";
+import React, { useCallback, useMemo, useRef } from "react";
+import { Modal, Table, Typography, message } from "antd";
 
-import { useCourses, useCreateCourse, useTablePagination } from "hooks";
+import {
+  useCourses,
+  useCreateCourse,
+  useDeleteCourse,
+  useMyProfile,
+  useTablePagination,
+} from "hooks";
 import { courseQueryKeys, queryClientInstance } from "src/infra/https";
 
 import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { ExclamationCircleFilled } from "@ant-design/icons";
+
 import { Button } from "ui/atoms";
 import { CourseCategoryModal, CreateCourseModal } from "ui/molecules";
 
@@ -53,7 +61,61 @@ const CourseManagement = () => {
 
   const { pagination, filter } = useTablePagination(5);
   const { mutate, isLoading } = useCreateCourse();
-  const { data } = useCourses(filter);
+  const { mutate: deleteCourses, isLoading: deleteCoursesLoading } =
+    useDeleteCourse();
+
+  const { data: myProfile } = useMyProfile();
+  const { data, isLoading: dataLoading } = useCourses({
+    ...filter,
+    teacherId: myProfile?.id,
+  });
+
+  const selectedCourseRef = useRef<SCourse[]>([]);
+
+  const onRemoteItems = useCallback(
+    (courseIds: string[]) => {
+      Modal.confirm({
+        title: "Course Delete",
+        icon: <ExclamationCircleFilled />,
+        okText: "Confirm",
+        cancelText: "Cancel",
+        content: `Do you confirm to delete ${courseIds.length} ${
+          courseIds.length > 1 ? "courses" : "course"
+        }`,
+        okButtonProps: {
+          loading: deleteCoursesLoading,
+        },
+        onOk: () => {
+          deleteCourses(
+            {
+              courseIds:
+                selectedCourseRef.current.length > 0
+                  ? selectedCourseRef.current.map((e) => e._id)
+                  : courseIds,
+            },
+            {
+              onSuccess: () => {
+                message.success(
+                  `Delete success ${courseIds.length} ${
+                    courseIds.length > 1 ? "courses" : "course"
+                  }`
+                );
+                queryClientInstance.invalidateQueries({
+                  queryKey: courseQueryKeys.list(filter).queryKey,
+                });
+              },
+              onError: (e) => {
+                message.error({
+                  content: JSON.stringify(e),
+                });
+              },
+            }
+          );
+        },
+      });
+    },
+    [deleteCoursesLoading, deleteCourses, filter]
+  );
 
   const columns: any[] = useMemo(
     () => [
@@ -61,13 +123,11 @@ const CourseManagement = () => {
         title: "",
         dataIndex: "thumnail",
         width: 200,
-        render: (data: string) => {
-          return (
-            <div>
-              <img alt="thumnail" src={data} style={{ maxWidth: 160 }} />
-            </div>
-          );
-        },
+        render: (data: string) => (
+          <div>
+            <img alt="thumnail" src={data} style={{ maxWidth: 160 }} />
+          </div>
+        ),
       },
 
       {
@@ -113,28 +173,34 @@ const CourseManagement = () => {
       {
         title: "Action",
         key: "operation",
-        width: 112,
-        render: () => (
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-            }}
-          >
-            <Button
-              icon={<ModeEditIcon fontSize={"small"} color={"primary"} />}
-            />
+        width: 80,
+        render: (_: any, col: SCourse) => (
+          // <div
+          //   style={{
+          //     display: "flex",
+          //     alignItems: "center",
+          //     justifyContent: "space-between",
+          //   }}
+          // >
+          //   {/* <Button
+          //     icon={<ModeEditIcon fontSize={"small"} color={"primary"} />}
+          //   /> */}
 
-            <Button
-              icon={<RemoveCircleIcon fontSize={"small"} color={"error"} />}
-            />
-          </div>
+          //   <Button
+          //     onClick={() => onRemoteItems([col._id])}
+          //     icon={<RemoveCircleIcon fontSize={"small"} color={"error"} />}
+          //   />
+          // </div>
+
+          <Button
+            onClick={() => onRemoteItems([col._id])}
+            icon={<RemoveCircleIcon fontSize={"small"} color={"error"} />}
+          />
         ),
         fixed: "right",
       },
     ],
-    []
+    [onRemoteItems]
   );
 
   const onOpenCreateModal = () => createCourseModalRef.current.openModal();
@@ -148,6 +214,7 @@ const CourseManagement = () => {
       {
         ...payload,
         categoryId: payload.categoryId[0],
+        teacherName: myProfile?.name || "",
       },
       {
         onSuccess: (res) => {
@@ -157,6 +224,10 @@ const CourseManagement = () => {
             queryKey: courseQueryKeys.list(filter).queryKey,
           });
         },
+        onError: (err) =>
+          message.error({
+            content: JSON.stringify(err),
+          }),
       }
     );
   };
@@ -181,16 +252,23 @@ const CourseManagement = () => {
             type: "checkbox",
             onChange: (
               selectedRowKeys: React.Key[],
-              selectedRows: DataType[]
-            ) => {},
-            getCheckboxProps: (record: DataType) => ({
+              selectedRows: SCourse[]
+            ) => {
+              selectedCourseRef.current = selectedRows;
+            },
+            getCheckboxProps: (record: SCourse) => ({
               disabled: record.name === "Disabled User",
               name: record.name,
             }),
           }}
           scroll={{ x: 1300 }}
           columns={columns}
-          dataSource={data}
+          dataSource={data?.data || []}
+          loading={dataLoading}
+          pagination={{
+            ...pagination,
+            total: data?.total,
+          }}
         />
       </div>
 

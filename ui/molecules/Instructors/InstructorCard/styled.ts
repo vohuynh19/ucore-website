@@ -20,6 +20,12 @@ export const StyledCard = styled(Card)`
   .ant-card-meta-description {
     ${getScaledText(14)}
   }
+
+  .cover {
+    height: 220px;
+    object-fit: cover;
+    object-position: center;
+  }
 `;
 
 export const ActionContainer = styled.div`

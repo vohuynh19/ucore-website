@@ -1,16 +1,19 @@
 import { Col, Row } from "antd";
 
-import { useInstructorsQuery } from "hooks";
+import { useInstructors } from "hooks";
 
 import { SizeBox } from "ui/atoms";
 import { InstructorCard, TopInstructorHeader } from "ui/molecules";
 
 import { Container } from "./styled";
 
-const maxDisplayCourse = 3;
+const maxInstructors = 4;
 
 const HomeTopInstructor = () => {
-  const { data } = useInstructorsQuery();
+  const { data } = useInstructors({
+    offset: 0,
+    limit: maxInstructors,
+  });
 
   return (
     <Container>
@@ -19,9 +22,9 @@ const HomeTopInstructor = () => {
       <SizeBox height={48} />
 
       <Row gutter={[32, 32]}>
-        {(data || []).slice(0, maxDisplayCourse).map(({ id, ...rest }) => (
+        {(data?.data || []).map(({ id, ...rest }) => (
           <Col key={id} xs={24} sm={12} md={8} lg={6}>
-            <InstructorCard {...rest} />
+            <InstructorCard {...rest} imgLink={rest.avatar} />
           </Col>
         ))}
       </Row>

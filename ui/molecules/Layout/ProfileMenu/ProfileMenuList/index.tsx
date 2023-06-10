@@ -16,26 +16,6 @@ const menuList1 = (t: TFunction) => [
     url: PAGE_ROUTES.PROFILE.DASHBOARD,
   },
   {
-    key: t("myProfile"),
-    name: t("myProfile"),
-    url: PAGE_ROUTES.PROFILE.MY_PROFILE,
-  },
-  {
-    key: t("enrolledCourse"),
-    name: t("enrolledCourse"),
-    url: PAGE_ROUTES.PROFILE.ENROLLED_COURSE,
-  },
-  {
-    key: t("wishlist"),
-    name: t("wishlist"),
-    url: PAGE_ROUTES.PROFILE.WISHLIST,
-  },
-  {
-    key: t("reviews"),
-    name: t("reviews"),
-    url: PAGE_ROUTES.PROFILE.REVIEWS,
-  },
-  {
     key: t("orderHistory"),
     name: t("orderHistory"),
     url: PAGE_ROUTES.PROFILE.ORDER_HISTORY,

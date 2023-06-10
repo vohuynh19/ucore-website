@@ -1,4 +1,4 @@
-import { Menu, MenuProps } from "antd";
+import { Menu, MenuProps, Typography } from "antd";
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
@@ -43,15 +43,17 @@ const EnrolledCoursePage: NextPage = () => {
       </Head>
 
       <ProfileLayout>
-        <h3>Enrolled courses</h3>
-        <Menu
-          onClick={onClick}
-          selectedKeys={[current]}
-          mode="horizontal"
-          items={items}
-        />
+        <div style={{ padding: "0 24px" }}>
+          <Typography.Title level={3}>Enrolled courses</Typography.Title>
+          <Menu
+            onClick={onClick}
+            selectedKeys={[current]}
+            mode="horizontal"
+            items={items}
+          />
 
-        <ProfileCourseList />
+          <ProfileCourseList />
+        </div>
       </ProfileLayout>
     </>
   );

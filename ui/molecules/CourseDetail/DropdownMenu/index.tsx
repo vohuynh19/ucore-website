@@ -3,20 +3,33 @@ import { Collapse } from "antd";
 import styled from "styled-components";
 
 type Props = {
-  items: CourseTopic[];
+  items: Item[];
+  activeKey: string;
 };
 
-const DropdownMenu = ({ items }: Props) => {
+type Item = {
+  label: string;
+  value: string;
+  children?: Item[];
+  metadata?: any;
+};
+
+const DropdownMenu = ({ items, activeKey }: Props) => {
   const onChange = (key: string | string[]) => {
     console.log(key);
   };
 
   return (
-    <Collapse defaultActiveKey={["1"]} onChange={onChange}>
-      {items.map((topic) => (
-        <Collapse.Panel header={topic.title} key={topic.id}>
-          {topic.courseLessons.map((lesson) => (
-            <DropdownMenuItem key={lesson.id} {...lesson} />
+    <Collapse defaultActiveKey={activeKey} onChange={onChange}>
+      {items.map((item) => (
+        <Collapse.Panel header={item.label} key={item.value}>
+          {(item.children || []).map((i) => (
+            <DropdownMenuItem
+              key={i.value}
+              title={i.label}
+              time={i.metadata.duration}
+              {...i?.metadata}
+            />
           ))}
         </Collapse.Panel>
       ))}
@@ -24,7 +37,7 @@ const DropdownMenu = ({ items }: Props) => {
   );
 };
 
-const DropdownMenuItemContainer = styled.div`
+const DropdownMenuItemContainer = styled.div<{ isActive: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -42,19 +55,25 @@ const DropdownMenuItemContainer = styled.div`
     align-items: center;
   }
 
+  cursor: pointer;
+
   &:hover {
-    background-color: ${({ theme }) => theme.colors.secondaryBg};
+    background-color: ${({ theme }) => theme.colors.bg};
   }
+
+  color: ${({ theme, isActive }) => isActive && theme.colors.primary};
 `;
 
-const DropdownMenuItem = (props: CourseLesson) => {
+const DropdownMenuItem = (props: any) => {
   return (
-    <DropdownMenuItemContainer>
+    <DropdownMenuItemContainer onClick={props.onClick} isActive={props.active}>
       <div className="left">
         <YouTubeIcon /> {props.title}
       </div>
 
-      <div className="right">{`${props.time / 60}:00`}</div>
+      <div className="right">{`${parseInt((props.time / 60).toString())}:${
+        props.time % 60
+      }:00`}</div>
     </DropdownMenuItemContainer>
   );
 };

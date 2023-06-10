@@ -5,6 +5,7 @@ import InstructorService from "./instructor";
 import AuthService from "./auth";
 import UserService from "./user";
 import QuestionService from "./question";
+import ImageService from "./image";
 
 const API_SERVICES = {
   COURSE: CourseService,
@@ -14,6 +15,7 @@ const API_SERVICES = {
   AUTH: AuthService,
   USER: UserService,
   QUESTION: QuestionService,
+  IMAGE: ImageService,
 };
 
 export default API_SERVICES;

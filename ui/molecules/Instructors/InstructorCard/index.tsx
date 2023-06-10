@@ -3,7 +3,7 @@ import { Button } from "ui/atoms";
 
 import { ActionContainer, StyledCard } from "./styled";
 import { IMAGES_URL } from "@constants";
-import { FC } from "react";
+import { FC, useRef } from "react";
 
 type InstructorCardProps = {
   name: string;
@@ -15,6 +15,9 @@ type InstructorCardProps = {
   facebookFollower: number;
 };
 
+const defaultAvatar =
+  "https://villagesonmacarthur.com/wp-content/uploads/2020/12/Blank-Avatar.png";
+
 // Todo: Translation
 const InstructorCard: FC<Partial<InstructorCardProps>> = ({
   name,
@@ -25,9 +28,23 @@ const InstructorCard: FC<Partial<InstructorCardProps>> = ({
   facebookFollower,
   category,
 }) => {
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  const onError = () => {
+    if (imgRef.current) imgRef.current.src = defaultAvatar;
+  };
+
   return (
     <StyledCard
-      cover={<img alt="example" src={imgLink} />}
+      cover={
+        <img
+          className="cover"
+          ref={imgRef}
+          alt="example"
+          src={imgLink || defaultAvatar}
+          onError={onError}
+        />
+      }
       actions={[
         <ActionContainer key={1}>
           <Button ghost href={discordLink}>

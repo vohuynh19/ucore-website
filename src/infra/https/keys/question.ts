@@ -6,9 +6,14 @@ import {
   import API_SERVICES from "../services";
   
   export const questionQueryKeys = createQueryKeys("question", {
-    list: () => ({
-      queryKey: [{  }],
-      queryFn: () => API_SERVICES.QUESTION.getQuestions(),
+    list: (filters: PaginationType<SQuestion>) => ({
+      queryKey: [{ filters }],
+      queryFn: () => API_SERVICES.QUESTION.getQuestionPagination(filters),
+    }),
+
+    listWithChannelID: (filters: PaginationType<SQuestion>, channelId: string) => ({
+      queryKey: [{ filters }],
+      queryFn: () => API_SERVICES.QUESTION.getQuestionPaginationWithChannelId(filters, channelId),
     }),
   });
   

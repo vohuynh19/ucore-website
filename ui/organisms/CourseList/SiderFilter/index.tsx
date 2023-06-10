@@ -1,4 +1,4 @@
-import { Input, Typography } from "antd";
+import { Form, Input, Typography } from "antd";
 import { useTranslation } from "next-i18next";
 import styled from "styled-components";
 import { CloseOutlined } from "@mui/icons-material";
@@ -46,7 +46,9 @@ const SiderFilter = ({ onResetForm }: Props) => {
         <Button type="text" icon={<CloseOutlined />} onClick={closeSider} />
       </FlexSpaceBetween>
 
-      <Input.Search size="large" placeholder={t("search") || ""} />
+      <Form.Item name="search">
+        <Input.Search size="large" placeholder={t("search") || ""} />
+      </Form.Item>
 
       <SortFilter />
 

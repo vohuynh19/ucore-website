@@ -1,9 +1,9 @@
-type PaginationType = {
+type PaginationType<T = unknown> = {
   offset: number;
   limit: number;
   search?: string;
   isPopular?: boolean;
-};
+} & Partial<T>;
 
 type CoursePagination = PaginationType & {
   search?: string;
@@ -15,10 +15,14 @@ type CreateCoursePayload = {
   thumnail: string;
   categoryId: string;
   description: string;
+  teacherName: string;
   achivementDes: string;
   prerequisiteDes: string;
   price: number;
   sections?: SectionPayload[];
+};
+type DeleteCoursePayload = {
+  courseIds: string[];
 };
 
 type CourseCategoryPayload = {
@@ -46,4 +50,9 @@ type AnswerQuestionPayload = {
   question: string;
   answer: string;
   discordUserId: string;
+};
+
+type PaginationResponse<T> = {
+  total: number;
+  data: T[];
 };

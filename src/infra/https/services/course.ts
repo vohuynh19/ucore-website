@@ -18,7 +18,7 @@ type CourseRateParams = {
   courseId: string;
 };
 
-type EnrollCourse = {
+export type EnrollCourse = {
   courseId: string;
 };
 
@@ -31,15 +31,28 @@ const CourseService = {
     new Promise((resolve) => {
       resolve(mockCourse);
     }),
-
+  getCourseDetail: (id: string) =>
+    axiosInstance
+      .get<SCourse>(API_ENDPONTS.course.COURSE_DETAIL(id))
+      .then((res) => res.data),
   registerInstructor: () =>
     axiosInstance.post(API_ENDPONTS.course.REGISTER_INSTRUCTOR),
   getCoursePagination: (filter: PaginationType) =>
     axiosInstance
-      .get(API_ENDPONTS.course.COURSE, { params: filter })
-      .then((res) => res.data),
+      .get<PaginationResponse<SCourse>>(API_ENDPONTS.course.COURSE, {
+        params: filter,
+      })
+      .then((res) => ({
+        ...res.data,
+        data: res.data.data.map((course) => ({
+          ...course,
+          key: course._id,
+        })),
+      })),
   createCourse: (params: CourseCreateParams) =>
     axiosInstance.post(API_ENDPONTS.course.COURSE, { ...params }),
+  deleteCourses: (params: DeleteCoursePayload) =>
+    axiosInstance.delete(API_ENDPONTS.course.COURSE, { data: params }),
   rateCourse: (params: CourseRateParams) =>
     axiosInstance.post(API_ENDPONTS.course.COURSE_RATE(params.courseId), {
       amount: params.amount,
@@ -49,8 +62,13 @@ const CourseService = {
 
   getCourseCategory: () =>
     axiosInstance
-      .get<SCourseCategory[]>(API_ENDPONTS.course.COURSE_CATEGORY)
-      .then((res) => courseCategoriesMapping(res.data)),
+      .get<PaginationResponse<SCourseCategory>>(
+        API_ENDPONTS.course.COURSE_CATEGORY
+      )
+      .then((res) => ({
+        total: res.data.total,
+        data: courseCategoriesMapping(res.data.data),
+      })),
   createCourseCategory: (payload: CourseCategoryPayload) =>
     axiosInstance.post(API_ENDPONTS.course.COURSE_CATEGORY, { ...payload }),
   updateCourseCategory: (payload: CourseCategoryPayload) =>
@@ -60,6 +78,9 @@ const CourseService = {
         name: payload.name,
       }
     ),
+
+  userCourse: (id: string) =>
+    axiosInstance.get(API_ENDPONTS.course.USER_COURSE_INFO(id)),
 };
 
 export default CourseService;

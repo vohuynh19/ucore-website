@@ -4,15 +4,15 @@ const Plyr = dynamic(() => import("plyr-react"), {
   loading: () => <p>Loading...</p>,
 });
 
-const Video = () => {
+const Video = ({ src }: { src: string }) => {
   return (
     <Plyr
       source={{
         type: "video",
         sources: [
           {
+            src,
             provider: "youtube",
-            src: "gu_F25rcqnI",
             type: "video/mp4",
           },
         ],

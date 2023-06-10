@@ -24,6 +24,13 @@ export const StyledCard = styled(Card)`
   .ant-card-meta-description {
     ${getScaledText(14)}
   }
+
+  .ant-card-cover {
+    img {
+      height: 160px;
+      object-fit: cover;
+    }
+  }
 `;
 
 export const ActionContainer = styled.div`

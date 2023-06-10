@@ -1,5 +1,5 @@
 import { CloseOutlined } from "@mui/icons-material";
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import { useTranslation } from "next-i18next";
 
 import { Button } from "ui/atoms";
@@ -19,7 +19,9 @@ const LeftFilter = ({ onResetForm }: Props) => {
 
   return (
     <Container direction="vertical" size="large">
-      <Input.Search size="large" placeholder={t("search") || ""} />
+      <Form.Item name="search">
+        <Input.Search size="large" placeholder={t("search") || ""} />
+      </Form.Item>
 
       <CategoryFilter />
 

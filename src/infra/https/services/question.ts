@@ -2,10 +2,31 @@ import { API_ENDPONTS } from "..";
 import axiosInstance from "../axios";
 
 const QuestionService = {
-    getQuestions: () =>
+    getQuestionPagination: (filter: PaginationType) =>
     axiosInstance
-      .get(API_ENDPONTS.question.GET_QUESTIONS)
-      .then((res) => res.data),
+      .get<PaginationResponse<SQuestion>>(API_ENDPONTS.question.GET_QUESTIONS, {
+        params: filter,
+      })
+      .then((res) => ({
+        ...res,
+        data: res.data.data.map((question) => ({
+          ...question,
+          key: question._id,
+        })),
+      })),
+
+      getQuestionPaginationWithChannelId: (filter: PaginationType, channelId: string) =>
+      axiosInstance
+        .get<PaginationResponse<SQuestion>>(API_ENDPONTS.question.GET_QUESTIONS_BY_CHANNEL(channelId), {
+          params: filter,
+        })
+        .then((res) => ({
+          ...res,
+          data: res.data.data.map((question) => ({
+            ...question,
+            key: question._id,
+          })),
+        })),
 
     answerQuestion: (payload: AnswerQuestionPayload) =>
     axiosInstance.patch(

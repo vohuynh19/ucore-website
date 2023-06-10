@@ -22,7 +22,7 @@ import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 const CourseCategoryModal: ForwardRefRenderFunction<any, any> = ({}, ref) => {
   const [form] = Form.useForm();
   const [open, setOpen] = useState(false);
-  const { data: testData } = useCourseCategory();
+  const { data: categories } = useCourseCategory();
   const { mutate: create, isLoading: createLoading } =
     useCreateCourseCategory();
   const { mutate: update, isLoading: updateLoading } =
@@ -132,7 +132,7 @@ const CourseCategoryModal: ForwardRefRenderFunction<any, any> = ({}, ref) => {
           }}
           scroll={{ x: 600 }}
           columns={columns}
-          dataSource={testData || []}
+          dataSource={categories?.data || []}
           pagination={{
             pageSize: 5,
           }}

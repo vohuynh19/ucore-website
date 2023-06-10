@@ -1,7 +1,7 @@
 export const userMapping = (user: SUser): User => {
   return {
-    id: user.uid,
-    name: "TODO",
+    id: user._id,
+    name: user.email,
     avatar: user.imageUri,
   };
 };

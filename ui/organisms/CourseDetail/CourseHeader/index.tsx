@@ -24,22 +24,24 @@ const CourseHeader = (props: Props) => {
 
   return (
     <Container>
-      <Rate value={props.rating} onChange={onRatingClick} />
+      <Rate value={props.rating} onChange={onRatingClick} disabled />
 
       <Title level={3}>{props.title}</Title>
 
-      <Text>
-        <Text type="secondary">{`${t("categories")}:   `}</Text>
-        {props.categories.map((category, idx) => {
-          return (
-            <Link key={category.id} href={categoryLink(category.id)}>
-              {idx === props.categories.length - 1
-                ? category.name
-                : category.name + ",   "}
-            </Link>
-          );
-        })}
-      </Text>
+      {props.categories.length > 0 && (
+        <Text>
+          <Text type="secondary">{`${t("categories")}:   `}</Text>
+          {props.categories.map((category, idx) => {
+            return (
+              <Link key={category.id} href={categoryLink(category.id)}>
+                {idx === props.categories.length - 1
+                  ? category.name
+                  : category.name + ",   "}
+              </Link>
+            );
+          })}
+        </Text>
+      )}
     </Container>
   );
 };
