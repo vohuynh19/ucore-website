@@ -188,7 +188,7 @@ const LessonManagement = () => {
         fixed: "right",
       },
     ],
-    [onRemoteItems]
+    [data?.data, onRemoteItems, sections?.data]
   );
 
   const onOpenCreateModal = () => createLessonModalRef.current.openModal();
@@ -238,7 +238,10 @@ const LessonManagement = () => {
           }}
           scroll={{ x: 1300 }}
           columns={columns}
-          dataSource={lessons?.data || []}
+          dataSource={(lessons?.data || []).map((les) => ({
+            ...les,
+            key: les._id,
+          }))}
           loading={dataLoading || lessonsLoading}
           pagination={{
             ...pagination,

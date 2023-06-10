@@ -22,8 +22,9 @@ const nextConfig = {
       },
     ],
   },
+  experimental: {
+    isrMemoryCacheSize: 0,
+  },
 };
 
-//img-c.udemycdn.com
-
-https: module.exports = nextConfig;
+module.exports = nextConfig;
