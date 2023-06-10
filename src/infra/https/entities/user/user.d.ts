@@ -2,6 +2,7 @@ type User = {
   id: string;
   name: string;
   avatar: string;
+  role: Role;
 };
 
 enum Role {

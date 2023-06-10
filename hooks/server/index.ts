@@ -6,3 +6,5 @@ export * from "./auth";
 export * from "./user";
 export * from "./course-category";
 export * from "./image";
+export * from "./lesson";
+export * from "./section";

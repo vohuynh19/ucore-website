@@ -38,10 +38,21 @@ type SectionPayload = {
 
 type VideoPayload = {
   name: string;
+  sectionId: string;
+  courseId: string;
   no: number;
   youtubeLink: string;
   isTrivial: boolean;
-  duration: string;
+  duration: number;
+};
+type DeleteVideoPayload = {
+  videoIds: string[];
+};
+
+type SectionPayload = {
+  courseId: string;
+  no: number;
+  sectionName: string;
 };
 
 type PaginationResponse<T> = {

@@ -87,13 +87,13 @@ const Header = () => {
 
           <Col xs={0} md={6} lg={7}>
             <HeaderRightContainer>
-              <Button type="text" icon={<TranslateIcon />} />
+              {/* <Button type="text" icon={<TranslateIcon />} />
 
               <SizeBox width={16} />
 
               <Cart cartItemNumber={0} />
 
-              <SizeBox width={16} />
+              <SizeBox width={16} /> */}
 
               {data ? (
                 <Popover content={<ProfileMenu />} placement="bottomRight">

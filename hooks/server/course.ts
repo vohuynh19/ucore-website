@@ -35,6 +35,12 @@ export const useUserCourse = (id: string) => {
   });
 };
 
+export const useUserCourses = (filter: PaginationType) => {
+  return useQuery({
+    ...courseQueryKeys.userCourseList(filter),
+  });
+};
+
 // Mutation
 
 export const useCreateCourse = () => {
