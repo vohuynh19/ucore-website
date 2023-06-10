@@ -81,6 +81,15 @@ const CourseService = {
 
   userCourse: (id: string) =>
     axiosInstance.get(API_ENDPONTS.course.USER_COURSE_INFO(id)),
+  userCoursesPagination: (filter: PaginationType) =>
+    axiosInstance
+      .get<PaginationResponse<SUserCourseType>>(
+        API_ENDPONTS.course.USER_COURSE,
+        {
+          params: { ...filter },
+        }
+      )
+      .then((res) => res.data),
 };
 
 export default CourseService;

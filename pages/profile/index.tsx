@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { ProfileDashboard, ProfileLayout } from "ui";
+import { ComingSoon, ProfileDashboard, ProfileLayout } from "ui";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -19,7 +19,11 @@ const ProfileDashboardPage: NextPage = () => {
       </Head>
 
       <ProfileLayout>
-        <ProfileDashboard />
+        {process.env.NEXT_PUBLIC_ENV === "production" ? (
+          <ComingSoon />
+        ) : (
+          <ProfileDashboard />
+        )}
       </ProfileLayout>
     </>
   );

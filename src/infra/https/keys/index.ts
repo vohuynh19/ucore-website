@@ -5,3 +5,5 @@ export * from "./course-category";
 export * from "./question";
 export * from "./statistic";
 export * from "./image";
+export * from "./lesson";
+export * from "./section";

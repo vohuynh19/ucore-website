@@ -12,17 +12,13 @@ interface Props {
 }
 
 const QuestionList = (props: Props) => {
+  console.log(props.total);
   return (
     <Container>
       <Col>
         {(props.questions || []).map((question) => (
           <Row key={question._id}>
-            <QuestionItem
-              asker={question.reporter}
-              question={question.question}
-              answer={question.answer}
-              resolve={question.resolve}
-            />
+            <QuestionItem questionObj={question} />
           </Row>
         ))}
       </Col>

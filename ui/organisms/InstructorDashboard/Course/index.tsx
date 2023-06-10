@@ -263,7 +263,10 @@ const CourseManagement = () => {
           }}
           scroll={{ x: 1300 }}
           columns={columns}
-          dataSource={data?.data || []}
+          dataSource={(data?.data || []).map((e) => ({
+            ...e,
+            key: e._id,
+          }))}
           loading={dataLoading}
           pagination={{
             ...pagination,

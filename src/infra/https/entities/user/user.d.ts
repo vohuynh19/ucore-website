@@ -2,19 +2,15 @@ type User = {
   id: string;
   name: string;
   avatar: string;
+  role: UserRole;
 };
 
-enum Role {
-  ADMIN = "ADMIN",
-  EDITOR = "EDITOR",
-  USER = "USER",
-  TEACHER = "TEACHER",
-}
+type UserRole = "ADMIN" | "EDITOR" | "USER" | "TEACHER";
 
 type SUser = {
   _id: string;
   uid: string;
   imageUri: string;
-  role: Role;
+  role: UserRole;
   email: string;
 };

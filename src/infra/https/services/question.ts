@@ -29,7 +29,7 @@ const QuestionService = {
         })),
 
     answerQuestion: (payload: AnswerQuestionPayload) =>
-    axiosInstance.patch(
+    axiosInstance.post(
       `${API_ENDPONTS.question.ANSWER_QUESTION}`,
       {
         channelId: payload.channelId,

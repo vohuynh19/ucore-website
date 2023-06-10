@@ -18,7 +18,7 @@ import {
   });
   
   export const questionMutationKeys = createMutationKeys("question", {
-    create: () => ({
+    answer: () => ({
       mutationKey: ["update"],
       mutationFn: (payload: AnswerQuestionPayload) =>
         API_SERVICES.QUESTION.answerQuestion(payload),

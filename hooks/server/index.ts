@@ -7,3 +7,5 @@ export * from "./user";
 export * from "./course-category";
 export * from "./image";
 export * from "./question";
+export * from "./lesson";
+export * from "./section";

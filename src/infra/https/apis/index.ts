@@ -6,6 +6,7 @@ import { AUTH_API } from "./auth";
 import { USER_API } from "./user";
 import { QUESTION_API } from "./question";
 import { IMAGE_API } from "./image";
+import { VIDEO_API } from "./video";
 
 const APIS = {
   course: COURSE_API,
@@ -16,6 +17,7 @@ const APIS = {
   user: USER_API,
   question:QUESTION_API,
   image: IMAGE_API,
+  video: VIDEO_API,
 };
 
 export default APIS;

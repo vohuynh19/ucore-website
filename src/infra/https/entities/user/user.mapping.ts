@@ -3,6 +3,7 @@ export const userMapping = (user: SUser): User => {
     id: user._id,
     name: user.email,
     avatar: user.imageUri,
+    role: user.role,
   };
 };
 

@@ -1,7 +1,9 @@
 import { PAGE_ROUTES } from "@constants";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { Typography } from "antd";
+import { Typography, notification } from "antd";
+import { useMyProfile } from "hooks";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import { Button } from "ui/atoms";
 
@@ -22,6 +24,9 @@ const Container = styled.div`
 `;
 
 const ProfileMenuDescription = () => {
+  const router = useRouter();
+  const { data: profile } = useMyProfile();
+
   return (
     <Container>
       <Typography.Title className="text-contrast" level={2}>
@@ -30,18 +35,27 @@ const ProfileMenuDescription = () => {
       <Typography.Paragraph className="text-contrast">
         Get started with topics, lessons and more
       </Typography.Paragraph>
-
-      <Link href={PAGE_ROUTES.CREATE_COURSE}>
-        <Button
-          style={{
-            borderRadius: "50%",
-            height: 40,
-            width: 40,
-            justifyContent: "center",
-          }}
-          icon={<ArrowForwardIosIcon />}
-        />
-      </Link>
+      <Button
+        style={{
+          borderRadius: "50%",
+          height: 40,
+          width: 40,
+          justifyContent: "center",
+        }}
+        icon={<ArrowForwardIosIcon />}
+        onClick={() => {
+          if (profile?.role === "USER") {
+            notification.warning({
+              message: "You must become an instructor to create a course",
+              btn: (
+                <Link href={PAGE_ROUTES.INSTRUCTORS}>Become an instructor</Link>
+              ),
+            });
+          } else {
+            router.push(PAGE_ROUTES.INSTRUCTOR_DASHBOARD.COURSES);
+          }
+        }}
+      />
     </Container>
   );
 };

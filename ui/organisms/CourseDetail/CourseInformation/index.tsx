@@ -1,8 +1,9 @@
-import { Col, Typography } from "antd";
+import { Typography } from "antd";
 import { Container } from "./styled";
 import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
+import { useUserCourse } from "hooks";
 
 type Props = {
   courseId: string;
@@ -15,6 +16,8 @@ const { Title, Text } = Typography;
 
 const CourseInformation = (props: Props) => {
   const router = useRouter();
+  const { id } = router.query;
+  const { data: userCourse } = useUserCourse(id as string);
 
   const getSections = () => {
     return props.sections.map((section) => ({
@@ -24,8 +27,10 @@ const CourseInformation = (props: Props) => {
         label: vid.name || vid._id,
         value: vid._id,
         metadata: {
+          available: vid.isTrivial || userCourse?.data,
           time: vid.duration,
           onClick: () =>
+            (vid.isTrivial || userCourse?.data) &&
             router.push({
               pathname: PAGE_ROUTES.LESSON(props.courseId),
               query: {
@@ -59,7 +64,7 @@ const CourseInformation = (props: Props) => {
       <br />
 
       <Title level={3}>Course Content</Title>
-      <DropdownMenu items={getSections() || []} />
+      <DropdownMenu activeKey="" items={getSections() || []} />
 
       <br />
     </Container>

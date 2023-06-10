@@ -1,6 +1,6 @@
 const prefix = "/video";
 
-const VIDEO_API = {
+export const VIDEO_API = {
   VIDEO_DETAIL: (videoId: string) => `${prefix}/${videoId}`,
   COURSE_VIDEO: (courseId: string) => `${prefix}/course/${courseId}`,
   CREATE_VIDEO_FORM: `${prefix}/create-form`,

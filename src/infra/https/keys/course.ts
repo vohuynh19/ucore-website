@@ -15,6 +15,10 @@ export const courseQueryKeys = createQueryKeys("course", {
     queryKey: ["user-course", id],
     queryFn: () => API_SERVICES.COURSE.userCourse(id),
   }),
+  userCourseList: (filters: PaginationType<SCourse>) => ({
+    queryKey: ["user-course", { filters }],
+    queryFn: () => API_SERVICES.COURSE.userCoursesPagination(filters),
+  }),
   detail: (id: string) => ({
     queryKey: [id],
     queryFn: () => API_SERVICES.COURSE.getCourseDetail(id),
