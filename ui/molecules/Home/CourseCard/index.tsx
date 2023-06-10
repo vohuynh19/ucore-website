@@ -7,6 +7,7 @@ import { ActionContainer, StyledCard } from "./styled";
 
 const CourseCard = (props: SCourse) => {
   const router = useRouter();
+
   return (
     <StyledCard
       cover={
@@ -18,7 +19,12 @@ const CourseCard = (props: SCourse) => {
       }
       actions={[
         <ActionContainer key={1}>
-          <Button ghost>Enroll course</Button>
+          <Button
+            ghost
+            onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL(props._id))}
+          >
+            Enroll course
+          </Button>
         </ActionContainer>,
       ]}
     >
