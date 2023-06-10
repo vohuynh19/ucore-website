@@ -23,7 +23,7 @@ const nextConfig = {
     ],
   },
   experimental: {
-    isrMemoryCacheSize: 0,
+    isrMemoryCacheSize: 1000,
   },
 };
 
