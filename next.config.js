@@ -4,11 +4,18 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   swcMinify: true,
+  output: "export",
   compiler: {
     styledComponents: true,
+    removeConsole: {
+      exclude: ["info", "error"],
+    },
   },
-  devIndicators: {
-    buildActivityPosition: "top-right",
+  modularizeImports: {
+    lodash: {
+      transform: "lodash/{{member}}",
+      preventFullImport: true,
+    },
   },
   images: {
     remotePatterns: [
@@ -21,9 +28,6 @@ const nextConfig = {
         hostname: "vicodemy.com",
       },
     ],
-  },
-  experimental: {
-    isrMemoryCacheSize: 1000,
   },
 };
 
