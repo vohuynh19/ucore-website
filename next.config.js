@@ -4,12 +4,11 @@ const nextConfig = {
   i18n,
   reactStrictMode: true,
   swcMinify: true,
-  output: "export",
   compiler: {
     styledComponents: true,
-    removeConsole: {
-      exclude: ["info", "error"],
-    },
+    // removeConsole: {
+    //   exclude: ["info", "error"],
+    // },
   },
   modularizeImports: {
     lodash: {

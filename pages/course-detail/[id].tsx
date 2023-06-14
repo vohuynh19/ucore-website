@@ -41,11 +41,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(REACT_QUERY_KEYS.GET_COURSE_DETAIL(id), () =>
-    API_SERVICES.COURSE.getCoursesDetail(id)
-  );
-
+  await queryClient.prefetchQuery(courseQueryKeys.detail(id));
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),

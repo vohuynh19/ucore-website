@@ -3,7 +3,9 @@ import styled from "styled-components";
 
 export const Container = styled.div``;
 
-export const StyledCard = styled(Card)<{ isHighlight?: boolean }>`
+export const StyledCard = styled(Card).withConfig({
+  shouldForwardProp: (prop) => !["isHighlight"].includes(prop),
+})<{ isHighlight?: boolean }>`
   .ant-card-head {
     text-align: center;
     padding: 24px;
