@@ -35,7 +35,9 @@ const CourseCard = (props: SCourse) => {
         }}
       >
         <div>
-          <Tag color="geekblue">{props.categoryInfo?.[0]?.name}</Tag>
+          {props.categoryInfo?.[0]?.name && (
+            <Tag color="geekblue">{props.categoryInfo?.[0]?.name}</Tag>
+          )}
         </div>
 
         <Typography.Title level={3}>${props.price}</Typography.Title>
@@ -43,7 +45,14 @@ const CourseCard = (props: SCourse) => {
 
       <SizeBox height={12} />
 
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          flex: 1,
+        }}
+      >
         <AccessTimeFilled
           style={{ fontSize: 20, color: theme.colors.primary }}
         />

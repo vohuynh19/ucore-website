@@ -12,6 +12,7 @@ export const StyledCard = styled(Card)`
   }
   h4 {
     margin-top: 8px;
+    margin-bottom: 0px;
     height: 32px;
   }
 
