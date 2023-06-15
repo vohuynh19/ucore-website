@@ -7,8 +7,12 @@ export const StyledCard = styled(Card)`
     cursor: pointer !important;
   }
 
-  .ant-rate {
-    margin-bottom: 16px;
+  h3 {
+    margin: 0;
+  }
+  h4 {
+    margin-top: 8px;
+    height: 32px;
   }
 
   .ant-card-meta-title {

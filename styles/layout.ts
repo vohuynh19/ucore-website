@@ -91,8 +91,8 @@ export const backgroundCenterCover = (url: string) => css`
 `;
 
 export const getScaledText = (fontSize: number, isImportant = false) => css`
-  font-size: ${({ theme }) => theme.utils.pxToCalc(fontSize)}
-    ${isImportant && "!important"};
+  font-size: ${({ theme }) => theme.utils.pxToCalc(fontSize)};
+  ${isImportant && "!important"};
   @media (max-width: 768px) {
     font-size: ${`${fontSize}px`} ${isImportant && "!important"};
   }

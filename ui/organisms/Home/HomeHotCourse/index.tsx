@@ -15,7 +15,7 @@ const HomeHotCourse = () => {
   });
 
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-anchor-placement="top-bottom">
       <HottestCourseHeader />
 
       <SizeBox height={48} />
