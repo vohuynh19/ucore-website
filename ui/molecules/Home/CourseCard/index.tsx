@@ -1,24 +1,21 @@
 import { PAGE_ROUTES } from "@constants";
-import { Rate, Space, Tag, Typography } from "antd";
+import { Tag, Typography } from "antd";
 import { useRouter } from "next/router";
 import { Button, SizeBox } from "ui/atoms";
 
-import { ActionContainer, StyledCard } from "./styled";
+import { StyledCard } from "./styled";
 import {
   AccessTimeFilled,
-  ArrowCircleLeft,
-  ArrowCircleRight,
   ArrowCircleRightOutlined,
-  ArrowLeftOutlined,
-  LockClockOutlined,
   Star,
-  StarOutline,
 } from "@mui/icons-material";
-import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import PersonIcon from "@mui/icons-material/Person";
 import { theme } from "styles";
 
 const CourseCard = (props: SCourse) => {
   const router = useRouter();
+
+  console.log(props);
 
   return (
     <StyledCard
@@ -38,20 +35,14 @@ const CourseCard = (props: SCourse) => {
         }}
       >
         <div>
-          <Tag color="geekblue">{props.categoryInfo?.[0].name}</Tag>
+          <Tag color="geekblue">{props.categoryInfo?.[0]?.name}</Tag>
         </div>
 
         <Typography.Title level={3}>${props.price}</Typography.Title>
       </div>
 
-      <Typography.Title
-        level={4}
-        ellipsis={{
-          rows: 1,
-        }}
-      >
-        {props.name}
-      </Typography.Title>
+      <SizeBox height={12} />
+
       <div style={{ display: "flex", alignItems: "center" }}>
         <AccessTimeFilled
           style={{ fontSize: 20, color: theme.colors.primary }}
@@ -63,6 +54,14 @@ const CourseCard = (props: SCourse) => {
 
         <SizeBox width={8} />
 
+        <PersonIcon style={{ fontSize: 20, color: theme.colors.primary }} />
+        <SizeBox width={4} />
+        <Typography.Text style={{ fontSize: 12, lineHeight: "12px" }}>
+          {props.numberEnrolled} students
+        </Typography.Text>
+
+        <SizeBox width={8} />
+
         <Star style={{ fontSize: 20, color: theme.colors.primary }} />
         <SizeBox width={4} />
         <Typography.Text style={{ fontSize: 12, lineHeight: "12px" }}>
@@ -70,7 +69,14 @@ const CourseCard = (props: SCourse) => {
         </Typography.Text>
       </div>
 
-      <SizeBox height={12} />
+      <Typography.Title
+        level={4}
+        ellipsis={{
+          rows: 2,
+        }}
+      >
+        {props.name}
+      </Typography.Title>
 
       <Button
         type="text"
