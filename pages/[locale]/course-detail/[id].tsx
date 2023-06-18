@@ -4,11 +4,7 @@ import { Tabs } from "antd";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import {
-  API_SERVICES,
-  courseQueryKeys,
-  REACT_QUERY_KEYS,
-} from "src/infra/https";
+import { courseQueryKeys } from "src/infra/https";
 import { useCourseDetail } from "hooks";
 
 import { Video } from "ui/molecules";
@@ -20,8 +16,9 @@ import {
 } from "ui/organisms";
 import { CourseLayout } from "ui/templates";
 import { SizeBox } from "ui";
+import i18nextConfig from "next-i18next.config";
 
-export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
+export const getStaticPaths: GetStaticPaths = async () => {
   const queryClient = new QueryClient();
   const data = await queryClient.fetchQuery(
     courseQueryKeys.list({
@@ -32,10 +29,9 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
 
   let paths: any[] = [];
   data.data.map((course) => {
-    for (const locale of locales) {
+    for (const locale of i18nextConfig.i18n.locales) {
       paths.push({
-        params: { id: course._id },
-        locale,
+        params: { id: course._id, locale },
       });
     }
   });
@@ -46,8 +42,8 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   };
 };
 
-export async function getStaticProps({ locale, params }: StaticProps) {
-  const { id = "" } = params;
+export async function getStaticProps({ params }: StaticProps) {
+  const { id = "", locale = "" } = params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery(courseQueryKeys.detail(id));
   return {

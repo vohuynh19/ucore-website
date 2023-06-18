@@ -7,5 +7,6 @@ type StaticProps = {
   locale: string;
   params: {
     id?: string;
+    locale?: string;
   };
 };

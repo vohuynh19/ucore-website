@@ -1,3 +1,4 @@
+import nextI18nextConfig from "next-i18next.config";
 import Document, {
   Html,
   Head,
@@ -30,8 +31,11 @@ class MyDocument extends Document {
   }
 
   render() {
+    const currentLocale =
+      this.props.__NEXT_DATA__.query.locale ||
+      nextI18nextConfig.i18n.defaultLocale;
     return (
-      <Html>
+      <Html lang={currentLocale as string}>
         <Head>
           <link rel="icon" href="/images/favicon.png" />
         </Head>

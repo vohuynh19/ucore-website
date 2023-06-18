@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 
 import {
@@ -8,14 +7,10 @@ import {
   HomeHotCourse,
   HomeStatistic,
 } from "ui/organisms";
+import { getStaticPaths, makeStaticProps } from "../../lib/getStatic";
 
-export async function getStaticProps({ locale }: StaticProps) {
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common", "home"])),
-    },
-  };
-}
+const getStaticProps = makeStaticProps(["common", "home"]);
+export { getStaticPaths, getStaticProps };
 
 const Home: NextPage = () => {
   return (
