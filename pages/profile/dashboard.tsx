@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { ProfileLayout, ProfileSetting } from "ui";
+import { ProfileLayout, ProfileDashboard } from "ui";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -11,18 +11,18 @@ export async function getStaticProps({ locale }: StaticProps) {
   };
 }
 
-const SettingPage: NextPage = () => {
+const ProfileDashboardPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Settings - Vicodemy</title>
+        <title>Dashboard - Vicodemy</title>
       </Head>
 
       <ProfileLayout>
-        <ProfileSetting />
+        <ProfileDashboard />
       </ProfileLayout>
     </>
   );
 };
 
-export default SettingPage;
+export default ProfileDashboardPage;

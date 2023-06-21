@@ -8,7 +8,7 @@ const QuestionService = {
         params: filter,
       })
       .then((res) => ({
-        ...res,
+        ...res.data,
         data: res.data.data.map((question) => ({
           ...question,
           key: question._id,
@@ -21,7 +21,7 @@ const QuestionService = {
           params: filter,
         })
         .then((res) => ({
-          ...res,
+          ...res.data,
           data: res.data.data.map((question) => ({
             ...question,
             key: question._id,

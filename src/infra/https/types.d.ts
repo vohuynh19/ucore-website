@@ -36,6 +36,18 @@ type SectionPayload = {
   videos?: Video[];
 };
 
+type UserProfilePayload = {
+  uid: string;
+  email:string;
+  displayName: string;
+  profileStory: string;
+  profileTitles: string;
+  profileYoutubeLink: string;
+  profileYoutubeCount: string;
+  profileSubscriber: string;
+  profileTotalCourse: string;
+};
+
 type VideoPayload = {
   name: string;
   sectionId: string;

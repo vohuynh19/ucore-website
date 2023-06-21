@@ -13,7 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import ReviewsIcon from "@mui/icons-material/Reviews";
 import HistoryIcon from "@mui/icons-material/History";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
-import SettingsIcon from "@mui/icons-material/Settings";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 import { Container } from "./styled";
 
@@ -41,6 +41,11 @@ const MenuSiderList = () => {
 
   const items: MenuItem[] = useMemo(
     () => [
+      getItem(
+        t("profile"),
+        PAGE_ROUTES.PROFILE.MY_PROFILE,
+        <AccountCircleIcon />
+      ),
       getItem(t("dashboard"), PAGE_ROUTES.PROFILE.DASHBOARD, <DashboardIcon />),
       getItem(
         t("orderHistory"),
@@ -52,7 +57,6 @@ const MenuSiderList = () => {
         PAGE_ROUTES.PROFILE.QNA,
         <QuestionAnswerIcon />
       ),
-      getItem(t("settings"), PAGE_ROUTES.PROFILE.SETTING, <SettingsIcon />),
     ],
     [t]
   );

@@ -29,4 +29,8 @@ export const userMutationKeys = createMutationKeys("user", {
     mutationKey: ["register-instructor"],
     mutationFn: () => API_SERVICES.COURSE.registerInstructor(),
   }),
+  updateUserProfile: () => ({
+    mutationKey: ["update-profile"],
+    mutationFn: (payload: UserProfilePayload) => API_SERVICES.USER.updateUserProfile(payload),
+  }),
 });

@@ -8,6 +8,7 @@
   "courseList": "Course List",
   "learners":"Learners",
   "instructors": "Instructors",
+  "instructor": "Instructor",
   "quickLinks": "Quick Links",
   "coursesPublished":"Courses Published",
   "aboutUs": "About Us",
@@ -53,5 +54,11 @@
   "reviews":"Reviews",
   "orderHistory":"Order History",
   "questionAndAnswer":"Question And Answer",
-  "settings":"Settings"
+  "settings":"Settings",
+  "profile":"Profile",
+  "edit":"Edit",
+  "joinDiscord":"Join Discord",
+  "introduce":"Introduce",
+  "becomeInstructor":"Become an instructor"
+
 }
