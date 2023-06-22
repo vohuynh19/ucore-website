@@ -39,6 +39,7 @@ type SectionPayload = {
 type UserProfilePayload = {
   uid: string;
   email:string;
+  imageUri: string;
   displayName: string;
   profileStory: string;
   profileTitles: string;

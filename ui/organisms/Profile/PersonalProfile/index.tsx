@@ -7,8 +7,9 @@ import {
   message,
   Modal,
   notification,
+  Avatar,
 } from "antd";
-import { Container } from "./styled";
+import { AvatarContainer, Container } from "./styled";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { Button, SizeBox } from "ui/atoms";
 import { useTranslation } from "react-i18next";
@@ -22,6 +23,8 @@ import EditProfileModal from "ui/molecules/Profile/EditProfileModal";
 import { userQueryKeys } from "src/infra/https/keys/user";
 import { queryClientInstance } from "src/infra/https";
 import { useRef } from "react";
+import { UpdateAvatarModal, UserIntroduction } from "ui/molecules";
+import { UserOutlined } from "@ant-design/icons";
 
 const { Text, Link, Title, Paragraph } = Typography;
 const { confirm } = Modal;
@@ -35,11 +38,14 @@ const PersonalProfile = (props: Props) => {
   const { t: sentence } = useTranslation("sentence");
 
   const editProfileModalRef = useRef<any>(null);
+  const updateAvatarModalRef = useRef<any>(null);
 
   const { mutate, isLoading } = useRegisterInstructor();
   const { mutate: editProfile, isLoading: editLoading } = useUpdateProfile();
 
   const onOpenEditProfileModal = () => editProfileModalRef.current.openModal();
+  const onOpenupdateAvatarModal = () =>
+    updateAvatarModalRef.current.openModal();
   const onEditProfile = (payload: UserProfilePayload) => {
     payload.email = props.myProfile.name;
     payload.uid = props.myProfile.id;
@@ -48,6 +54,7 @@ const PersonalProfile = (props: Props) => {
       onSuccess: (res) => {
         message.success("Update profile succes");
         editProfileModalRef.current.closeModal();
+        updateAvatarModalRef.current.closeModal();
         queryClientInstance.invalidateQueries({
           queryKey: userQueryKeys.getSelf().queryKey,
         });
@@ -94,22 +101,28 @@ const PersonalProfile = (props: Props) => {
           Upload cover photo
         </Button>
       </div>
-      <Row>
-        <Col lg={6} span={24}>
-          <div className="avatar">
-            <img
-              src={
-                "https://vicodemy.com/wp-content/plugins/tutor/assets/images/profile-photo.png"
-              }
-              alt="avatar"
+      <Row justify="center">
+        <Col
+          lg={5}
+          span={24}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <AvatarContainer>
+            <Avatar
+              size={144}
+              icon={<UserOutlined />}
+              src={props.myProfile.avatar}
             />
-
-            <div className="abs-icon">
-              <AddAPhotoIcon />
-            </div>
-          </div>
+            <Button
+              onClick={() => onOpenupdateAvatarModal()}
+              className="avatar-button"
+              type="primary"
+              shape="circle"
+              icon={<AddAPhotoIcon />}
+            />
+          </AvatarContainer>
         </Col>
-        <Col span={6}>
+        <Col span={8}>
           <Title level={3}>
             {props.myProfile?.displayName
               ? props.myProfile.displayName
@@ -120,7 +133,7 @@ const PersonalProfile = (props: Props) => {
             {props.myProfile?.profileTotalCourse || "0"} course
           </Text>
         </Col>
-        <Col>
+        <Col span={8}>
           <SizeBox height={30} />
           <Space direction="vertical">
             <Space>
@@ -134,7 +147,7 @@ const PersonalProfile = (props: Props) => {
             <Button
               onClick={() => {
                 if (props.myProfile?.profileDiscordLink) {
-                  window.open(props.myProfile.profileYoutubeLink, "_blank");
+                  window.open(props.myProfile.profileDiscordLink, "_blank");
                 }
               }}
             >
@@ -143,43 +156,17 @@ const PersonalProfile = (props: Props) => {
           </Space>
         </Col>
       </Row>
-      <SizeBox height={60} />
+      <SizeBox height={10} />
       <Divider />
-      <Title level={3}>{t("introduce")}</Title>
 
-      <Row>
-        <Col span={16}>
-          <Space direction="vertical">
-            <Paragraph>
-              {props.myProfile?.profileStory || "Tell other dudes your story"}
-            </Paragraph>
-
-            <Space>
-              <InfoIcon color="action" />
-              {/* <Text strong>instructor</Text> */}
-              <Text>
-                {props.myProfile?.profileTitles ||
-                  "Người hướng dẫn - Lập trình viên"}
-              </Text>
-            </Space>
-          </Space>
-        </Col>
-        <Col span={8}>
-          <Button
-            onClick={() => {
-              if (props.myProfile?.profileYoutubeLink) {
-                window.open(props.myProfile.profileYoutubeLink, "_blank");
-              }
-            }}
-          >
-            <YouTubeIcon />
-            <Text strong>Youtube .</Text>
-            <Text>{props.myProfile?.profileYoutubeCount || "0"}K</Text>
-          </Button>
-        </Col>
-      </Row>
+      <UserIntroduction myProfile={props.myProfile} />
       <EditProfileModal
         ref={editProfileModalRef}
+        onConfirm={onEditProfile}
+        confirmLoading={false}
+      />
+      <UpdateAvatarModal
+        ref={updateAvatarModalRef}
         onConfirm={onEditProfile}
         confirmLoading={false}
       />

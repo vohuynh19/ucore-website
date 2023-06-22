@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const AvatarContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+
+  .avatar-button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+  }
+`;
+
 export const Container = styled.div`
   padding: 0 24px;
 
@@ -22,17 +34,10 @@ export const Container = styled.div`
 
   .abs-icon {
     position: absolute;
-    bottom: 0;
+    right: 24px;
+    bottom: 24px;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.253);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 32px;
-    svg {
-      color: white;
-      font-size: 20px;
-    }
+    border-radius: 50%;
   }
 
   .cover {
@@ -58,3 +63,18 @@ export const Container = styled.div`
     }
   }
 `;
+
+// .abs-icon {
+  //   position: absolute;
+  //   bottom: 0;
+  //   width: 100%;
+  //   background-color: rgba(0, 0, 0, 0.253);
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   height: 32px;
+  //   svg {
+  //     color: white;
+  //     font-size: 20px;
+  //   }
+  // }
