@@ -1,12 +1,22 @@
 import { PAGE_ROUTES } from "@constants";
-import { Rate, Typography } from "antd";
+import { Tag, Typography } from "antd";
 import { useRouter } from "next/router";
-import { Button } from "ui/atoms";
+import { Button, SizeBox } from "ui/atoms";
 
-import { ActionContainer, StyledCard } from "./styled";
+import { StyledCard } from "./styled";
+import {
+  AccessTimeFilled,
+  ArrowCircleRightOutlined,
+  Star,
+} from "@mui/icons-material";
+import PersonIcon from "@mui/icons-material/Person";
+import { theme } from "styles";
 
 const CourseCard = (props: SCourse) => {
   const router = useRouter();
+
+  console.log(props);
+
   return (
     <StyledCard
       cover={
@@ -16,28 +26,76 @@ const CourseCard = (props: SCourse) => {
           src={props.thumnail}
         />
       }
-      actions={[
-        <ActionContainer key={1}>
-          <Button ghost>Enroll course</Button>
-        </ActionContainer>,
-      ]}
     >
-      <Rate disabled />
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <div>
+          {props.categoryInfo?.[0]?.name && (
+            <Tag color="geekblue">{props.categoryInfo?.[0]?.name}</Tag>
+          )}
+        </div>
 
-      <StyledCard.Meta
-        title={props.name}
-        description={
-          <>
-            <Typography.Paragraph
-              ellipsis={{
-                rows: 2,
-              }}
-            >
-              {props.description}
-            </Typography.Paragraph>
-          </>
-        }
-      />
+        <Typography.Title level={3}>${props.price}</Typography.Title>
+      </div>
+
+      <SizeBox height={12} />
+
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          flexWrap: "wrap",
+          flex: 1,
+        }}
+      >
+        <AccessTimeFilled
+          style={{ fontSize: 20, color: theme.colors.primary }}
+        />
+        <SizeBox width={4} />
+        <Typography.Text style={{ fontSize: 12, lineHeight: "12px" }}>
+          {props.totalDuration / 60} hours
+        </Typography.Text>
+
+        <SizeBox width={8} />
+
+        <PersonIcon style={{ fontSize: 20, color: theme.colors.primary }} />
+        <SizeBox width={4} />
+        <Typography.Text style={{ fontSize: 12, lineHeight: "12px" }}>
+          {props.numberEnrolled} students
+        </Typography.Text>
+
+        <SizeBox width={8} />
+
+        <Star style={{ fontSize: 20, color: theme.colors.primary }} />
+        <SizeBox width={4} />
+        <Typography.Text style={{ fontSize: 12, lineHeight: "12px" }}>
+          {props.rating || 2.7} star
+        </Typography.Text>
+      </div>
+
+      <Typography.Title
+        level={4}
+        ellipsis={{
+          rows: 2,
+        }}
+      >
+        {props.name}
+      </Typography.Title>
+
+      <Button
+        type="text"
+        style={{ padding: 0, fontWeight: 700 }}
+        color={theme.colors.primary}
+      >
+        View Course
+        <SizeBox width={4} />
+        <ArrowCircleRightOutlined />
+      </Button>
     </StyledCard>
   );
 };

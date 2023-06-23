@@ -10,7 +10,7 @@ const HomeCoverBox = () => {
   const router = useRouter();
 
   return (
-    <Container>
+    <Container data-aos="fade-right">
       <ShadowCard title={null}>
         <h2>{t("vietcodeAcademy")}</h2>
         <p>{t("desc1")}</p>

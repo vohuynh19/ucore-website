@@ -21,7 +21,7 @@ import {
 import { CourseLayout } from "ui/templates";
 import { SizeBox } from "ui";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   const queryClient = new QueryClient();
   const data = await queryClient.fetchQuery(
     courseQueryKeys.list({
@@ -29,9 +29,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
       limit: 10000,
     })
   );
-  const paths = data.data.map((course) => ({
-    params: { id: course._id },
-  }));
+
+  let paths: any[] = [];
+  data.data.map((course) => {
+    for (const locale of locales) {
+      paths.push({
+        params: { id: course._id },
+        locale,
+      });
+    }
+  });
+
   return {
     paths: paths,
     fallback: true,
@@ -41,11 +49,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(REACT_QUERY_KEYS.GET_COURSE_DETAIL(id), () =>
-    API_SERVICES.COURSE.getCoursesDetail(id)
-  );
-
+  await queryClient.prefetchQuery(courseQueryKeys.detail(id));
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),

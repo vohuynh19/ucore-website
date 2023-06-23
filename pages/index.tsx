@@ -1,15 +1,12 @@
 import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
-import { SizeBox } from "ui";
 
 import {
   HomeCategories,
   HomeCover,
-  HomeTopInstructor,
   HomeHotCourse,
   HomeStatistic,
-  HomeSubcribe,
 } from "ui/organisms";
 
 export async function getStaticProps({ locale }: StaticProps) {
@@ -27,12 +24,9 @@ const Home: NextPage = () => {
         <title>Vicodemy - Viet Code Academy</title>
       </Head>
       <HomeCover />
-      <SizeBox height={40} />
-      <HomeTopInstructor />
-      <HomeHotCourse />
       <HomeCategories />
+      <HomeHotCourse />
       <HomeStatistic />
-      <HomeSubcribe />
     </>
   );
 };

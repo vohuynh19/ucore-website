@@ -54,7 +54,7 @@ const HomeCategories = () => {
   );
 
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-easing="ease-in-sine">
       <Row gutter={[16, 24]}>
         {categories.map((category) => (
           <Col key={category.label} xs={12} sm={8} xl={24 / categories.length}>

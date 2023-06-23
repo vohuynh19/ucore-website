@@ -16,13 +16,13 @@ const NavigationLayout = ({ children }: PropsWithChildren) => {
   return (
     <Layout>
       <Layout>
-        <StyledHeader>
+        <StyledHeader data-aos="fade-down">
           <Header />
         </StyledHeader>
 
         <StyledContent>{children}</StyledContent>
 
-        <StyledFooter>
+        <StyledFooter data-aos="fade-up" data-aos-offset="300">
           <Footer />
         </StyledFooter>
       </Layout>

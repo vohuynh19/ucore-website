@@ -19,7 +19,7 @@ import Head from "next/head";
 
 const { Title } = Typography;
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   const queryClient = new QueryClient();
   const data = await queryClient.fetchQuery(
     courseQueryKeys.list({
@@ -27,9 +27,16 @@ export const getStaticPaths: GetStaticPaths = async () => {
       limit: 10000,
     })
   );
-  const paths = data.data.map((course) => ({
-    params: { id: course._id },
-  }));
+
+  let paths: any[] = [];
+  data.data.map((course) => {
+    for (const locale of locales) {
+      paths.push({
+        params: { id: course._id },
+        locale,
+      });
+    }
+  });
 
   return {
     paths: paths,
