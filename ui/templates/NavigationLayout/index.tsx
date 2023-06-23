@@ -99,7 +99,7 @@ const NavigationLayout = ({ children }: PropsWithChildren) => {
 
         <StyledContent>{children}</StyledContent>
 
-        <StyledFooter data-aos="fade-up" data-aos-offset="300">
+        <StyledFooter>
           <Footer />
         </StyledFooter>
       </Layout>
