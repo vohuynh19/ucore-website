@@ -1,105 +1,79 @@
-import { Row } from "antd";
+import { Card, Popover, Row } from "antd";
 import { Button } from "ui/atoms";
-
-import { ActionContainer, StyledCard } from "./styled";
-import { IMAGES_URL } from "@constants";
+import { IMAGES_URL, PAGE_ROUTES } from "@constants";
 import { FC, useRef } from "react";
-
-type InstructorCardProps = {
-  name: string;
-  imgLink: string;
-  discordLink: string;
-  category: string;
-  follower: number;
-  youtubeFollower: number;
-  facebookFollower: number;
-};
+import router from "next/router";
+import { UserInstroductionPopover } from "ui/molecules/Profile";
 
 const defaultAvatar =
   "https://villagesonmacarthur.com/wp-content/uploads/2020/12/Blank-Avatar.png";
 
 // Todo: Translation
-const InstructorCard: FC<Partial<InstructorCardProps>> = ({
-  name,
-  imgLink,
-  discordLink,
-  follower,
-  youtubeFollower,
-  facebookFollower,
-  category,
-}) => {
+const InstructorCard = (props: User) => {
   const imgRef = useRef<HTMLImageElement>(null);
 
   const onError = () => {
     if (imgRef.current) imgRef.current.src = defaultAvatar;
   };
 
+  const content = <UserInstroductionPopover myProfile={props} />;
+
   return (
-    <StyledCard
-      cover={
-        <img
-          className="cover"
-          ref={imgRef}
-          alt="example"
-          src={imgLink || defaultAvatar}
-          onError={onError}
-        />
-      }
-      actions={[
-        <ActionContainer key={1}>
-          <Button ghost href={discordLink}>
-            Try Chat Discord
-          </Button>
-        </ActionContainer>,
-      ]}
-    >
-      <StyledCard.Meta
-        title={name}
-        description={
-          <div>
-            <div>{category}</div>
-            {}
-            <div> {follower} Vicodemy follower</div>
-            <Row>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginRight: "10px",
-                }}
-              >
-                <img
-                  alt="logo"
-                  src={IMAGES_URL.FACEBOOK_CIRCLE}
-                  width={32}
-                  height={32}
-                />
-                <span style={{ marginLeft: "5px", fontWeight: "bold" }}>
-                  {facebookFollower}
-                </span>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  marginRight: "10px",
-                }}
-              >
-                <img
-                  alt="logo"
-                  src={IMAGES_URL.YOUTUBE_CIRCLE}
-                  width={32}
-                  height={32}
-                />
-                <span style={{ marginLeft: "5px", fontWeight: "bold" }}>
-                  {youtubeFollower}
-                </span>
-              </div>
-            </Row>
-          </div>
+    <Popover content={content} trigger="hover" placement="right">
+      <Card
+        hoverable
+        cover={
+          <img
+            className="cover"
+            ref={imgRef}
+            alt="instructor"
+            src={props.avatar || defaultAvatar}
+            onError={onError}
+            onClick={() => router.push(PAGE_ROUTES.USER_PROFILE(props.id))}
+            style={{ height: "144px", objectFit: "cover" }}
+          />
         }
-      />
-    </StyledCard>
+      >
+        <Card.Meta
+          title={props.displayName ? props.displayName : props.name}
+          description={
+            <div>
+              <div>
+                {" "}
+                {props.profileSubscriber ? props.profileSubscriber : 0} Vicodemy
+                follower
+              </div>
+              <Row>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginRight: "10px",
+                  }}
+                ></div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    marginRight: "10px",
+                  }}
+                >
+                  <img
+                    alt="logo"
+                    src={IMAGES_URL.YOUTUBE_CIRCLE}
+                    width={32}
+                    height={32}
+                  />
+                  <span style={{ marginLeft: "5px", fontWeight: "bold" }}>
+                    {props?.profileYoutubeCount || 0}K
+                  </span>
+                </div>
+              </Row>
+            </div>
+          }
+        />
+      </Card>
+    </Popover>
   );
 };
 

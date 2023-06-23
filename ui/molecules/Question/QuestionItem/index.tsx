@@ -1,25 +1,66 @@
-import { Typography, Row, Col, Card, Space } from "antd";
-import { SizeBox, Button } from "ui/atoms";
-
-import { Flex, FlexSpaceBetween } from "styles";
+import { Typography, Row, Col, Card, Space, Form, Input, message } from "antd";
+import { useAnswerQuestion } from "hooks";
+import { useState } from "react";
+import { queryClientInstance, questionQueryKeys } from "src/infra/https";
 import { UserProfile } from "ui";
+import { Button } from "ui/atoms";
 
 const { Paragraph, Text, Title } = Typography;
 
 type Props = {
-  asker: string;
-  question: string;
-  answer: string;
-  resolve: boolean;
+  questionObj: SQuestion;
 };
 
-const QuestionItem = ({ asker, question, answer, resolve }: Props) => {
+const QuestionItem = ({ questionObj }: Props) => {
+  const [modifiedAnswer, setModifiedAnswer] = useState(questionObj.answer);
+  const [editingAnswer, setEditingAnswer] = useState(false);
+
+  const { mutate, isLoading } = useAnswerQuestion();
+
+  const handleEditAnswer = () => {
+    // If submit answer
+
+    if (editingAnswer == true) {
+      const payload: AnswerQuestionPayload = {
+        channelId: questionObj.channelId,
+        questionId: questionObj._id,
+        question: questionObj.question,
+        answer: modifiedAnswer,
+        discordUserId: questionObj.discordUserId,
+      };
+
+      onAnswerQuestion(payload);
+    }
+    setEditingAnswer(!editingAnswer);
+  };
+
+  const onAnswerQuestion = (payload: AnswerQuestionPayload) => {
+    mutate(
+      {
+        ...payload,
+      },
+      {
+        onSuccess: (res) => {
+          message.success("Answer question success");
+        },
+        onError: (err) =>
+          message.error({
+            content: JSON.stringify(err),
+          }),
+      }
+    );
+  };
+
   return (
     <Card
       type="inner"
-      title={question}
+      title={questionObj.question}
       style={{ width: "100%", marginBottom: 8 }}
-      // extra={<Button type="primary">Join Discord</Button>}
+      extra={
+        <Button type="primary" onClick={handleEditAnswer}>
+          {editingAnswer ? "Save" : "Response"}
+        </Button>
+      }
       bordered
     >
       <Row>
@@ -27,21 +68,32 @@ const QuestionItem = ({ asker, question, answer, resolve }: Props) => {
           <Card style={{ width: "100%", marginBottom: 4 }}>
             <Text style={{ paddingRight: 24 }}>
               {`Question: `}
-              {question}
+              {questionObj.question}
             </Text>
           </Card>
-          <Card style={{ width: "100%" }}>
-            <Text style={{ paddingRight: 24 }}>
-              {`Answer: `}
-              {answer}
-            </Text>
-          </Card>
+          {editingAnswer ? (
+            <Card style={{ width: "100%" }}>
+              <Input.TextArea
+                placeholder="Your answer"
+                value={modifiedAnswer}
+                onChange={(e) => setModifiedAnswer(e.target.value)}
+                autoSize={{ minRows: 3, maxRows: 6 }}
+              />
+            </Card>
+          ) : (
+            <Card style={{ width: "100%" }}>
+              <Text style={{ paddingRight: 24 }}>
+                {`Answer: `}
+                {modifiedAnswer}
+              </Text>
+            </Card>
+          )}
         </Col>
         <Col span={6} offset={1}>
           <Space direction="vertical">
             <Text>
               <Text strong>{`Ask by: `}</Text>
-              {asker}
+              {questionObj.reporter}
             </Text>
             <Text strong>{"In:"}</Text>
 

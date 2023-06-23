@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 import {
   QuestionLayout,
   QuestionList,
@@ -9,7 +10,7 @@ import {
   QuestionTopFilter,
 } from "ui";
 import { Form } from "antd";
-import TopFilter from "ui/organisms/CourseList/TopFilter";
+import { useTablePagination, useQuestion } from "hooks";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -22,6 +23,14 @@ export async function getStaticProps({ locale }: StaticProps) {
 const MyAccount: NextPage = () => {
   const { t } = useTranslation(["common", "sentence"]);
   const [form] = Form.useForm();
+
+  const { filter, pagination } = useTablePagination(8);
+  const router = useRouter();
+
+  const { data } = useQuestion({
+    ...filter,
+    ...router.query,
+  });
 
   const onResetForm = () => {
     form.resetFields();
@@ -38,7 +47,11 @@ const MyAccount: NextPage = () => {
         TopComponent={<QuestionTopFilter />}
         SiderComponent={undefined}
       >
-        <QuestionList />
+        <QuestionList
+          pagination={pagination}
+          questions={data?.data || []}
+          total={data?.total || 0}
+        />
       </QuestionLayout>
     </>
   );

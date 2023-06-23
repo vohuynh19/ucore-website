@@ -28,3 +28,9 @@ export const useInstructors = (filter: PaginationType) => {
 export const useRegisterInstructor = () => {
   return useMutation({ ...userMutationKeys.registerInstructor() });
 };
+
+export const useUpdateProfile = () => {
+  return useMutation<any, any, UserProfilePayload>({
+    ...userMutationKeys.updateUserProfile(),
+  });
+};

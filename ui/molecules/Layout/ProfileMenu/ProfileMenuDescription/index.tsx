@@ -48,7 +48,9 @@ const ProfileMenuDescription = () => {
             notification.warning({
               message: "You must become an instructor to create a course",
               btn: (
-                <Link href={PAGE_ROUTES.INSTRUCTORS}>Become an instructor</Link>
+                <Link href={PAGE_ROUTES.PROFILE.MY_PROFILE}>
+                  Become an instructor
+                </Link>
               ),
             });
           } else {

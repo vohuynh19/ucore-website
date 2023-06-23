@@ -36,6 +36,19 @@ type SectionPayload = {
   videos?: Video[];
 };
 
+type UserProfilePayload = {
+  uid: string;
+  email:string;
+  imageUri: string;
+  displayName: string;
+  profileStory: string;
+  profileTitles: string;
+  profileYoutubeLink: string;
+  profileYoutubeCount: string;
+  profileSubscriber: string;
+  profileTotalCourse: string;
+};
+
 type VideoPayload = {
   name: string;
   sectionId: string;
@@ -53,6 +66,14 @@ type SectionPayload = {
   courseId: string;
   no: number;
   sectionName: string;
+};
+
+type AnswerQuestionPayload = {
+  channelId: string;
+  questionId: string
+  question: string;
+  answer: string;
+  discordUserId: string;
 };
 
 type PaginationResponse<T> = {

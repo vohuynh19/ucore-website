@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import "plyr-react/plyr.css";
 const Plyr = dynamic(() => import("plyr-react"), {
   loading: () => <p>Loading...</p>,
+  ssr: false,
 });
 
 const Video = ({ src }: { src: string }) => {
@@ -59,6 +60,9 @@ const Video = ({ src }: { src: string }) => {
           quality: "Quality",
           loop: "Loop",
         },
+      }}
+      onError={() => {
+        return null;
       }}
     />
   );

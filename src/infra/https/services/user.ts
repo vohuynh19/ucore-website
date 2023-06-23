@@ -32,6 +32,8 @@ const UserService = {
         total: res.data.total,
         data: usersMapping(res.data.data || []),
       })),
+  updateUserProfile: (payload: UserProfilePayload) =>
+    axiosInstance.patch(APIS.user.USER, { ...payload }),
 };
 
 export default UserService;

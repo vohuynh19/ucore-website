@@ -12,9 +12,10 @@ const PAGE_ROUTES = {
   TERM_OF_USE: "/term-of-use",
   PRIVACY_POLICY: "/privacy-policy",
   QUESTION: "/question",
+  USER_PROFILE: (id: string) => `/profile/${id}`,
   PROFILE: {
-    DASHBOARD: "/profile/",
-    MY_PROFILE: "/profile/my-profile",
+    DASHBOARD: "/profile/dashboard",
+    MY_PROFILE: "/profile",
     ENROLLED_COURSE: "/profile/enrolled-course",
     WISHLIST: "/profile/wishlist",
     REVIEWS: "/profile/review",
