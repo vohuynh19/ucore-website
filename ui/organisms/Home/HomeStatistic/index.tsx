@@ -13,7 +13,7 @@ const HomeStatistic = () => {
   const { data } = useHomeStatistic();
 
   return (
-    <Container data-aos="zoom-in" data-aos-offset="300">
+    <Container>
       <ScaledPadding top={64} bottom={32} horizontal={0}>
         <Row gutter={[24, 24]}>
           <Col xs={12} sm={12} md={6}>
