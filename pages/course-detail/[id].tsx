@@ -4,11 +4,7 @@ import { Tabs } from "antd";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
-import {
-  API_SERVICES,
-  courseQueryKeys,
-  REACT_QUERY_KEYS,
-} from "src/infra/https";
+import { courseQueryKeys } from "src/infra/https";
 import { useCourseDetail } from "hooks";
 
 import { Video } from "ui/molecules";
