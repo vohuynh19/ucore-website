@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import "plyr-react/plyr.css";
 const Plyr = dynamic(() => import("plyr-react"), {
   loading: () => <p>Loading...</p>,
   ssr: false,

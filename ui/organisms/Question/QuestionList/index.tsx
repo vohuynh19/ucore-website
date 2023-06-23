@@ -12,7 +12,6 @@ interface Props {
 }
 
 const QuestionList = (props: Props) => {
-  console.log(props.total);
   return (
     <Container>
       <Col>

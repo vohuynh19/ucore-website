@@ -15,8 +15,6 @@ import { theme } from "styles";
 const CourseCard = (props: SCourse) => {
   const router = useRouter();
 
-  console.log(props);
-
   return (
     <StyledCard
       cover={

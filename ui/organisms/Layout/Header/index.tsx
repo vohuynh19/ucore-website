@@ -4,19 +4,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCallback, useEffect, useRef } from "react";
-import TranslateIcon from "@mui/icons-material/Translate";
 import MenuIcon from "@mui/icons-material/Menu";
 
 import { useAppStore } from "stores";
 import { IMAGES_URL, API_HOST, PAGE_ROUTES } from "@constants";
-import { useExchangeToken, useMyProfile } from "hooks";
-import {
-  API_ENDPONTS,
-  queryClientInstance,
-  userQueryKeys,
-} from "src/infra/https";
+import { useMyProfile } from "hooks";
+import { API_ENDPONTS } from "src/infra/https";
 
-import { Button, Cart, Drawer, SizeBox } from "ui/atoms";
+import { Button, Drawer, SizeBox } from "ui/atoms";
 import { HeaderMenu, ProfileMenu, UserHeaderProfile } from "ui/molecules";
 
 import { HeaderRightContainer, MenuContainer, Container } from "./styled";
@@ -24,44 +19,12 @@ import { HeaderRightContainer, MenuContainer, Container } from "./styled";
 const Header = () => {
   const { t } = useTranslation("common");
   const router = useRouter();
-  const { mutate: exchangeTokenMutate } = useExchangeToken();
   const { data } = useMyProfile();
   const drawerRef = useRef<{ toggle: () => void }>(null);
 
   const { toggleNav } = useAppStore((state) => ({
     toggleNav: state.toggleNav,
   }));
-
-  const removeQueryParam = useCallback(
-    (delParams: string[]) => {
-      const { pathname, query }: any = router;
-      const params = new URLSearchParams(query);
-      delParams.forEach((param) => params.delete(param));
-
-      router.replace({ pathname, query: params.toString() }, undefined, {
-        shallow: true,
-      });
-    },
-    [router]
-  );
-
-  useEffect(() => {
-    const { code, email } = router.query;
-    code &&
-      email &&
-      exchangeTokenMutate(
-        { code: code as string, email: email as string },
-        {
-          onSuccess: (user) => {
-            removeQueryParam(["code", "email"]);
-            queryClientInstance.setQueryData(
-              userQueryKeys.getSelf().queryKey,
-              user
-            );
-          },
-        }
-      );
-  }, [router.query, exchangeTokenMutate, removeQueryParam]);
 
   return (
     <>

@@ -3,6 +3,7 @@ import { userMutationKeys, userQueryKeys } from "src/infra/https/keys";
 
 export const useMyProfile = () => {
   return useQuery({
+    retry: 1,
     ...userQueryKeys.getSelf(),
   });
 };
