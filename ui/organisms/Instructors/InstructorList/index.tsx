@@ -18,7 +18,7 @@ const InstructorList = () => {
       <Row gutter={[40, 40]}>
         {(data?.data || []).map((instructor, index) => (
           <Col key={index} xs={24} sm={12} lg={6}>
-            <InstructorCard {...instructor} imgLink={instructor.avatar} />
+            <InstructorCard {...instructor} />
           </Col>
         ))}
       </Row>

@@ -5,8 +5,6 @@ import { InstructorCard, SettingAccountForm } from "ui/molecules";
 
 import { Container } from "./styled";
 
-const maxDisplayCourse = 3;
-
 const CardSetting = () => {
   return (
     <Container>
@@ -14,7 +12,7 @@ const CardSetting = () => {
 
       <Row>
         <Col xs={24} sm={12} md={8} lg={6}>
-          <InstructorCard />
+          {/* <InstructorCard /> */}
         </Col>
         <Col offset={4}>
           <SettingAccountForm />

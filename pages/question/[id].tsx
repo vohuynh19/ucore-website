@@ -12,7 +12,13 @@ import {
 } from "ui";
 import { Form } from "antd";
 import { useTablePagination, useQuestionWithChannelId } from "hooks";
-import { dehydrate, QueryClient } from "@tanstack/react-query";
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: true,
+  };
+};
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -29,7 +35,6 @@ const MyAccount: NextPage = () => {
   const { filter, pagination } = useTablePagination(8);
   const router = useRouter();
   const { id } = router.query;
-  console.log(router.query);
 
   const { data } = useQuestionWithChannelId(
     {
