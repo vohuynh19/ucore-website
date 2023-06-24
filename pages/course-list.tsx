@@ -31,7 +31,7 @@ const CourseListPage: NextPage = () => {
   const [form] = Form.useForm();
   const router = useRouter();
 
-  const { filter, pagination } = useTablePagination(8);
+  const { filter, pagination } = useTablePagination(6);
   const { data } = useCourses({ ...filter, ...router.query });
 
   const handleFormChange = () => {
@@ -100,7 +100,7 @@ const CourseListPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Course List - Vicodemy</title>
+        <title>{t("courseList")} - Vicodemy</title>
       </Head>
 
       <BannerLayout

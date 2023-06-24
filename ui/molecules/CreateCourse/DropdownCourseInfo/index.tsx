@@ -19,7 +19,7 @@ const DropdownCourseInfo = ({
   availableCategories,
   difficultLevel,
 }: Props) => {
-  const { t } = useTranslation(["course"]);
+  const { t } = useTranslation("course");
 
   const onChange = (key: string | string[]) => {
     console.log(key);

@@ -1,6 +1,7 @@
-import { Rate, Typography } from "antd";
+import { Typography } from "antd";
 import { useTranslation } from "next-i18next";
 import { Container } from "./styled";
+import { PAGE_ROUTES } from "@constants";
 
 type Props = {
   courseId: string;
@@ -18,14 +19,12 @@ const { Title, Text, Link } = Typography;
 const CourseHeader = (props: Props) => {
   const { t } = useTranslation("common");
 
-  const onRatingClick = () => {};
-
-  const categoryLink = (id: string) => "";
+  const categoryLink = (id: string) => {
+    return `${PAGE_ROUTES.COURSE_LIST}?categoryId=${id}`;
+  };
 
   return (
     <Container>
-      <Rate value={props.rating} onChange={onRatingClick} disabled />
-
       <Title level={3}>{props.title}</Title>
 
       {props.categories.length > 0 && (

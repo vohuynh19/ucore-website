@@ -16,6 +16,7 @@ import {
 } from "ui/organisms";
 import { CourseLayout } from "ui/templates";
 import { SizeBox } from "ui";
+import { useTranslation } from "react-i18next";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   const queryClient = new QueryClient();
@@ -48,7 +49,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   await queryClient.prefetchQuery(courseQueryKeys.detail(id));
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common"])),
+      ...(await serverSideTranslations(locale, ["common", "course"])),
       dehydratedState: dehydrate(queryClient),
     },
   };
@@ -57,6 +58,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
 const CourseDetailPage = () => {
   const router = useRouter();
   const { id } = router.query;
+  const { t } = useTranslation("common");
 
   const { data } = useCourseDetail(id as string);
 
@@ -67,12 +69,9 @@ const CourseDetailPage = () => {
           courseId={data?._id || ""}
           rating={Number(data?.averageRate) || 0}
           title={data?.name || ""}
-          categories={
-            data?.categoryInfo?.map((category) => ({
-              id: category._id,
-              name: category.name,
-            })) || []
-          }
+          categories={[
+            { id: data?.category?._id || "", name: data?.category?.name || "" },
+          ]}
           lastUpdate={data?.updatedAt || ""}
         />
       }
@@ -89,7 +88,7 @@ const CourseDetailPage = () => {
         items={[
           {
             key: "1",
-            label: `Course Info`,
+            label: t(`Course Info`),
             children: (
               <CourseInformation
                 courseId={data?._id || ""}
@@ -101,7 +100,7 @@ const CourseDetailPage = () => {
           },
           {
             key: "2",
-            label: `Review`,
+            label: t(`Review`),
             children: <CourseReview />,
           },
         ]}

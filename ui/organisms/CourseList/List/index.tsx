@@ -12,7 +12,7 @@ const CourseSearch = (props: Props) => {
   return (
     <Row gutter={[32, 32]}>
       {(props.courses || []).map((course) => (
-        <Col key={course._id} xs={24} sm={12} md={12} lg={8} xl={6}>
+        <Col key={course._id} xs={24} sm={12} md={12} lg={8}>
           <CourseCard {...course} />
         </Col>
       ))}

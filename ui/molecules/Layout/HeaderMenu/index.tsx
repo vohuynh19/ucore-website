@@ -8,6 +8,7 @@ import SchoolIcon from "@mui/icons-material/School";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
 import { useMyProfile } from "hooks";
+import { useTranslation } from "react-i18next";
 
 const StyledMenu = styled(Menu)`
   &.ant-menu-horizontal {
@@ -31,22 +32,23 @@ const HeaderMenu = ({ mode = "horizontal", onMenuPress }: HeaderMenuProps) => {
   const [current, setCurrent] = useState("");
   const router = useRouter();
   const { data } = useMyProfile();
+  const { t } = useTranslation("common");
 
   const items: MenuProps["items"] = useMemo(() => {
     if (data?.role === "TEACHER") {
       return [
         {
-          label: "Courses List",
+          label: t("courseList"),
           key: PAGE_ROUTES.COURSE_LIST,
           icon: <SchoolIcon />,
         },
         {
-          label: "Instructors",
+          label: t("instructors"),
           key: PAGE_ROUTES.INSTRUCTORS,
           icon: <SettingsAccessibilityIcon />,
         },
         {
-          label: "Instructor Management",
+          label: t("coursesManagement"),
           key: PAGE_ROUTES.INSTRUCTOR_DASHBOARD.DASHBOARD,
           icon: <CastForEducationIcon />,
         },
@@ -54,17 +56,17 @@ const HeaderMenu = ({ mode = "horizontal", onMenuPress }: HeaderMenuProps) => {
     }
     return [
       {
-        label: "Courses List",
+        label: t("courseList"),
         key: PAGE_ROUTES.COURSE_LIST,
         icon: <SchoolIcon />,
       },
       {
-        label: "Instructors",
+        label: t("instructors"),
         key: PAGE_ROUTES.INSTRUCTORS,
         icon: <SettingsAccessibilityIcon />,
       },
     ];
-  }, [data]);
+  }, [data, t]);
 
   useEffect(() => {
     const matchKey = items.find((item) =>

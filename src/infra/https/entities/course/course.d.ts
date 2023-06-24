@@ -36,6 +36,7 @@ type SCourse = {
   isPublish: boolean;
   key?: string;
   categoryInfo?: SCourseCategory[];
+  category?: SCourseCategory;
   thumnail: string;
   createdAt: string;
   updatedAt: string;

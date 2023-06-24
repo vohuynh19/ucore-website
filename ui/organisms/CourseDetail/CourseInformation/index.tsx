@@ -4,6 +4,7 @@ import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
 import { useUserCourse } from "hooks";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   courseId: string;
@@ -17,6 +18,7 @@ const { Title, Text } = Typography;
 const CourseInformation = (props: Props) => {
   const router = useRouter();
   const { id } = router.query;
+  const { t } = useTranslation("course");
   const { data: userCourse } = useUserCourse(id as string);
 
   const getSections = () => {
@@ -47,7 +49,7 @@ const CourseInformation = (props: Props) => {
     <Container>
       {props.aboutCourse && (
         <>
-          <Title level={3}>About Course</Title>
+          <Title level={3}>{t("aboutCourse")}</Title>
           <Text>{props.aboutCourse}</Text>
         </>
       )}
@@ -56,14 +58,14 @@ const CourseInformation = (props: Props) => {
 
       {props.whatWillLearn && (
         <>
-          <Title level={3}>What you will learn </Title>
+          <Title level={3}>{t("willLearn")}</Title>
           <Text>{props.whatWillLearn}</Text>
         </>
       )}
 
       <br />
 
-      <Title level={3}>Course Content</Title>
+      <Title level={3}>{t("courseContent")}</Title>
       <DropdownMenu activeKey="" items={getSections() || []} />
 
       <br />

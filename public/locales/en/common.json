@@ -59,6 +59,12 @@
   "edit":"Edit",
   "joinDiscord":"Join Discord",
   "introduce":"Introduce",
-  "becomeInstructor":"Become an instructor"
-
+  "becomeInstructor":"Become an instructor",
+  "coursesManagement":"Courses Management",
+  "hours":"Hours",
+  "students":"Students",
+  "star":"Star",
+  "viewCourse":"View Course",
+  "review":"Review",
+  "courseInfo":"Course Info"
 }

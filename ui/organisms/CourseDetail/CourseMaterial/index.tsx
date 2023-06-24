@@ -14,6 +14,7 @@ import { Button, SizeBox } from "ui/atoms";
 import { UserProfile } from "ui/molecules";
 
 import { Container, StyledCard } from "./styled";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   course?: SCourse;
@@ -22,6 +23,7 @@ type Props = {
 const { Title, Text } = Typography;
 
 const CourseMaterial = ({ course }: Props) => {
+  const { t } = useTranslation("course");
   const { mutate } = useEnrollCourse();
   const { data } = useUserCourse(course?._id || "");
   const router = useRouter();
@@ -62,10 +64,12 @@ const CourseMaterial = ({ course }: Props) => {
                   type="primary"
                   onClick={enrollCourse}
                 >
-                  Enroll now
+                  {t("Enroll now")}
                 </Button>
 
-                <Text className="center">30-day money-back guarantee</Text>
+                <Text className="center">
+                  {t("30-day money-back guarantee")}
+                </Text>
               </>
             ) : (
               <Button
@@ -76,7 +80,7 @@ const CourseMaterial = ({ course }: Props) => {
                   router.push(PAGE_ROUTES.LESSON(course?._id || ""))
                 }
               >
-                Start Learning
+                {t("Start Learning")}
               </Button>
             )}
           </>
@@ -84,16 +88,16 @@ const CourseMaterial = ({ course }: Props) => {
       >
         <div className="criteria">
           <SignalCellularAltIcon />
-          All Levels
+          {t("All Level")}
         </div>
         <div className="criteria">
           <SchoolIcon />
-          {course?.totalUserEnrolled} Total Enrolled
+          {course?.totalUserEnrolled} {t("Total Enrolled")}
         </div>
         <div className="criteria">
           <UpdateIcon />
-          {moment(course?.updatedAt || "").format("hh:mm DD/MM/YYYY")} Last
-          Updated
+          {moment(course?.updatedAt || "").format("hh:mm DD/MM/YYYY")}{" "}
+          {t("Last Updated")}
         </div>
       </StyledCard>
 
@@ -103,7 +107,7 @@ const CourseMaterial = ({ course }: Props) => {
         title={
           <>
             <Title level={4} style={{ marginBottom: 12 }}>
-              A Course By
+              {t("A Course By")}
             </Title>
 
             <UserProfile
@@ -116,10 +120,10 @@ const CourseMaterial = ({ course }: Props) => {
           </>
         }
       >
-        <Title level={3}>Audience</Title>
-        <Text>All Level</Text>
+        <Title level={3}>{t("Audience")}</Title>
+        <Text>{t("All Level")}</Text>
 
-        <Title level={3}>Requirements</Title>
+        <Title level={3}>{t("Requirements")}</Title>
         <Text>{course?.prerequisiteDes}</Text>
       </StyledCard>
     </Container>

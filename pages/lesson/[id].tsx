@@ -17,6 +17,7 @@ import { Typography } from "antd";
 import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
 import { PAGE_ROUTES } from "@constants";
 import Head from "next/head";
+import { useTranslation } from "react-i18next";
 
 const { Title } = Typography;
 
@@ -63,6 +64,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
 
 const LessonPage = () => {
   const router = useRouter();
+  const { t } = useTranslation("course");
   const { id, sectionId, videoId } = router.query;
   const { data } = useCourseDetail(id as string);
   const { data: userCourse } = useUserCourse(id as string);
@@ -109,7 +111,7 @@ const LessonPage = () => {
       <LessonLayout
         RightComponent={
           <div>
-            <Title level={5}>Course Content</Title>
+            <Title level={5}>{t("courseContent")}</Title>
             {data && (
               <DropdownMenu
                 activeKey={sectionId as string}

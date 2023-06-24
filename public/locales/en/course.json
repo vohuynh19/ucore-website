@@ -48,5 +48,16 @@
   "category":"Category",
   "hour":"Hour",
   "minute":"Minute",
-  "second":"Second"
+  "second":"Second",
+  "willLearn":"What you will learn",
+  "courseContent":"Course Content",
+  "Enroll now":"Enroll now",
+  "30-day money-back guarantee":"30-day money-back guarantee",
+  "Start Learning":" Start Learning",
+  "Total Enrolled":"Total Enrolled",
+  "Last Updated":"Last Updated",
+  "A Course By":"A Course By",
+  "Audience":"Audience",
+  "All Level":"All Level",
+  "Requirements":"Requirements"
 }
