@@ -23,7 +23,7 @@ const RightContainer = styled.div`
   top: 40px;
 
   @media (max-width: 991px) {
-    position: static;
+    padding-left: 0;
   }
 `;
 
@@ -31,7 +31,7 @@ const LessonLayout = ({ RightComponent, VideoComponent, children }: Props) => {
   return (
     <Container>
       <Row>
-        <Col span={16}>
+        <Col xs={24} lg={16}>
           <Col span={24}>
             <ChildrenContainer>{VideoComponent}</ChildrenContainer>
           </Col>
@@ -41,7 +41,7 @@ const LessonLayout = ({ RightComponent, VideoComponent, children }: Props) => {
           </Col>
         </Col>
 
-        <Col span={8}>
+        <Col xs={24} lg={8}>
           <RightContainer>{RightComponent}</RightContainer>
         </Col>
       </Row>
