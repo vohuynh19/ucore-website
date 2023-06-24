@@ -8,6 +8,7 @@ import {
   HomeCover,
   HomeHotCourse,
   HomeStatistic,
+  HomeSubcribe,
 } from "ui/organisms";
 
 export async function getStaticProps({ locale }: StaticProps) {
@@ -29,6 +30,7 @@ const Home: NextPage = () => {
       <HomeTopInstructor />
       <HomeHotCourse />
       <HomeStatistic />
+      <HomeSubcribe />
     </>
   );
 };
