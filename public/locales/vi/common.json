@@ -64,5 +64,7 @@
   "hours": "Giờ",
   "students": "Học viên",
   "star": "Sao",
-  "viewCourse": "Xem khóa học"
+  "viewCourse": "Xem khóa học",
+  "review":"Nhận xét",
+  "courseInfo":"Thông tin khoá học"
 }
