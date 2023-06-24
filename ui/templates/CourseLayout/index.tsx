@@ -27,6 +27,7 @@ const RightContainer = styled.div`
 
   @media (max-width: 991px) {
     position: static;
+    padding-left: 0;
   }
 `;
 
@@ -34,15 +35,15 @@ const CourseLayout = ({ HeaderComponent, RightComponent, children }: Props) => {
   return (
     <Container>
       <Row>
-        <Col span={24}>
+        <Col xs={24}>
           <HeaderContainer>{HeaderComponent}</HeaderContainer>
         </Col>
 
-        <Col span={16}>
+        <Col xs={24} lg={16}>
           <ChildrenContainer>{children}</ChildrenContainer>
         </Col>
 
-        <Col span={8}>
+        <Col xs={24} lg={8}>
           <RightContainer>{RightComponent}</RightContainer>
         </Col>
       </Row>
