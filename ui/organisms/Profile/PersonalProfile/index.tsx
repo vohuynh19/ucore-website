@@ -13,8 +13,6 @@ import { AvatarContainer, Container } from "./styled";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { Button, SizeBox } from "ui/atoms";
 import { useTranslation } from "react-i18next";
-import InfoIcon from "@mui/icons-material/Info";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import router, { useRouter } from "next/router";
 import { useMyProfile, useRegisterInstructor, useUpdateProfile } from "hooks";

@@ -13,16 +13,31 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import { theme } from "styles";
 import CourseCardPopover from "../CourseCardPopover";
+import { useState, useEffect } from "react";
 
 const CourseCard = (props: SCourse) => {
   const router = useRouter();
 
   const { t } = useTranslation("common");
 
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const content = <CourseCardPopover course={props} />;
 
-  return (
-    <Popover content={content} trigger="hover" placement="right">
+  const CourseCardInner = () => {
+    return (
       <Card
         hoverable
         cover={
@@ -111,6 +126,18 @@ const CourseCard = (props: SCourse) => {
           }
         />
       </Card>
+    );
+  };
+
+  if (isMobile) {
+    return <CourseCardInner />;
+  }
+
+  return (
+    <Popover content={content} trigger="hover" placement="right">
+      <div>
+        <CourseCardInner />
+      </div>
     </Popover>
   );
 };

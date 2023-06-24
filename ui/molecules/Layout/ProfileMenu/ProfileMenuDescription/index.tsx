@@ -4,6 +4,7 @@ import { Typography, notification } from "antd";
 import { useMyProfile } from "hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Button } from "ui/atoms";
 
@@ -24,16 +25,17 @@ const Container = styled.div`
 `;
 
 const ProfileMenuDescription = () => {
+  const { t } = useTranslation("sentence");
   const router = useRouter();
   const { data: profile } = useMyProfile();
 
   return (
     <Container>
       <Typography.Title className="text-contrast" level={2}>
-        Create a New Course
+        {t("createNewCourse")}
       </Typography.Title>
       <Typography.Paragraph className="text-contrast">
-        Get started with topics, lessons and more
+        {t("getStartedWithTopics")}
       </Typography.Paragraph>
       <Button
         style={{
@@ -49,7 +51,7 @@ const ProfileMenuDescription = () => {
               message: "You must become an instructor to create a course",
               btn: (
                 <Link href={PAGE_ROUTES.PROFILE.MY_PROFILE}>
-                  Become an instructor
+                  {t("becomeInstructor")}
                 </Link>
               ),
             });

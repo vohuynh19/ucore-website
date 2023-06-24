@@ -24,7 +24,6 @@ export const StyledCard = styled(Card)`
   .cover {
     height: 144px;
     object-fit: cover;
-    object-position: center;
   }
 `;
 

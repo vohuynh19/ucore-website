@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+export const AvatarContainer = styled.div`
+  position: relative;
+  display: inline-block;
+  border-radius: 50%;
+
+  .avatar-button {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+  }
+`;
+
 export const Container = styled.div`
   padding: 0 24px;
 

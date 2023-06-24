@@ -1,16 +1,32 @@
-import { Card, Popover, Row } from "antd";
+import { Card, Col, Popover, Row, Space, Typography } from "antd";
 import { Button } from "ui/atoms";
 import { IMAGES_URL, PAGE_ROUTES } from "@constants";
-import { FC, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import router from "next/router";
 import { UserInstroductionPopover } from "ui/molecules";
+import { useTranslation } from "react-i18next";
 
 const defaultAvatar =
   "https://villagesonmacarthur.com/wp-content/uploads/2020/12/Blank-Avatar.png";
 
+const { Text, Link, Title, Paragraph } = Typography;
 // Todo: Translation
 const InstructorCard = (props: User) => {
+  const { t: t } = useTranslation("common");
   const imgRef = useRef<HTMLImageElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const onError = () => {
     if (imgRef.current) imgRef.current.src = defaultAvatar;
@@ -18,8 +34,8 @@ const InstructorCard = (props: User) => {
 
   const content = <UserInstroductionPopover myProfile={props} />;
 
-  return (
-    <Popover content={content} trigger="hover" placement="right">
+  const InstructorCardInner = () => {
+    return (
       <Card
         hoverable
         cover={
@@ -30,19 +46,31 @@ const InstructorCard = (props: User) => {
             src={props.avatar || defaultAvatar}
             onError={onError}
             onClick={() => router.push(PAGE_ROUTES.USER_PROFILE(props.id))}
-            style={{ height: "144px", objectFit: "cover" }}
+            style={{ height: "100%", width: "100%", objectFit: "cover" }}
           />
         }
       >
         <Card.Meta
           title={props.displayName ? props.displayName : props.name}
           description={
-            <div>
-              <div>
-                {" "}
-                {props.profileSubscriber ? props.profileSubscriber : 0} Vicodemy
-                follower
-              </div>
+            <Space direction="vertical">
+              <Row justify="space-between">
+                <Col span={12}>
+                  <Text>
+                    {props.profileTitles
+                      ? props.profileTitles
+                      : t("instructor")}
+                  </Text>
+                </Col>
+                <Col offset={2} span={10}>
+                  <Text>
+                    {props.profileSubscriber
+                      ? `${props.profileSubscriber} ${t("subscriber")}`
+                      : `0 ${t("subscriber")}`}
+                  </Text>
+                </Col>
+              </Row>
+
               <Row>
                 <div
                   style={{
@@ -69,10 +97,22 @@ const InstructorCard = (props: User) => {
                   </span>
                 </div>
               </Row>
-            </div>
+            </Space>
           }
         />
       </Card>
+    );
+  };
+
+  if (isMobile) {
+    return <InstructorCardInner />;
+  }
+
+  return (
+    <Popover content={content} trigger="hover" placement="right">
+      <div>
+        <InstructorCardInner />
+      </div>
     </Popover>
   );
 };

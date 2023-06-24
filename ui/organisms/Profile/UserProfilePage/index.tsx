@@ -7,8 +7,9 @@ import {
   message,
   Modal,
   notification,
+  Avatar,
 } from "antd";
-import { Container } from "./styled";
+import { AvatarContainer, Container } from "./styled";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { Button, SizeBox } from "ui/atoms";
 import { useTranslation } from "react-i18next";
@@ -16,6 +17,7 @@ import InfoIcon from "@mui/icons-material/Info";
 import YouTubeIcon from "@mui/icons-material/YouTube";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import { IMAGES_URL } from "@constants";
+import { UserOutlined } from "@ant-design/icons";
 
 const { Text, Link, Title, Paragraph } = Typography;
 const { confirm } = Modal;
@@ -28,6 +30,13 @@ const UserProfilePage = (props: Props) => {
   const { t: t } = useTranslation("common");
   const { t: sentence } = useTranslation("sentence");
 
+  const success = () => {
+    message.open({
+      type: "warning",
+      content: "We are on development",
+    });
+  };
+
   return (
     <Container>
       <Typography.Title level={3}>{t("profile")}</Typography.Title>
@@ -35,19 +44,18 @@ const UserProfilePage = (props: Props) => {
         <img src={IMAGES_URL.PROFILE_PANEL} alt="photo" />
       </div>
       <Row>
-        <Col lg={6} span={24}>
-          <div className="avatar">
-            <img
-              src={
-                "https://vicodemy.com/wp-content/plugins/tutor/assets/images/profile-photo.png"
-              }
-              alt="avatar"
+        <Col
+          lg={5}
+          span={24}
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <AvatarContainer>
+            <Avatar
+              size={144}
+              icon={<UserOutlined />}
+              src={props.userProfile.avatar}
             />
-
-            <div className="abs-icon">
-              <AddAPhotoIcon />
-            </div>
-          </div>
+          </AvatarContainer>
         </Col>
         <Col span={6}>
           <Title level={3}>
@@ -63,11 +71,13 @@ const UserProfilePage = (props: Props) => {
         <Col>
           <SizeBox height={30} />
           <Space>
-            <Button type="primary">Send Message</Button>
+            <Button onClick={success} type="primary">
+              Send message
+            </Button>
             <Button
               onClick={() => {
                 if (props.userProfile?.profileDiscordLink) {
-                  window.open(props.userProfile.profileYoutubeLink, "_blank");
+                  window.open(props.userProfile.profileDiscordLink, "_blank");
                 }
               }}
             >
@@ -76,7 +86,7 @@ const UserProfilePage = (props: Props) => {
           </Space>
         </Col>
       </Row>
-      <SizeBox height={60} />
+      <SizeBox height={10} />
       <Divider />
       <Title level={3}>{t("introduce")}</Title>
 

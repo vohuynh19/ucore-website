@@ -11,6 +11,11 @@ import { queryClientInstance, userQueryKeys } from "src/infra/https";
 
 const menuList1 = (t: TFunction) => [
   {
+    key: t("profile"),
+    name: t("profile"),
+    url: PAGE_ROUTES.PROFILE.MY_PROFILE,
+  },
+  {
     key: t("dashboard"),
     name: t("dashboard"),
     url: PAGE_ROUTES.PROFILE.DASHBOARD,
@@ -20,18 +25,18 @@ const menuList1 = (t: TFunction) => [
     name: t("orderHistory"),
     url: PAGE_ROUTES.PROFILE.ORDER_HISTORY,
   },
+];
+
+const menuList2 = (t: TFunction) => [
+  // {
+  //   key: t("settings"),
+  //   name: t("settings"),
+  //   url: PAGE_ROUTES.PROFILE.SETTING,
+  // },
   {
     key: t("questionAndAnswer"),
     name: t("questionAndAnswer"),
     url: PAGE_ROUTES.PROFILE.QNA,
-  },
-];
-
-const menuList2 = (t: TFunction) => [
-  {
-    key: t("settings"),
-    name: t("settings"),
-    url: PAGE_ROUTES.PROFILE.SETTING,
   },
 ];
 

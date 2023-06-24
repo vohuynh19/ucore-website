@@ -38,6 +38,30 @@ const UserInstroductionPopover = (props: Props) => {
             </Space>
           </Space>
         </Col>
+        <Col span={8}>
+          <Space direction="vertical">
+            <Button
+              onClick={() => {
+                if (props.myProfile?.profileDiscordLink) {
+                  window.open(props.myProfile.profileDiscordLink, "_blank");
+                }
+              }}
+            >
+              {t("joinDiscord")}
+            </Button>
+            {props.myProfile?.profileYoutubeLink && (
+              <Button
+                onClick={() => {
+                  window.open(props.myProfile.profileYoutubeLink, "_blank");
+                }}
+              >
+                <YouTubeIcon />
+                <Text strong>Youtube .</Text>
+                <Text>{props.myProfile?.profileYoutubeCount || "0"}K</Text>
+              </Button>
+            )}
+          </Space>
+        </Col>
       </Row>
     </Container>
   );
