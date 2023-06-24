@@ -1,25 +1,15 @@
-import {
-  Progress,
-  Col,
-  Form,
-  Input,
-  message,
-  Modal,
-  Row,
-  Upload,
-  Typography,
-} from "antd";
-
+import { Progress, Form, message, Modal, Upload, Typography } from "antd";
+import ImgCrop from "antd-img-crop";
 import {
   ForwardRefRenderFunction,
   forwardRef,
   useImperativeHandle,
   useState,
 } from "react";
-
-import { useUploadImage, useMyProfile } from "hooks";
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import { RcFile } from "antd/es/upload";
+
+import { useUploadImage } from "hooks";
 
 type Props = {
   onConfirm: Function;
@@ -34,7 +24,6 @@ export const UpdateAvatarModal: ForwardRefRenderFunction<any, Props> = (
   const [open, setOpen] = useState(false);
   const [modalData, setModalData] = useState({});
 
-  const { data: profile } = useMyProfile();
   const { uploadImage, url, reset, progress } = useUploadImage();
 
   useImperativeHandle(ref, () => ({
@@ -107,21 +96,23 @@ export const UpdateAvatarModal: ForwardRefRenderFunction<any, Props> = (
             },
           ]}
         >
-          <Upload
-            listType="picture-card"
-            name="imageUri"
-            beforeUpload={handleUpload}
-            multiple={false}
-            showUploadList={false}
-          >
-            {url ? (
-              <img src={url} alt="imageUri" style={{ width: "100%" }} />
-            ) : (
-              <>
-                Upload <FileUploadIcon />
-              </>
-            )}
-          </Upload>
+          <ImgCrop>
+            <Upload
+              listType="picture-card"
+              name="imageUri"
+              beforeUpload={handleUpload}
+              multiple={false}
+              showUploadList={false}
+            >
+              {url ? (
+                <img src={url} alt="imageUri" style={{ width: "100%" }} />
+              ) : (
+                <>
+                  Upload <FileUploadIcon />
+                </>
+              )}
+            </Upload>
+          </ImgCrop>
           {progress && <Progress percent={(progress?.progress || 0) * 100} />}
         </Form.Item>
       </Form>
