@@ -19,7 +19,7 @@ const TopInstructorHeader = () => {
         <Button
           type="primary"
           size="large"
-          onClick={() => router.push(PAGE_ROUTES.COURSE_LIST)}
+          onClick={() => router.push(PAGE_ROUTES.INSTRUCTORS)}
         >
           {t("findInstructors")}
         </Button>

@@ -1,5 +1,6 @@
 import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
+import { useMemo } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 
@@ -67,8 +68,8 @@ const LessonPage = () => {
   const { data: userCourse } = useUserCourse(id as string);
   const { data: lesson } = useLesson(videoId as string);
 
-  const getSections = (course: SCourse) => {
-    return course.sections.map((section) => ({
+  const sections = useMemo(() => {
+    return data?.sections.map((section) => ({
       label: section.sectionName,
       value: section._id,
       children: section.newVideo.map((vid) => ({
@@ -78,25 +79,26 @@ const LessonPage = () => {
           available: vid.isTrivial || userCourse?.data,
           active: vid._id === videoId,
           time: vid.duration,
-          onClick: () =>
+          onClick: () => {
             (vid.isTrivial || userCourse?.data) &&
-            router.push(
-              {
-                pathname: PAGE_ROUTES.LESSON(course._id),
-                query: {
-                  sectionId: section._id,
-                  videoId: vid._id,
+              router.push(
+                {
+                  pathname: PAGE_ROUTES.LESSON(data._id),
+                  query: {
+                    sectionId: section._id,
+                    videoId: vid._id,
+                  },
                 },
-              },
-              undefined,
-              {
-                shallow: true,
-              }
-            ),
+                undefined,
+                {
+                  shallow: true,
+                }
+              );
+          },
         },
       })),
     }));
-  };
+  }, [data, router, userCourse, videoId]);
 
   return (
     <>
@@ -111,7 +113,7 @@ const LessonPage = () => {
             {data && (
               <DropdownMenu
                 activeKey={sectionId as string}
-                items={data ? getSections(data) : []}
+                items={data ? sections || [] : []}
               />
             )}
           </div>

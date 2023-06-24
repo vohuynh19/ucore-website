@@ -1,16 +1,19 @@
 import { Typography, message } from "antd";
-
-import { Button, SizeBox } from "ui/atoms";
-import { UserProfile } from "ui/molecules";
+import { useRouter } from "next/router";
+import moment from "moment";
 
 import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 import SchoolIcon from "@mui/icons-material/School";
 import UpdateIcon from "@mui/icons-material/Update";
 
-import { Container, StyledCard } from "./styled";
 import { useEnrollCourse, useUserCourse } from "hooks";
 import { courseQueryKeys, queryClientInstance } from "src/infra/https";
-import moment from "moment";
+import { PAGE_ROUTES } from "@constants";
+
+import { Button, SizeBox } from "ui/atoms";
+import { UserProfile } from "ui/molecules";
+
+import { Container, StyledCard } from "./styled";
 
 type Props = {
   course?: SCourse;
@@ -21,6 +24,7 @@ const { Title, Text } = Typography;
 const CourseMaterial = ({ course }: Props) => {
   const { mutate } = useEnrollCourse();
   const { data } = useUserCourse(course?._id || "");
+  const router = useRouter();
 
   const enrollCourse = () => {
     mutate(
@@ -68,7 +72,9 @@ const CourseMaterial = ({ course }: Props) => {
                 size="large"
                 isFullWidth
                 type="primary"
-                onClick={() => {}}
+                onClick={() =>
+                  router.push(PAGE_ROUTES.LESSON(course?._id || ""))
+                }
               >
                 Start Learning
               </Button>
