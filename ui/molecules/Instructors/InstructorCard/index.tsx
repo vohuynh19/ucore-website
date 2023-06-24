@@ -3,7 +3,7 @@ import { Button } from "ui/atoms";
 import { IMAGES_URL, PAGE_ROUTES } from "@constants";
 import { FC, useRef } from "react";
 import router from "next/router";
-import { UserInstroductionPopover } from "ui/molecules/Profile";
+import { UserInstroductionPopover } from "ui/molecules";
 
 const defaultAvatar =
   "https://villagesonmacarthur.com/wp-content/uploads/2020/12/Blank-Avatar.png";

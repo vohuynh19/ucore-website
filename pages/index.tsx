@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import {
   HomeCategories,
+  HomeTopInstructor,
   HomeCover,
   HomeHotCourse,
   HomeStatistic,
@@ -25,6 +26,7 @@ const Home: NextPage = () => {
       </Head>
       <HomeCover />
       <HomeCategories />
+      <HomeTopInstructor />
       <HomeHotCourse />
       <HomeStatistic />
     </>
