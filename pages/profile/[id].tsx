@@ -9,7 +9,7 @@ import { userQueryKeys } from "src/infra/https";
 
 import { ComingSoon, ProfileUserProfile } from "ui";
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   const queryClient = new QueryClient();
   const data = await queryClient.fetchQuery(
     userQueryKeys.instructors({
@@ -17,9 +17,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
       limit: 10000,
     })
   );
-  const paths = data.data.map((user) => ({
-    params: { id: user.id },
-  }));
+  let paths: any[] = [];
+  data.data.map((user) => {
+    for (const locale of locales) {
+      paths.push({
+        params: { id: user.id },
+        locale,
+      });
+    }
+  });
   return {
     paths: paths,
     fallback: true,
