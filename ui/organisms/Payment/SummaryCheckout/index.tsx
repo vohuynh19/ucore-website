@@ -34,7 +34,7 @@ const Checkout: React.FC<Props> = ({}) => {
         <Typography.Paragraph>
           {t("Join discord: ")}
           <Link href={"https://discord.gg/dDQHmcKY"}>
-            SIReal's private channel
+            {` SIReal's private channel`}
           </Link>
           <p>{t("Your Code: ")}</p>
         </Typography.Paragraph>

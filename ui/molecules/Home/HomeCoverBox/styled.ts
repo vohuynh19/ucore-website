@@ -35,16 +35,15 @@ export const Container = styled.div`
     }
   }
 
-  .ant-btn.ant-btn-primary.ant-btn-lg {
-    width: ${({ theme }) => theme.utils.pxToCalc(160)};
-    height: ${({ theme }) => theme.utils.pxToCalc(48)} !important;
-    border-radius: ${({ theme }) => theme.utils.pxToCalc(48)} !important;
-    font-size: ${({ theme }) => theme.utils.pxToCalc(16)} !important;
-    @media (max-width: 768px) {
-      width: 160px;
-      height: 48px !important;
-      border-radius: 48px !important;
-      font-size: 16px !important;
+  .btn-group {
+    display: flex;
+    .ant-btn.ant-btn-primary.ant-btn-lg {
+      width: 140px;
+      height: 54px;
+      padding: 0 !important;
+    }
+    .community {
+      margin-right: 24px;
     }
   }
 `;
