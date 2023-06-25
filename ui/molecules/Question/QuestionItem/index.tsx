@@ -15,7 +15,9 @@ type Props = {
 const QuestionItem = ({ questionObj, ableToAnswer }: Props) => {
   const { t } = useTranslation("common");
 
-  const [modifiedAnswer, setModifiedAnswer] = useState(questionObj.answer);
+  const [modifiedAnswer, setModifiedAnswer] = useState(
+    questionObj.answers ? questionObj.answers[0] : ""
+  );
   const [editingAnswer, setEditingAnswer] = useState(false);
 
   const { data: profile } = useUserDetail(questionObj.ownerId as string);

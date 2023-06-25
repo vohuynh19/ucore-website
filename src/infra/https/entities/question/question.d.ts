@@ -2,7 +2,7 @@ type Question = {
     id: string;
     reporter: string;
     question: string;
-    answer: string;
+    answers: string;
     discordId: string;
     ownerId: string;
     guideId: string;
@@ -14,7 +14,7 @@ type SQuestion = {
     _id: string;
     reporter: string;
     question: string;
-    answer: string;
+    answers: string;
     discordId: string;
     ownerId: string;
     guideId: string;
