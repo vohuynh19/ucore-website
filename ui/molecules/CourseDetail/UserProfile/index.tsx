@@ -1,8 +1,10 @@
 import { IMAGES_URL } from "@constants";
 import { Avatar, Space, Row, Typography, Col } from "antd";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import { Button } from "ui";
+import { UserOutlined } from "@ant-design/icons";
 
 const Container = styled.div`
   width: 100%;
@@ -28,41 +30,20 @@ const Container = styled.div`
 type Props = {
   avatarLink: string;
   name: string;
-  discordFollower: number;
 };
-const UserProfile = ({ avatarLink, name, discordFollower }: Props) => {
+const UserProfile = ({ avatarLink, name }: Props) => {
+  const { t } = useTranslation("common");
+
   return (
     <Container>
       <Space>
-        <Avatar
-          src={<Image alt="author" height={48} width={48} src={avatarLink} />}
-        />
+        <Avatar size={48} icon={<UserOutlined />} src={avatarLink} />
 
         <Space direction="vertical">
           <Typography.Title level={5}>{name}</Typography.Title>
-
-          <Space>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                marginRight: "10px",
-              }}
-            >
-              <img
-                alt="logo"
-                src={IMAGES_URL.DISCORD_CIRCLE}
-                width={32}
-                height={32}
-              />
-              <span style={{ marginLeft: "5px", fontWeight: "bold" }}>
-                {discordFollower}
-              </span>
-            </div>
-          </Space>
         </Space>
 
-        <Button> Join Chat</Button>
+        <Button> {t("seeInDiscord")}</Button>
       </Space>
     </Container>
   );

@@ -1,11 +1,12 @@
 import { CloseOutlined } from "@mui/icons-material";
-import { Input } from "antd";
+import { Form, Input } from "antd";
 import { useTranslation } from "next-i18next";
 
 import { Button } from "ui/atoms";
 import {
   CourseListCategoryFilter as CategoryFilter,
   CourseListPriceFilter as PriceFilter,
+  ResolveFilter,
 } from "ui/molecules";
 
 import { Container } from "./styled";
@@ -19,7 +20,11 @@ const QuestionRightFilter = ({ onResetForm }: Props) => {
 
   return (
     <Container direction="vertical" size="large">
-      <Input.Search size="large" placeholder={t("search") || ""} />
+      <Form.Item name="search">
+        <Input.Search size="large" placeholder={t("search") || ""} />
+      </Form.Item>
+
+      <ResolveFilter />
 
       <CategoryFilter />
 

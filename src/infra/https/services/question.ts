@@ -15,9 +15,9 @@ const QuestionService = {
         })),
       })),
 
-      getQuestionPaginationWithChannelId: (filter: PaginationType, channelId: string) =>
+      getQuestionPaginationWithChannelId: (filter: PaginationType, guideId: string) =>
       axiosInstance
-        .get<PaginationResponse<SQuestion>>(API_ENDPONTS.question.GET_QUESTIONS_BY_CHANNEL(channelId), {
+        .get<PaginationResponse<SQuestion>>(API_ENDPONTS.question.GET_QUESTIONS_BY_CHANNEL(guideId), {
           params: filter,
         })
         .then((res) => ({
@@ -30,13 +30,9 @@ const QuestionService = {
 
     answerQuestion: (payload: AnswerQuestionPayload) =>
     axiosInstance.post(
-      `${API_ENDPONTS.question.ANSWER_QUESTION}`,
+      `${API_ENDPONTS.question.ANSWER_QUESTION(payload.questionId)}`,
       {
-        channelId: payload.channelId,
-        questionId: payload.questionId,
-        question: payload.question,
         answer: payload.answer,
-        discordUserId: payload.discordUserId,
       }
     ),
 };

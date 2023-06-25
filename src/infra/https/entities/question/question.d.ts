@@ -3,7 +3,9 @@ type Question = {
     reporter: string;
     question: string;
     answer: string;
-    discordUserId: string;
+    discordId: string;
+    ownerId: string;
+    guideId: string;
     channelId: string;
     resolve: boolean;
 };
@@ -13,7 +15,9 @@ type SQuestion = {
     reporter: string;
     question: string;
     answer: string;
-    discordUserId: string;
+    discordId: string;
+    ownerId: string;
+    guideId: string;
     channelId: string;
     resolve: boolean;
 };

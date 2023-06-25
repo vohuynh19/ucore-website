@@ -69,11 +69,8 @@ type SectionPayload = {
 };
 
 type AnswerQuestionPayload = {
-  channelId: string;
   questionId: string
-  question: string;
   answer: string;
-  discordUserId: string;
 };
 
 type PaginationResponse<T> = {

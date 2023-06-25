@@ -1,7 +1,7 @@
 import { Typography, Row, Col, Card, Space, Form, Input, message } from "antd";
-import { useAnswerQuestion } from "hooks";
+import { useAnswerQuestion, useUserDetail } from "hooks";
 import { useState } from "react";
-import { queryClientInstance, questionQueryKeys } from "src/infra/https";
+import { useTranslation } from "react-i18next";
 import { UserProfile } from "ui";
 import { Button } from "ui/atoms";
 
@@ -9,12 +9,16 @@ const { Paragraph, Text, Title } = Typography;
 
 type Props = {
   questionObj: SQuestion;
+  ableToAnswer: boolean;
 };
 
-const QuestionItem = ({ questionObj }: Props) => {
+const QuestionItem = ({ questionObj, ableToAnswer }: Props) => {
+  const { t } = useTranslation("common");
+
   const [modifiedAnswer, setModifiedAnswer] = useState(questionObj.answer);
   const [editingAnswer, setEditingAnswer] = useState(false);
 
+  const { data: profile } = useUserDetail(questionObj.ownerId as string);
   const { mutate, isLoading } = useAnswerQuestion();
 
   const handleEditAnswer = () => {
@@ -22,11 +26,8 @@ const QuestionItem = ({ questionObj }: Props) => {
 
     if (editingAnswer == true) {
       const payload: AnswerQuestionPayload = {
-        channelId: questionObj.channelId,
         questionId: questionObj._id,
-        question: questionObj.question,
         answer: modifiedAnswer,
-        discordUserId: questionObj.discordUserId,
       };
 
       onAnswerQuestion(payload);
@@ -57,24 +58,26 @@ const QuestionItem = ({ questionObj }: Props) => {
       title={questionObj.question}
       style={{ width: "100%", marginBottom: 8 }}
       extra={
-        <Button type="primary" onClick={handleEditAnswer}>
-          {editingAnswer ? "Save" : "Response"}
-        </Button>
+        ableToAnswer && (
+          <Button type="primary" onClick={handleEditAnswer}>
+            {editingAnswer ? t("save") : t("response")}
+          </Button>
+        )
       }
       bordered
     >
       <Row>
         <Col span={17}>
           <Card style={{ width: "100%", marginBottom: 4 }}>
-            <Text style={{ paddingRight: 24 }}>
-              {`Question: `}
-              {questionObj.question}
-            </Text>
+            <Text strong style={{ paddingRight: 24 }}>{`${t(
+              "question"
+            )}:`}</Text>
+            <Text>{questionObj.question}</Text>
           </Card>
           {editingAnswer ? (
             <Card style={{ width: "100%" }}>
               <Input.TextArea
-                placeholder="Your answer"
+                placeholder={t("yourAnswer") || "Your answer"}
                 value={modifiedAnswer}
                 onChange={(e) => setModifiedAnswer(e.target.value)}
                 autoSize={{ minRows: 3, maxRows: 6 }}
@@ -82,30 +85,33 @@ const QuestionItem = ({ questionObj }: Props) => {
             </Card>
           ) : (
             <Card style={{ width: "100%" }}>
-              <Text style={{ paddingRight: 24 }}>
-                {`Answer: `}
-                {modifiedAnswer}
-              </Text>
+              <Text strong style={{ paddingRight: 24 }}>{`${t(
+                "answer"
+              )}:`}</Text>
+              <Text>{modifiedAnswer}</Text>
             </Card>
           )}
         </Col>
         <Col span={6} offset={1}>
           <Space direction="vertical">
             <Text>
-              <Text strong>{`Ask by: `}</Text>
+              <Text strong>{`${t("askBy")}: `}</Text>
               {questionObj.reporter}
             </Text>
-            <Text strong>{"In:"}</Text>
 
-            <Row>
-              <UserProfile
-                avatarLink={
-                  "https://vicodemy.com/wp-content/uploads/2023/03/0901df4f8a204c7e1531.jpeg"
-                }
-                name={"Test"}
-                discordFollower={5}
-              />
-            </Row>
+            {profile ? (
+              <div>
+                <Text strong>{`${t("inCommunity")}:`}</Text>
+                <Row>
+                  <UserProfile
+                    avatarLink={profile.avatar}
+                    name={profile?.displayName}
+                  />
+                </Row>
+              </div>
+            ) : (
+              <></>
+            )}
           </Space>
         </Col>
       </Row>
