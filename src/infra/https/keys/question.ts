@@ -11,9 +11,9 @@ import {
       queryFn: () => API_SERVICES.QUESTION.getQuestionPagination(filters),
     }),
 
-    listWithChannelID: (filters: PaginationType<SQuestion>, channelId: string) => ({
+    listWithGuideID: (filters: PaginationType<SQuestion>, guideId: string) => ({
       queryKey: [{ filters }],
-      queryFn: () => API_SERVICES.QUESTION.getQuestionPaginationWithChannelId(filters, channelId),
+      queryFn: () => API_SERVICES.QUESTION.getQuestionPaginationWithGuideId(filters, guideId),
     }),
   });
   

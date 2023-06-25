@@ -9,6 +9,7 @@ interface Props {
   pagination: PaginationProps;
   questions: SQuestion[];
   total: number;
+  ableToAnswer: boolean;
 }
 
 const QuestionList = (props: Props) => {
@@ -17,7 +18,10 @@ const QuestionList = (props: Props) => {
       <Col>
         {(props.questions || []).map((question) => (
           <Row key={question._id}>
-            <QuestionItem questionObj={question} ableToAnswer={false} />
+            <QuestionItem
+              questionObj={question}
+              ableToAnswer={props.ableToAnswer}
+            />
           </Row>
         ))}
       </Col>
