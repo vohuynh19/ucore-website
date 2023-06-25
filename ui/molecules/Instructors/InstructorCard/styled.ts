@@ -5,6 +5,10 @@ import { getScaledText } from "styles";
 export const StyledCard = styled(Card)`
   .ant-card-cover {
     cursor: pointer !important;
+    img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
   }
 
   .ant-card-meta-title {
@@ -19,6 +23,12 @@ export const StyledCard = styled(Card)`
 
   .ant-card-meta-description {
     ${getScaledText(14)}
+  }
+
+  .more-info {
+    display: flex;
+    align-items: center;
+    color: ${({ theme }) => theme.colors.primary};
   }
 
   .cover {
