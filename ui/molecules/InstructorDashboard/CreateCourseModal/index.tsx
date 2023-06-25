@@ -22,6 +22,7 @@ import {
 import FileUploadIcon from "@mui/icons-material/FileUpload";
 import { useCourseCategory, useUploadImage } from "hooks";
 import { RcFile } from "antd/es/upload";
+import { TextEditor } from "ui/atoms";
 
 type Props = {
   onConfirm: Function;
@@ -196,10 +197,7 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
               name="description"
               label="Course Description"
             >
-              <Input.TextArea
-                placeholder="Please enter course Description"
-                rows={4}
-              />
+              <TextEditor placeholder="Please enter course Description" />
             </Form.Item>
 
             <Form.Item
@@ -208,10 +206,7 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
               name="achivementDes"
               label="Course Archivement"
             >
-              <Input.TextArea
-                placeholder="Please enter course Description"
-                rows={4}
-              />
+              <TextEditor placeholder="Please enter course Description" />
             </Form.Item>
 
             <Form.Item
@@ -220,10 +215,7 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
               name="prerequisiteDes"
               label="Course Prerequisite"
             >
-              <Input.TextArea
-                placeholder="Please enter course Description"
-                rows={4}
-              />
+              <TextEditor placeholder="Please enter course Description" />
             </Form.Item>
           </Col>
         </Row>

@@ -17,7 +17,7 @@ import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 
-import { Button } from "ui/atoms";
+import { Button, MarkupView } from "ui/atoms";
 import { CourseCategoryModal, CreateCourseModal } from "ui/molecules";
 
 interface DataType {
@@ -159,16 +159,17 @@ const CourseManagement = () => {
         title: "Course Description",
         dataIndex: "description",
         width: 200,
+        render: (data: any) => <MarkupView html={data} />,
       },
       {
         title: "Achievement Description",
         dataIndex: "achivementDes",
-        width: 200,
+        render: (data: any) => <MarkupView html={data} />,
       },
       {
         title: "Prerequisite Description",
         dataIndex: "prerequisiteDes",
-        width: 200,
+        render: (data: any) => <MarkupView html={data} />,
       },
       {
         title: "Action",
@@ -261,7 +262,7 @@ const CourseManagement = () => {
               name: record.name,
             }),
           }}
-          scroll={{ x: 1300 }}
+          scroll={{ x: 1600 }}
           columns={columns}
           dataSource={(data?.data || []).map((e) => ({
             ...e,
