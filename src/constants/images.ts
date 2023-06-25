@@ -2,7 +2,7 @@ const IMAGES_URL = {
   LOGO: "/images/logo.png",
   LOGO_FOOTER: "/images/logo-footer.png",
   BANNER_COVER: "/images/home/banner-cover.png",
-  HOME_COVER: "/images/home/home-cover.png",
+  HOME_COVER: "/images/home/hero-graphics.svg",
   MOMO: "/images/Logo-MoMo.png",
   FACEBOOK_CIRCLE: "/images/facebook-circle.svg",
   DISCORD_CIRCLE: "/images/discord-circle.svg",
