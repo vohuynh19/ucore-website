@@ -1,5 +1,6 @@
 import "aos/dist/aos.css";
 import "plyr-react/plyr.css";
+import "react-quill/dist/quill.snow.css";
 
 import { useEffect } from "react";
 import type { AppProps } from "next/app";
