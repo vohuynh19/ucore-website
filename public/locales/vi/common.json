@@ -67,5 +67,17 @@
   "viewCourse": "Xem khóa học",
   "review":"Nhận xét",
   "courseInfo":"Thông tin khoá học",
-  "subscriber":"Nguời đăng ký"
+  "subscriber":"Nguời đăng ký",
+  "cheatSheet": "Cheat sheet",
+  "resolveState":"Tình trạng giải quyết",
+  "resolved":"Đã trả lời",
+  "unresolved":"Chưa trả lời",
+  "save": "Lưu",
+  "response": "Trả lời",
+  "question": "Câu hỏi",
+  "yourAnswer": "Câu trả lời của bạn",
+  "answer": "Trả lời",
+  "askBy": "Hỏi bởi",
+  "inCommunity": "Trong cộng đồng",
+  "seeInDiscord": "Xem trong discord"
 }

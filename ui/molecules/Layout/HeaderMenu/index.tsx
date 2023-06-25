@@ -5,6 +5,7 @@ import styled from "styled-components";
 import SettingsAccessibilityIcon from "@mui/icons-material/SettingsAccessibility";
 import CastForEducationIcon from "@mui/icons-material/CastForEducation";
 import SchoolIcon from "@mui/icons-material/School";
+import RequestPageIcon from "@mui/icons-material/RequestPage";
 import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
 import { useMyProfile } from "hooks";
@@ -52,6 +53,11 @@ const HeaderMenu = ({ mode = "horizontal", onMenuPress }: HeaderMenuProps) => {
           key: PAGE_ROUTES.INSTRUCTOR_DASHBOARD.DASHBOARD,
           icon: <CastForEducationIcon />,
         },
+        {
+          label: t("cheatSheet"),
+          key: PAGE_ROUTES.QUESTION,
+          icon: <RequestPageIcon />,
+        },
       ];
     }
     return [
@@ -64,6 +70,11 @@ const HeaderMenu = ({ mode = "horizontal", onMenuPress }: HeaderMenuProps) => {
         label: t("instructors"),
         key: PAGE_ROUTES.INSTRUCTORS,
         icon: <SettingsAccessibilityIcon />,
+      },
+      {
+        label: t("cheatSheet"),
+        key: PAGE_ROUTES.QUESTION,
+        icon: <RequestPageIcon />,
       },
     ];
   }, [data, t]);

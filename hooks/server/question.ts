@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import {  questionMutationKeys, questionQueryKeys } from "src/infra/https/keys";
 
-export const useQuestion = (params: PaginationType<SQuestion>) => {
+export const useQuestionPublic = (params: PaginationType<SQuestion>) => {
   return useQuery({
     ...questionQueryKeys.list(params),
   });

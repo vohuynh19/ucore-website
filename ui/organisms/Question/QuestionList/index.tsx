@@ -17,7 +17,7 @@ const QuestionList = (props: Props) => {
       <Col>
         {(props.questions || []).map((question) => (
           <Row key={question._id}>
-            <QuestionItem questionObj={question} />
+            <QuestionItem questionObj={question} ableToAnswer={false} />
           </Row>
         ))}
       </Col>

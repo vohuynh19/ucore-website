@@ -67,5 +67,17 @@
   "viewCourse":"View Course",
   "review":"Review",
   "courseInfo":"Course Info",
-  "subscriber":"Subscriber"
+  "subscriber":"Subscriber",
+  "cheatSheet": "Cheat sheet",
+  "resolveState":"Resolve state",
+  "resolved":"Resolved",
+  "unresolved":"Unresolved",
+  "save": "Save",
+  "response": "Response",
+  "question": "Question",
+  "yourAnswer": "Your answer",
+  "answer": "Answer",
+  "askBy": "Ask by",
+  "inCommunity": "In community",
+  "seeInDiscord": "See in discord"
 }
