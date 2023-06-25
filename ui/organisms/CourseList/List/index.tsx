@@ -2,10 +2,14 @@ import { Col, Empty, Pagination, PaginationProps, Row } from "antd";
 
 import { CourseCard } from "ui/molecules";
 
+import { BeatLoader } from "react-spinners";
+import { theme } from "styles";
+
 interface Props {
   pagination: PaginationProps;
   courses: SCourse[];
   total: number;
+  isLoading: boolean;
 }
 
 const CourseSearch = (props: Props) => {
@@ -17,7 +21,21 @@ const CourseSearch = (props: Props) => {
         </Col>
       ))}
 
-      {props.courses.length === 0 && (
+      {props.isLoading && (
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            height: 300,
+          }}
+        >
+          <BeatLoader color={theme.colors.primary} />
+        </div>
+      )}
+
+      {!props.isLoading && props.courses.length === 0 && (
         <div
           style={{
             display: "flex",

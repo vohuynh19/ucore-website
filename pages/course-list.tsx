@@ -32,7 +32,7 @@ const CourseListPage: NextPage = () => {
   const router = useRouter();
 
   const { filter, pagination } = useTablePagination(6);
-  const { data } = useCourses({ ...filter, ...router.query });
+  const { data, isFetching } = useCourses({ ...filter, ...router.query });
 
   const handleFormChange = () => {
     const changeObj = form.getFieldsValue();
@@ -117,6 +117,7 @@ const CourseListPage: NextPage = () => {
               courses={data?.data || []}
               total={data?.total || 0}
               pagination={pagination}
+              isLoading={isFetching}
             />
           </FilterLayout>
         </Form>

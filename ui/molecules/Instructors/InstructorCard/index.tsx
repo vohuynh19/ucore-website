@@ -11,7 +11,7 @@ const defaultAvatar =
 
 const { Text, Link, Title, Paragraph } = Typography;
 // Todo: Translation
-const InstructorCard = (props: User & { cardProps: any }) => {
+const InstructorCard = (props: User & { cardProps?: any }) => {
   const { t: t } = useTranslation("common");
   const imgRef = useRef<HTMLImageElement>(null);
   const [isMobile, setIsMobile] = useState(false);

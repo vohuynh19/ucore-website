@@ -6,7 +6,11 @@ import { InstructorDashboardLayout, LessonManagement } from "ui";
 export async function getStaticProps({ locale }: StaticProps) {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "course"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "sentence",
+        "course",
+      ])),
     },
   };
 }

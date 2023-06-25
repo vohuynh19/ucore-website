@@ -49,7 +49,11 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   await queryClient.prefetchQuery(courseQueryKeys.detail(id));
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "course"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "sentence",
+        "course",
+      ])),
       dehydratedState: dehydrate(queryClient),
     },
   };

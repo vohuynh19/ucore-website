@@ -34,7 +34,11 @@ export async function getStaticProps({ locale, params }: StaticProps) {
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "sentence"])),
+      ...(await serverSideTranslations(locale, [
+        "common",
+        "sentence",
+        "sentence",
+      ])),
       dehydratedState: dehydrate(queryClient),
     },
   };
