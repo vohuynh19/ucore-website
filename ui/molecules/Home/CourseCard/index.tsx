@@ -15,7 +15,7 @@ import { theme } from "styles";
 import CourseCardPopover from "../CourseCardPopover";
 import { useState, useEffect } from "react";
 
-const CourseCard = (props: SCourse) => {
+const CourseCard = (props: SCourse & { cardProps: any }) => {
   const router = useRouter();
 
   const { t } = useTranslation("common");
@@ -39,6 +39,7 @@ const CourseCard = (props: SCourse) => {
   const CourseCardInner = () => {
     return (
       <Card
+        {...props.cardProps}
         hoverable
         cover={
           <img

@@ -3,10 +3,12 @@ import { useRouter } from "next/router";
 import { Tabs } from "antd";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
 import { courseQueryKeys } from "src/infra/https";
 import { useCourseDetail } from "hooks";
 
+import { SizeBox } from "ui/atoms";
 import { Video } from "ui/molecules";
 import {
   CourseHeader,
@@ -15,8 +17,6 @@ import {
   CourseReview,
 } from "ui/organisms";
 import { CourseLayout } from "ui/templates";
-import { SizeBox } from "ui";
-import { useTranslation } from "react-i18next";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   const queryClient = new QueryClient();

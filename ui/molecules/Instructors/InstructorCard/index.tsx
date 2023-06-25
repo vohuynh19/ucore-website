@@ -11,7 +11,7 @@ const defaultAvatar =
 
 const { Text, Link, Title, Paragraph } = Typography;
 // Todo: Translation
-const InstructorCard = (props: User) => {
+const InstructorCard = (props: User & { cardProps: any }) => {
   const { t: t } = useTranslation("common");
   const imgRef = useRef<HTMLImageElement>(null);
   const [isMobile, setIsMobile] = useState(false);
@@ -37,6 +37,7 @@ const InstructorCard = (props: User) => {
   const InstructorCardInner = () => {
     return (
       <Card
+        {...props?.cardProps}
         hoverable
         cover={
           <img

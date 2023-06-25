@@ -13,9 +13,15 @@ const HomeSubscribe = () => {
 
   return (
     <Container>
-      <h1 className="subcribe-title">{t("feedbackSen1")}</h1>
+      <h1
+        className="subcribe-title"
+        data-aos="flip-left"
+        data-aos-easing="ease-out-cubic"
+      >
+        {t("feedbackSen1")}
+      </h1>
 
-      <ContentContainer>
+      <ContentContainer data-aos="flip-left" data-aos-easing="ease-out-cubic">
         <h1>Thông tin của bạn</h1>
         <Form {...layout}>
           <Form.Item name={"email"} rules={[{ required: true }]}>

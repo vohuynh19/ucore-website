@@ -4,5 +4,5 @@ import { container } from "styles";
 export const Container = styled.div`
   ${container}
   background-color: transparent;
-  background: ${({ theme }) => theme.colors.linearGradientBg};
+  background: ${({ theme }) => theme.colors.inverseLinearGradientBg};
 `;

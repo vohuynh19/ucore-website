@@ -12,6 +12,8 @@ import {
 } from "ui";
 import { Form } from "antd";
 import { useTablePagination, useQuestionWithChannelId } from "hooks";
+import { QueryClient, dehydrate } from "@tanstack/react-query";
+import { questionQueryKeys } from "src/infra/https";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -20,10 +22,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export async function getStaticProps({ locale }: StaticProps) {
+export async function getStaticProps({ locale, params }: StaticProps) {
+  const { id = "" } = params;
+  const queryClient = new QueryClient();
+  await queryClient.prefetchQuery(
+    questionQueryKeys.listWithChannelID(
+      {
+        limit: 10,
+        offset: 0,
+      },
+      id
+    )
+  );
+
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["common", "sentence"])),
+      ...(await serverSideTranslations(locale, ["common", "course"])),
+      dehydratedState: dehydrate(queryClient),
     },
   };
 }

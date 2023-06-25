@@ -27,9 +27,9 @@ const Home: NextPage = () => {
       </Head>
       <HomeCover />
       <HomeCategories />
+      <HomeStatistic />
       <HomeTopInstructor />
       <HomeHotCourse />
-      <HomeStatistic />
       <HomeSubcribe />
     </>
   );

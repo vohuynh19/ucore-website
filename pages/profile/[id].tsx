@@ -1,14 +1,13 @@
-import { useUserDetail } from "hooks";
-import type { NextPage } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { GetStaticPaths, NextPage } from "next";
 import Head from "next/head";
-import { useRouter } from "next/router";
-import { userMock } from "src/infra/https/entities/user/user.mock";
-import { ComingSoon, ProfileUserProfile, ProfileLayout } from "ui";
-import { GetStaticPaths } from "next";
-import { Tabs } from "antd";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
-import { API_SERVICES, userQueryKeys, REACT_QUERY_KEYS } from "src/infra/https";
+import { useRouter } from "next/router";
+
+import { useUserDetail } from "hooks";
+import { userQueryKeys } from "src/infra/https";
+
+import { ComingSoon, ProfileUserProfile } from "ui";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const queryClient = new QueryClient();
@@ -31,9 +30,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(REACT_QUERY_KEYS.GET_INSTRUCTOR(id), () =>
-    API_SERVICES.USER.getUserDetail(id)
-  );
+  await queryClient.prefetchQuery(userQueryKeys.detail(id));
 
   return {
     props: {
@@ -54,13 +51,11 @@ const ProfileUserPage: NextPage = () => {
         <title>Profile - Vicodemy</title>
       </Head>
 
-      {/* <ProfileLayout> */}
       {process.env.NEXT_PUBLIC_ENV === "production" ? (
         <ComingSoon />
       ) : (
-        <ProfileUserProfile userProfile={profile || userMock} />
+        profile && <ProfileUserProfile userProfile={profile} />
       )}
-      {/* </ProfileLayout> */}
     </>
   );
 };

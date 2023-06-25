@@ -26,6 +26,7 @@ export const theme = {
     primaryBg: COLORS.PURPLE_3,
     secondaryBg: COLORS.GREY_5,
     linearGradientBg: `linear-gradient(180deg, #EAF1F880 30%, #EAF1F800 100%)`,
+    inverseLinearGradientBg: `linear-gradient(180deg, #EAF1F800 30%, ${COLORS.PURPLE_6} 80%, white 100%)`,
     purpleGradientBg: `linear-gradient(318.61deg, #686ae3, #6e2b89 96.92%), #fff`,
 
     cardHighlightHeader: COLORS.GREY_7,

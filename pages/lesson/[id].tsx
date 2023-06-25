@@ -1,8 +1,10 @@
 import { GetStaticPaths } from "next";
 import { useRouter } from "next/router";
+import Head from "next/head";
 import { useMemo } from "react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
+import { useTranslation } from "react-i18next";
 
 import {
   API_SERVICES,
@@ -10,14 +12,12 @@ import {
   REACT_QUERY_KEYS,
 } from "src/infra/https";
 import { useCourseDetail, useLesson, useUserCourse } from "hooks";
+import { PAGE_ROUTES } from "@constants";
 
 import { Video } from "ui/molecules";
 import { LessonLayout } from "ui/templates";
 import { Typography } from "antd";
 import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
-import { PAGE_ROUTES } from "@constants";
-import Head from "next/head";
-import { useTranslation } from "react-i18next";
 
 const { Title } = Typography;
 

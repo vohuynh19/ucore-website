@@ -7,12 +7,10 @@ import { InstructorCard, TopInstructorHeader } from "ui/molecules";
 
 import { Container } from "./styled";
 import { useMediaQuery } from "react-responsive";
-import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 const HomeTopInstructor = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
-  const isDesktop = useMediaQuery({ minWidth: 992 });
 
   let maxInstructors;
 
@@ -30,15 +28,23 @@ const HomeTopInstructor = () => {
   });
 
   return (
-    <Container>
+    <Container data-aos="fade-up" data-aos-anchor-placement="top-bottom">
       <TopInstructorHeader />
 
       <SizeBox height={48} />
 
       <Row gutter={[16, 32]}>
-        {(data?.data || []).slice(0, maxInstructors).map((user) => (
+        {(data?.data || []).slice(0, maxInstructors).map((user, index) => (
           <Col key={user.id} xs={24} sm={12} md={6} lg={6}>
-            <InstructorCard {...user} />
+            <InstructorCard
+              {...user}
+              cardProps={{
+                "data-aos": "fade-right",
+                "data-aos-easing": "ease-in-sine",
+                "data-aos-duration": "300",
+                "data-aos-delay": 300 * index,
+              }}
+            />
           </Col>
         ))}
       </Row>

@@ -21,9 +21,17 @@ const HomeHotCourse = () => {
       <SizeBox height={48} />
 
       <Row gutter={[32, 32]}>
-        {(data?.data || []).slice(0, maxDisplayCourse).map((course) => (
+        {(data?.data || []).slice(0, maxDisplayCourse).map((course, index) => (
           <Col key={course._id} xs={24} sm={12} md={8} lg={6}>
-            <CourseCard {...course} />
+            <CourseCard
+              {...course}
+              cardProps={{
+                "data-aos": "fade-right",
+                "data-aos-easing": "ease-in-sine",
+                "data-aos-duration": "300",
+                "data-aos-delay": 300 * index,
+              }}
+            />
           </Col>
         ))}
       </Row>

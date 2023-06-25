@@ -24,7 +24,7 @@ const HomeStatisticItem = ({ label, value }: THomeStatisticItem) => {
 
   return (
     <Waypoint onEnter={() => setInview(true)}>
-      <Container data-aos="zoom-in" data-aos-offset="300">
+      <Container data-aos="zoom-in">
         <animated.h1>{number.to((n) => n.toFixed(0))}</animated.h1>
         <p>{label}</p>
       </Container>
