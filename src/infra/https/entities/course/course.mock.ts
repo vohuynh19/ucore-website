@@ -1,5 +1,4 @@
 import { userMock } from "../user/user.mock";
-import { mockCourseVideos } from "../course-lesson/course-lesson.mock";
 import { mockCourseTopics } from "../course-topic/course-topic.mock";
 import { mockCourseCategories } from "./course-category.mock";
 

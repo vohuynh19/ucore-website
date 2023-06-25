@@ -28,6 +28,7 @@ const QuestionAndAnswer = () => {
           pagination={pagination}
           questions={data?.data || []}
           total={data?.total || 0}
+          ableToAnswer={false}
         />
       </QuestionLayout>
     </Container>
