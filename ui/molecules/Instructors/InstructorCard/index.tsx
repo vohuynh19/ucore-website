@@ -14,11 +14,18 @@ const { Text, Link, Title, Paragraph } = Typography;
 const InstructorCard = (props: User & { cardProps?: any }) => {
   const { t: t } = useTranslation("common");
   const imgRef = useRef<HTMLImageElement>(null);
+
   const [isMobile, setIsMobile] = useState(false);
+  const [imgHeight, setImgHeight] = useState(144);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
+      const img = imgRef.current;
+      if (img) {
+        const width = img.offsetWidth;
+        setImgHeight((width * 9) / 16); // Calculate the height based on the width and the 16:9 ratio
+      }
     };
 
     handleResize();
@@ -47,7 +54,11 @@ const InstructorCard = (props: User & { cardProps?: any }) => {
             src={props.avatar || defaultAvatar}
             onError={onError}
             onClick={() => router.push(PAGE_ROUTES.USER_PROFILE(props.id))}
-            style={{ height: "100%", width: "100%", objectFit: "cover" }}
+            style={{
+              height: `${imgHeight}px`,
+              width: "100%",
+              objectFit: "cover",
+            }}
           />
         }
       >

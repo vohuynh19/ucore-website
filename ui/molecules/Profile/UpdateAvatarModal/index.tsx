@@ -96,7 +96,7 @@ export const UpdateAvatarModal: ForwardRefRenderFunction<any, Props> = (
             },
           ]}
         >
-          <ImgCrop>
+          <ImgCrop aspect={16 / 9}>
             <Upload
               listType="picture-card"
               name="imageUri"

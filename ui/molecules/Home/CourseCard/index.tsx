@@ -13,18 +13,25 @@ import {
 import PersonIcon from "@mui/icons-material/Person";
 import { theme } from "styles";
 import CourseCardPopover from "../CourseCardPopover";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const CourseCard = (props: SCourse & { cardProps?: any }) => {
   const router = useRouter();
 
   const { t } = useTranslation("common");
+  const imgRef = useRef<HTMLImageElement>(null);
 
   const [isMobile, setIsMobile] = useState(false);
+  const [imgHeight, setImgHeight] = useState(144);
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
+      const img = imgRef.current;
+      if (img) {
+        const width = img.offsetWidth;
+        setImgHeight((width * 9) / 16); // Calculate the height based on the width and the 16:9 ratio
+      }
     };
 
     handleResize();
@@ -44,9 +51,14 @@ const CourseCard = (props: SCourse & { cardProps?: any }) => {
         cover={
           <img
             onClick={() => router.push(PAGE_ROUTES.COURSE_DETAIL(props._id))}
+            ref={imgRef}
             alt="cover"
             src={props.thumnail}
-            style={{ height: "144px", objectFit: "cover" }}
+            style={{
+              height: `${imgHeight}px`,
+              width: "100%",
+              objectFit: "cover",
+            }}
           />
         }
       >

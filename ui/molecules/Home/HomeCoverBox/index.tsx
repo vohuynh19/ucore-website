@@ -19,6 +19,18 @@ const HomeCoverBox = () => {
       <Button
         size="large"
         type="primary"
+        onClick={() =>
+          router.push(
+            "https://discord.com/channels/1073065344064819280/1110497103744073789"
+          )
+        }
+      >
+        {t("joinVicodemyDiscordCommunity")}
+      </Button>
+
+      <Button
+        size="large"
+        type="primary"
         onClick={() => router.push(PAGE_ROUTES.COURSE_LIST)}
       >
         {t("moreCourses")}
