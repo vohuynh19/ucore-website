@@ -15,9 +15,9 @@ const QuestionService = {
         })),
       })),
 
-      getQuestionPaginationWithChannelId: (filter: PaginationType, guideId: string) =>
+      getQuestionPaginationWithGuideId: (filter: PaginationType, guideId: string) =>
       axiosInstance
-        .get<PaginationResponse<SQuestion>>(API_ENDPONTS.question.GET_QUESTIONS_BY_CHANNEL(guideId), {
+        .get<PaginationResponse<SQuestion>>(API_ENDPONTS.question.GET_QUESTIONS_BY_GUIDE(guideId), {
           params: filter,
         })
         .then((res) => ({

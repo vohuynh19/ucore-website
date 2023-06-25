@@ -40,7 +40,7 @@ const ResolveFilter = () => {
   return (
     <Container>
       <Form.Item name="resolve" label={t("resolveState")}>
-        <Checkbox.Group defaultValue={[RESOLVE_OPTION.RESOLVED]}>
+        <Checkbox.Group>
           <Row>
             {options.map((option) => (
               <Col key={option.value} span={24}>

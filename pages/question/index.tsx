@@ -11,7 +11,7 @@ import {
 } from "ui";
 import { Form } from "antd";
 import { useTablePagination, useQuestionPublic } from "hooks";
-import { SORT_OPTION } from "ui/organisms/CourseList/types";
+import { RESOLVE_OPTION, SORT_OPTION } from "ui/organisms/CourseList/types";
 import { PAGE_ROUTES } from "@constants";
 import { useDebouncedCallback } from "use-debounce";
 
@@ -23,7 +23,7 @@ export async function getStaticProps({ locale }: StaticProps) {
   };
 }
 
-const MyAccount: NextPage = () => {
+const QuestionPage: NextPage = () => {
   const { t } = useTranslation(["common", "sentence"]);
   const [form] = Form.useForm();
 
@@ -37,6 +37,7 @@ const MyAccount: NextPage = () => {
 
   const handleFormChange = () => {
     const changeObj = form.getFieldsValue();
+    console.log(changeObj);
 
     const queryData: any = {};
 
@@ -104,13 +105,25 @@ const MyAccount: NextPage = () => {
     }
   };
 
+  const initialValues = {
+    category: undefined,
+    resolve: RESOLVE_OPTION.RESOLVED,
+    sort: undefined,
+    search: undefined,
+  };
+
   return (
     <>
       <Head>
         <title>Question - Vicodemy</title>
       </Head>
 
-      <Form form={form} layout="vertical" onFieldsChange={onFieldsChange}>
+      <Form
+        form={form}
+        layout="vertical"
+        initialValues={initialValues}
+        onFieldsChange={onFieldsChange}
+      >
         <QuestionLayout
           RightComponent={<QuestionRightFilter onResetForm={onResetForm} />}
           TopComponent={<QuestionTopFilter />}
@@ -120,6 +133,7 @@ const MyAccount: NextPage = () => {
             pagination={pagination}
             questions={data?.data || []}
             total={data?.total || 0}
+            ableToAnswer={false}
           />
         </QuestionLayout>
       </Form>
@@ -127,4 +141,4 @@ const MyAccount: NextPage = () => {
   );
 };
 
-export default MyAccount;
+export default QuestionPage;

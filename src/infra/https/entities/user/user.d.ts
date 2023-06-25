@@ -4,6 +4,9 @@ type User = {
   avatar: string;
   role: UserRole;
 
+  discordId: string;
+  guideId: string;
+
   displayName: string;
   profileStory: string;
   profileTitles: string;
@@ -22,6 +25,9 @@ type SUser = {
   imageUri: string;
   role: UserRole;
   email: string;
+
+  discordId: string;
+  guideId: string;
 
   // profile info
   displayName: string;

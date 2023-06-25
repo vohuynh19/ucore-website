@@ -7,9 +7,9 @@ export const useQuestionPublic = (params: PaginationType<SQuestion>) => {
   });
 };
 
-export const useQuestionWithChannelId = (params: PaginationType<SQuestion>, channelId: string) => {
+export const useQuestionWithGuideId = (params: PaginationType<SQuestion>, guideId: string) => {
   return useQuery({
-    ...questionQueryKeys.listWithChannelID(params, channelId),
+    ...questionQueryKeys.listWithGuideID(params, guideId),
   });
 };
 
