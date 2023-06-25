@@ -5,14 +5,14 @@ import {
   QuestionRightFilter,
   QuestionTopFilter,
 } from "ui/organisms/Question";
-import { useQuestion, useTablePagination } from "hooks";
+import { useQuestionPublic, useTablePagination } from "hooks";
 import { useRouter } from "next/router";
 
 const QuestionAndAnswer = () => {
   const { filter, pagination } = useTablePagination(8);
   const router = useRouter();
 
-  const { data } = useQuestion({
+  const { data } = useQuestionPublic({
     ...filter,
     ...router.query,
   });
