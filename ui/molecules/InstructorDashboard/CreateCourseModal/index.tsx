@@ -54,6 +54,7 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
       "courseIntro",
       "thumnail",
       "description",
+      "shortDescription",
       "achivementDes",
       "prerequisiteDes",
     ];
@@ -198,6 +199,18 @@ export const CreateCourseModal: ForwardRefRenderFunction<any, Props> = (
               label="Course Description"
             >
               <TextEditor placeholder="Please enter course Description" />
+            </Form.Item>
+
+            <Form.Item
+              required
+              rules={[{ required: true }]}
+              name="shortDescription"
+              label="Course short description"
+            >
+              <Input.TextArea
+                rows={3}
+                placeholder="Please enter course short description"
+              />
             </Form.Item>
 
             <Form.Item

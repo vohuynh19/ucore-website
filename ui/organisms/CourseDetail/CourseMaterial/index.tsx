@@ -6,11 +6,11 @@ import SignalCellularAltIcon from "@mui/icons-material/SignalCellularAlt";
 import SchoolIcon from "@mui/icons-material/School";
 import UpdateIcon from "@mui/icons-material/Update";
 
-import { useEnrollCourse, useUserCourse } from "hooks";
+import { useEnrollCourse, useUserCourse, useUserDetail } from "hooks";
 import { courseQueryKeys, queryClientInstance } from "src/infra/https";
 import { PAGE_ROUTES } from "@constants";
 
-import { Button, SizeBox } from "ui/atoms";
+import { Button, MarkupView, SizeBox } from "ui/atoms";
 import { UserProfile } from "ui/molecules";
 
 import { Container, StyledCard } from "./styled";
@@ -26,6 +26,7 @@ const CourseMaterial = ({ course }: Props) => {
   const { t } = useTranslation("course");
   const { mutate } = useEnrollCourse();
   const { data } = useUserCourse(course?._id || "");
+  const { data: teacherProfile } = useUserDetail(course?.teacherId || "");
   const router = useRouter();
 
   const enrollCourse = () => {
@@ -112,6 +113,7 @@ const CourseMaterial = ({ course }: Props) => {
 
             <UserProfile
               avatarLink={
+                teacherProfile?.avatar ||
                 "https://vicodemy.com/wp-content/uploads/2023/03/0901df4f8a204c7e1531.jpeg"
               }
               name={course?.teacherName || ""}
@@ -123,7 +125,9 @@ const CourseMaterial = ({ course }: Props) => {
         <Text>{t("All Level")}</Text>
 
         <Title level={3}>{t("Requirements")}</Title>
-        <Text>{course?.prerequisiteDes}</Text>
+        <Text>
+          <MarkupView html={course?.prerequisiteDes || ""} />
+        </Text>
       </StyledCard>
     </Container>
   );

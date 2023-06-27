@@ -89,5 +89,7 @@
   "yourCode": "Code của bạn",
   "access": "Truy cập",
   "checkoutSentence1": "Vào channel vicodemy-newbies và chat ",
-  "checkoutSentence2": "/verify {your email} {your code}"
+  "checkoutSentence2": "/verify {your email} {your code}",
+  "more": "xem thêm",
+  "updated":"Cập nhập"
 }

@@ -89,5 +89,7 @@
   "yourCode": "Your Code",
   "access": "Access",
   "checkoutSentence1": "Go to channel vicodemy-newbies and use ",
-  "checkoutSentence2": "/verify {your email} {your code}"
+  "checkoutSentence2": "/verify {your email} {your code}",
+  "more": "more",
+  "updated":"Updated"
 }

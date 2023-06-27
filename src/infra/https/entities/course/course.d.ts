@@ -2,6 +2,7 @@ type Course = {
   id: string;
   name: string;
   description: string;
+  shortDescription: string;
   thumbnailUrl: string;
   author: User;
   avgRating: number;
@@ -27,7 +28,8 @@ type SCourse = {
   teacherName: string;
   name: string;
   description: string;
-  achievementDes: string;
+  shortDescription: string;
+  achivementDes: string;
   prerequisiteDes: string;
   rating: number;
   price: number;

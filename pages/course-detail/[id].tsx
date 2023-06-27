@@ -28,6 +28,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   );
 
   let paths: any[] = [];
+
   data.data.map((course) => {
     for (const locale of locales) {
       paths.push({
@@ -66,6 +67,9 @@ const CourseDetailPage = () => {
 
   const { data } = useCourseDetail(id as string);
 
+  console.log(id);
+  console.log(data);
+
   return (
     <CourseLayout
       HeaderComponent={
@@ -97,8 +101,10 @@ const CourseDetailPage = () => {
               <CourseInformation
                 courseId={data?._id || ""}
                 aboutCourse={data?.description || ""}
-                whatWillLearn={data?.achievementDes || ""}
+                whatWillLearn={data?.achivementDes || ""}
                 sections={data?.sections || []}
+                showSections={true}
+                shortDescription={data?.shortDescription || ""}
               />
             ),
           },

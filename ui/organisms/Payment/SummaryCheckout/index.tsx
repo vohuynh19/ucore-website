@@ -1,13 +1,19 @@
 import { Divider, Space, Tour, TourProps, Typography } from "antd";
 import { useTranslation } from "next-i18next";
-import { PAGE_ROUTES } from "@constants";
+import { API_HOST, PAGE_ROUTES } from "@constants";
 
 import { Button, SizeBox } from "ui/atoms";
 import { PriceItem } from "ui/molecules";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { useGetVerifyCode, useOwernOfGuide, useUserDetail } from "hooks";
+import {
+  useGetVerifyCode,
+  useMyProfile,
+  useOwernOfGuide,
+  useUserDetail,
+} from "hooks";
 import { HARD_URL } from "@constants";
+import { API_ENDPONTS } from "src/infra/https";
 
 export const SummaryPayment = {
   originalPrice: 200000,
@@ -27,6 +33,7 @@ const Checkout: React.FC<Props> = ({}) => {
   let { discordId, code, guideId } = router.query;
   const { data: verifyCode } = useGetVerifyCode(discordId as string);
   const { data: profile } = useOwernOfGuide(guideId as string);
+  const { data: myProfile } = useMyProfile();
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -75,8 +82,15 @@ const Checkout: React.FC<Props> = ({}) => {
   ];
 
   const handleCompleteCheckout = () => {
-    window.open(HARD_URL.MOMO_CHECKOUT, "_blank");
-    setOpen(true);
+    if (myProfile) {
+      window.open(HARD_URL.MOMO_CHECKOUT, "_blank");
+      setOpen(true);
+    } else {
+      // TODO: cannot route to checkout?discordId=...&guideId=.... it auto remove after & fuck.
+      const { protocol, host } = window.location;
+      const completeUrl = `${protocol}//${host}`;
+      router.push(`${API_HOST}${API_ENDPONTS.auth.LOGIN(completeUrl)}`);
+    }
   };
 
   return (

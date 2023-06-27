@@ -5,15 +5,18 @@ import { useRouter } from "next/router";
 import { PAGE_ROUTES } from "@constants";
 import { useUserCourse } from "hooks";
 import { useTranslation } from "react-i18next";
+import { MarkupView } from "ui/atoms";
 
 type Props = {
+  shortDescription: string;
   courseId: string;
   aboutCourse: string;
   whatWillLearn: string;
   sections: SSection[];
+  showSections: boolean;
 };
 
-const { Title, Text } = Typography;
+const { Title, Text, Paragraph } = Typography;
 
 const CourseInformation = (props: Props) => {
   const router = useRouter();
@@ -47,26 +50,35 @@ const CourseInformation = (props: Props) => {
 
   return (
     <Container>
-      {props.aboutCourse && (
+      {props.shortDescription && (
         <>
-          <Title level={3}>{t("aboutCourse")}</Title>
-          <Text>{props.aboutCourse}</Text>
+          <Paragraph>{props.shortDescription}</Paragraph>
         </>
       )}
-
-      <br />
-
       {props.whatWillLearn && (
         <>
           <Title level={3}>{t("willLearn")}</Title>
-          <Text>{props.whatWillLearn}</Text>
+          <MarkupView html={props.whatWillLearn} />
         </>
       )}
 
       <br />
 
+      {props.aboutCourse && (
+        <>
+          <Title level={3}>{t("aboutCourse")}</Title>
+
+          <MarkupView html={props.aboutCourse} />
+        </>
+      )}
+      <br />
+
       <Title level={3}>{t("courseContent")}</Title>
-      <DropdownMenu activeKey="" items={getSections() || []} />
+      {props.showSections ? (
+        <DropdownMenu activeKey="" items={getSections() || []} />
+      ) : (
+        <div></div>
+      )}
 
       <br />
     </Container>

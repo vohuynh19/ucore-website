@@ -32,6 +32,7 @@ type CreateCoursePayload = {
   thumnail: string;
   categoryId: string;
   description: string;
+  shortDescription: string;
   achivementDes: string;
   prerequisiteDes: string;
   price: number;

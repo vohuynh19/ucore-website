@@ -6,8 +6,7 @@ export const mockCourse: Course = {
   id: "1",
   name: "Unity Beginners – Hướng Dẫn Làm Game 2D Bắn Súng Top-Down",
   description: "",
-  thumbnailUrl:
-    "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
+  thumbnailUrl: "https://vicodemy.com/wp-content/uploads/2023/03/Huong-dan-lam-game-768x432.png",
   author: userMock,
   avgRating: 4,
   categories: mockCourseCategories,
@@ -21,6 +20,7 @@ export const mockCourse: Course = {
   materialsIncluded: "Test",
   requirements: "Test",
   targetedAudience: "Test",
+  shortDescription: ""
 };
 
 export const mockCourses: Course[] = [

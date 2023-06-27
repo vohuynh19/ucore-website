@@ -41,9 +41,8 @@ const UserProfile = ({ avatarLink, name }: Props) => {
 
         <Space direction="vertical">
           <Typography.Title level={5}>{name}</Typography.Title>
+          <Button> {t("seeInDiscord")}</Button>
         </Space>
-
-        <Button> {t("seeInDiscord")}</Button>
       </Space>
     </Container>
   );
