@@ -8,3 +8,4 @@ export { default as ProfileProfileHeader } from "./ProfileHeader";
 export { default as ProfileQuestionAndAnswer } from "./QuestionAndAnswer";
 export { default as ProfileReview } from "./Review";
 export { default as ProfileSetting } from "./Setting";
+export { default as ConnectDiscord } from "./ConnectDiscord";

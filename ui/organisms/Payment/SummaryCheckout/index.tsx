@@ -1,64 +1,81 @@
-import { Divider, Tour, TourProps, Typography } from "antd";
+import { Divider, Space, Tour, TourProps, Typography } from "antd";
 import { useTranslation } from "next-i18next";
-import Link from "next/link";
-
 import { PAGE_ROUTES } from "@constants";
 
 import { Button, SizeBox } from "ui/atoms";
 import { PriceItem } from "ui/molecules";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { useGetVerifyCode, useOwernOfGuide, useUserDetail } from "hooks";
+import { HARD_URL } from "@constants";
 
 export const SummaryPayment = {
   originalPrice: 200000,
-  discounts: -70000,
+  discounts: -0,
   priceSymbol: "đ",
-  total: 130000,
+  total: 200000,
 };
+
+const { Text, Link, Title, Paragraph } = Typography;
 
 interface Props {}
 
 const Checkout: React.FC<Props> = ({}) => {
   const { t } = useTranslation(["common", "sentence"]);
 
+  const router = useRouter();
+  let { discordId, code, guideId } = router.query;
+  const { data: verifyCode } = useGetVerifyCode(discordId as string);
+  const { data: profile } = useOwernOfGuide(guideId as string);
+
   const [open, setOpen] = useState<boolean>(false);
 
   const steps: TourProps["steps"] = [
     {
-      title: "Payment",
-      description: "Have you done payment",
-      target: null,
-    },
-    {
-      title: "Join Private Discord",
+      title: t("payment"),
       description: (
-        <Typography.Paragraph>
-          {t("Join discord: ")}
-          <Link href={"https://discord.gg/dDQHmcKY"}>
-            {` SIReal's private channel`}
-          </Link>
-          <p>{t("Your Code: ")}</p>
-        </Typography.Paragraph>
+        <Space direction="vertical">
+          <Text>Bạn đã thanh toán chưa ?</Text>
+          <Text>
+            <Text strong>Chưa </Text>! Không sao, ấn "Next"
+          </Text>
+        </Space>
       ),
       target: null,
     },
     {
-      title: "Access",
+      title: t("joinPrivateDiscord"),
       description: (
-        <Typography.Paragraph>
-          {t(
-            "Go to channel Vicodemy and message /verify {your email} {your code}"
-          )}
-        </Typography.Paragraph>
+        <Space direction="vertical">
+          {t("joinDiscord")}
+          <Link
+            target="_blank"
+            href={profile?.profileDiscordLink || HARD_URL.VICODEMY_WELCOME}
+          >
+            {` ${profile?.displayName || "Vicodemy"}'s private channel`}
+          </Link>
+          <Text>
+            {`${t("yourCode")}: `}
+            <Text strong>{verifyCode?.code}</Text>
+          </Text>
+        </Space>
+      ),
+      target: null,
+    },
+    {
+      title: t("access"),
+      description: (
+        <Text>
+          {t("checkoutSentence1")}
+          <Text strong>{t("checkoutSentence2")}</Text>
+        </Text>
       ),
       target: null,
     },
   ];
 
   const handleCompleteCheckout = () => {
-    window.open(
-      "https://payment.momo.vn/v2/gateway/store?t=UEFZTUVOVF9MSU5LX1YyfDFlOWM3ZGEwLWZjN2EtNDIwZi1hYTNlLTIzNjVlNzJmMWUxOA==",
-      "_blank"
-    );
+    window.open(HARD_URL.MOMO_CHECKOUT, "_blank");
     setOpen(true);
   };
 

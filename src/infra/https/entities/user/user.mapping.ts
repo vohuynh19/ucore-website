@@ -12,8 +12,8 @@ export const userMapping = (user: SUser): User => {
     profileYoutubeCount: user.profileYoutubeCount || "",
     profileSubscriber: user.profileSubscriber || "",
     profileTotalCourse: user.profileTotalCourse || "",
-    discordId: user.discordId,
-    guideId: user.guideId,
+    discordId: user.discordId || "",
+    guideId: user.guideId || "",
   };
 };
 

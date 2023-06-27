@@ -14,6 +14,7 @@ import { useTablePagination, useQuestionWithGuideId } from "hooks";
 import { RESOLVE_OPTION, SORT_OPTION } from "ui/organisms/CourseList/types";
 import { PAGE_ROUTES } from "@constants";
 import { useDebouncedCallback } from "use-debounce";
+import { useEffect } from "react";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   return {
@@ -37,6 +38,10 @@ const QuestionWithIdPage: NextPage = () => {
   const { filter, pagination } = useTablePagination(8);
   const router = useRouter();
   let { id } = router.query;
+
+  useEffect(() => {
+    handleFormChange();
+  }, []);
 
   const { data } = useQuestionWithGuideId(
     {
@@ -117,7 +122,7 @@ const QuestionWithIdPage: NextPage = () => {
 
   const initialValues = {
     category: undefined,
-    resolve: RESOLVE_OPTION.RESOLVED,
+    resolve: undefined,
     sort: undefined,
     search: undefined,
   };

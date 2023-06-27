@@ -30,6 +30,7 @@ const Home: NextPage = () => {
       <HomeStatistic />
       <HomeTopInstructor />
       <HomeHotCourse />
+
       <HomeSubcribe />
     </>
   );

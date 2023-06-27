@@ -14,6 +14,7 @@ import ReviewsIcon from "@mui/icons-material/Reviews";
 import HistoryIcon from "@mui/icons-material/History";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LinkIcon from "@mui/icons-material/Link";
 
 import { Container } from "./styled";
 
@@ -57,6 +58,11 @@ const MenuSiderList = () => {
         PAGE_ROUTES.PROFILE.QNA,
         <QuestionAnswerIcon />
       ),
+      // getItem(
+      //   t("connectDiscord"),
+      //   PAGE_ROUTES.PROFILE.CONNECT_DISCORD,
+      //   <LinkIcon />
+      // ),
     ],
     [t]
   );

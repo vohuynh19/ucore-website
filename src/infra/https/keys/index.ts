@@ -7,3 +7,5 @@ export * from "./statistic";
 export * from "./image";
 export * from "./lesson";
 export * from "./section";
+export * from "./misc";
+export * from "./discord";

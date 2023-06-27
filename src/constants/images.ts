@@ -18,6 +18,7 @@ const IMAGES_URL = {
   INSTRUCTOR_4: "/images/instructors/culi.png",
   INSTRUCTOR_DEMO: "/images/instructors/instructor-demo.png",
   PROFILE_PANEL: "/images/cover-photo.jpg",
+  THANK:"/images/thank3.png",
 };
 
 export default IMAGES_URL;

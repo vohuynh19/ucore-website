@@ -14,6 +14,7 @@ import { useTablePagination, useQuestionPublic } from "hooks";
 import { RESOLVE_OPTION, SORT_OPTION } from "ui/organisms/CourseList/types";
 import { PAGE_ROUTES } from "@constants";
 import { useDebouncedCallback } from "use-debounce";
+import { useEffect } from "react";
 
 export async function getStaticProps({ locale }: StaticProps) {
   return {
@@ -37,6 +38,7 @@ const QuestionPage: NextPage = () => {
 
   const handleFormChange = () => {
     const changeObj = form.getFieldsValue();
+
     console.log(changeObj);
 
     const queryData: any = {};
@@ -107,7 +109,7 @@ const QuestionPage: NextPage = () => {
 
   const initialValues = {
     category: undefined,
-    resolve: RESOLVE_OPTION.RESOLVED,
+    resolve: undefined,
     sort: undefined,
     search: undefined,
   };

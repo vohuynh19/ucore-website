@@ -79,5 +79,15 @@
   "answer": "Answer",
   "askBy": "Ask by",
   "inCommunity": "In community",
-  "seeInDiscord": "See in discord"
+  "seeInDiscord": "See in discord",
+  "connectDiscord": "Connect Discord",
+  "unlinked": "Unlinked",
+  "linked": "Linked",
+  "yourDiscordChannel": "Your Discord Channel",
+  "payment": "Payment",
+  "joinPrivateDiscord":"Join private discord",
+  "yourCode": "Your Code",
+  "access": "Access",
+  "checkoutSentence1": "Go to channel vicodemy-newbies and use ",
+  "checkoutSentence2": "/verify {your email} {your code}"
 }

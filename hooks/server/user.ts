@@ -14,6 +14,12 @@ export const useUserDetail = (id: string) => {
   });
 };
 
+export const useOwernOfGuide = (guideId: string) => {
+  return useQuery({
+    ...userQueryKeys.ownerGuide(guideId),
+  });
+};
+
 export const useUsers = (filter: PaginationType) => {
   return useQuery({
     ...userQueryKeys.list(filter),
@@ -33,5 +39,11 @@ export const useRegisterInstructor = () => {
 export const useUpdateProfile = () => {
   return useMutation<any, any, UserProfilePayload>({
     ...userMutationKeys.updateUserProfile(),
+  });
+};
+
+export const useLinkInstructorDiscord = () => {
+  return useMutation<any, any, LinkDiscordPayload>({
+    ...userMutationKeys.linkInstructorDiscord(),
   });
 };

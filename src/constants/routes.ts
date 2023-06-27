@@ -22,12 +22,13 @@ const PAGE_ROUTES = {
     ORDER_HISTORY: "/profile/order-history",
     QNA: "/profile/qna",
     SETTING: "/profile/setting",
+    CONNECT_DISCORD: "/profile/connect-discord",
   },
   INSTRUCTOR_DASHBOARD: {
     DASHBOARD: "/instructor-dashboard",
     COURSES: "/instructor-dashboard/course",
     LESSONS: "/instructor-dashboard/lesson",
-  },
+  }
 };
 
 export const PRIVATE_ROUTES = [

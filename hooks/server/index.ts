@@ -9,3 +9,4 @@ export * from "./image";
 export * from "./question";
 export * from "./lesson";
 export * from "./section";
+export * from "./discord";

@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   data.data.map((user) => {
     for (const locale of locales) {
       paths.push({
-        params: { id: user.name },
+        params: { id: user.id },
         locale,
       });
     }

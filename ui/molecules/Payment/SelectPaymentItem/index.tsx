@@ -1,4 +1,4 @@
-import { Radio } from "antd";
+import { Radio, Typography } from "antd";
 import {
   Container,
   PaymentHead,
@@ -26,13 +26,14 @@ const SelectPaymentItem = ({
   content,
   isSelected = false,
 }: Props) => {
+  console.log(paymentMethod);
   return (
     <Container>
       <PaymentHead>
         <LeftHead>
           <Radio value={value} />
           {icon}
-          {paymentMethod}
+          <Typography.Text>{paymentMethod}</Typography.Text>
         </LeftHead>
 
         <RightHead>{avatar}</RightHead>

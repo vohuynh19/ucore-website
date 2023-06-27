@@ -22,6 +22,10 @@ export const userQueryKeys = createQueryKeys("user", {
     queryKey: ["instructors", { filters }],
     queryFn: () => API_SERVICES.USER.getInstructorList(filters),
   }),
+  ownerGuide: (guideId: string) => ({
+    queryKey: [guideId],
+    queryFn: () => API_SERVICES.USER.getOwnerOfGuide(guideId),
+  }),
 });
 
 export const userMutationKeys = createMutationKeys("user", {
@@ -32,5 +36,10 @@ export const userMutationKeys = createMutationKeys("user", {
   updateUserProfile: () => ({
     mutationKey: ["update-profile"],
     mutationFn: (payload: UserProfilePayload) => API_SERVICES.USER.updateUserProfile(payload),
+  }),
+
+  linkInstructorDiscord: () => ({
+    mutationKey: ["link-discord"],
+    mutationFn: (payload: LinkDiscordPayload) => API_SERVICES.USER.linkInstructorDiscord(payload),
   }),
 });

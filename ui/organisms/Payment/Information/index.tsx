@@ -21,20 +21,8 @@ const paymentMethods = [
 
 export const orderDetails = [
   {
-    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title: "Unity Beginer Game Developer",
-    price: 200000,
-    priceSymbol: "đ",
-  },
-  {
-    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title: "Subscription To SIReal",
-    price: 200000,
-    priceSymbol: "đ",
-  },
-  {
-    image: "https://img-c.udemycdn.com/course/100x100/1110904_66f5_8.jpg",
-    title: "C# Beginer Game Developer",
+    image: IMAGES_URL.THANK,
+    title: "1 tháng đăng ký thành viên",
     price: 200000,
     priceSymbol: "đ",
   },
@@ -81,6 +69,15 @@ const PaymentInformation = () => {
           price={order.price}
         />
       ))}
+
+      <Typography.Title level={4}>
+        Lưu ý: Chúng tôi vẫn đang phát triển thanh toán tự động bằng MOMO, Tham
+        gia discord miễn phí và ủng hộ bằng tấm lòng
+      </Typography.Title>
+      <Typography.Text>
+        Ấn nút "Hoàn tất thanh toán" và lấy code đăng ký (bạn có thể bỏ qua
+        thanh toán)
+      </Typography.Text>
     </div>
   );
 };

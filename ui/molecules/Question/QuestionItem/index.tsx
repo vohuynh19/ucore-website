@@ -20,7 +20,7 @@ const QuestionItem = ({ questionObj, ableToAnswer }: Props) => {
   );
   const [editingAnswer, setEditingAnswer] = useState(false);
 
-  const { data: profile } = useUserDetail(questionObj.ownerId as string);
+  // const { data: profile } = useUserDetail(questionObj.ownerId as string);
   const { mutate, isLoading } = useAnswerQuestion();
 
   const handleEditAnswer = () => {
@@ -101,7 +101,7 @@ const QuestionItem = ({ questionObj, ableToAnswer }: Props) => {
               {questionObj.reporter}
             </Text>
 
-            {profile ? (
+            {/* {profile ? (
               <div>
                 <Text strong>{`${t("inCommunity")}:`}</Text>
                 <Row>
@@ -113,7 +113,7 @@ const QuestionItem = ({ questionObj, ableToAnswer }: Props) => {
               </div>
             ) : (
               <></>
-            )}
+            )} */}
           </Space>
         </Col>
       </Row>

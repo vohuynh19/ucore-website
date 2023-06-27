@@ -49,6 +49,13 @@ type UserProfilePayload = {
   profileTotalCourse: string;
 };
 
+type LinkDiscordPayload = {
+  uid: string;
+  email:string;
+  discordId: string;
+  guideId: string;
+};
+
 type VideoPayload = {
   name: string;
   sectionId: string;
@@ -71,6 +78,13 @@ type SectionPayload = {
 type AnswerQuestionPayload = {
   questionId: string
   answer: string;
+};
+
+type UserFeedbackPayload = {
+  email: string
+  feedback: string;
+  preName: string;
+  phoneNumber: string;
 };
 
 type PaginationResponse<T> = {

@@ -57,7 +57,7 @@
   "settings":"Cài đặt",
   "profile":"Hồ sơ",
   "edit":"Chỉnh sửa",
-  "joinDiscord":"Tham gia Discord",
+  "joinDiscord":"Tham gia discord",
   "introduce":"Giới thiệu",
   "becomeInstructor":"Trở thành giảng viên",
   "coursesManagement":"Quản lý khoá học",
@@ -79,5 +79,15 @@
   "answer": "Trả lời",
   "askBy": "Hỏi bởi",
   "inCommunity": "Trong cộng đồng",
-  "seeInDiscord": "Xem trong discord"
+  "seeIndiscord": "Xem trong discord",
+  "connectDiscord": "Kết nối Discord",
+  "unlinked": "Unlinked",
+  "linked": "Linked",
+  "yourDiscordChannel": "Your discord channel",
+  "payment": "Thanh toán",
+  "joinPrivateDiscord":"Join private discord",
+  "yourCode": "Code của bạn",
+  "access": "Truy cập",
+  "checkoutSentence1": "Vào channel vicodemy-newbies và chat ",
+  "checkoutSentence2": "/verify {your email} {your code}"
 }
