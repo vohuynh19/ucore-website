@@ -4,6 +4,7 @@ import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import {
+  AppLoading,
   QuestionLayout,
   QuestionList,
   QuestionRightFilter,
@@ -126,6 +127,10 @@ const QuestionWithIdPage: NextPage = () => {
     sort: undefined,
     search: undefined,
   };
+
+  if (router.isFallback) {
+    return <AppLoading />;
+  }
 
   return (
     <>

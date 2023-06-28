@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import { useUserDetail } from "hooks";
 import { userQueryKeys } from "src/infra/https";
 
-import { ComingSoon, ProfileUserProfile } from "ui";
+import { AppLoading, ComingSoon, ProfileUserProfile } from "ui";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   const queryClient = new QueryClient();
@@ -54,6 +54,10 @@ const ProfileUserPage: NextPage = () => {
   const router = useRouter();
   let { id } = router.query;
   const { data: profile } = useUserDetail(id as string);
+
+  if (router.isFallback) {
+    return <AppLoading />;
+  }
 
   return (
     <>

@@ -8,7 +8,7 @@ import { useTranslation } from "react-i18next";
 import { courseQueryKeys } from "src/infra/https";
 import { useCourseDetail } from "hooks";
 
-import { SizeBox } from "ui/atoms";
+import { AppLoading, SizeBox } from "ui/atoms";
 import { Video } from "ui/molecules";
 import {
   CourseHeader,
@@ -67,8 +67,9 @@ const CourseDetailPage = () => {
 
   const { data } = useCourseDetail(id as string);
 
-  console.log(id);
-  console.log(data);
+  if (router.isFallback) {
+    return <AppLoading />;
+  }
 
   return (
     <CourseLayout

@@ -18,6 +18,7 @@ import { Video } from "ui/molecules";
 import { LessonLayout } from "ui/templates";
 import { Typography } from "antd";
 import DropdownMenu from "ui/molecules/CourseDetail/DropdownMenu";
+import { AppLoading } from "ui";
 
 const { Title } = Typography;
 
@@ -101,6 +102,10 @@ const LessonPage = () => {
       })),
     }));
   }, [data, router, userCourse, videoId]);
+
+  if (router.isFallback) {
+    return <AppLoading />;
+  }
 
   return (
     <>
