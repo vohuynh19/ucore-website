@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import type { GetStaticPaths, NextPage } from "next";
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useDebouncedCallback } from "use-debounce";
+import { Form } from "antd";
+
+import { useTablePagination, useQuestionWithGuideId } from "hooks";
+
 import {
   AppLoading,
   QuestionLayout,
@@ -10,12 +16,9 @@ import {
   QuestionRightFilter,
   QuestionTopFilter,
 } from "ui";
-import { Form } from "antd";
-import { useTablePagination, useQuestionWithGuideId } from "hooks";
-import { RESOLVE_OPTION, SORT_OPTION } from "ui/organisms/CourseList/types";
+
+import { SORT_OPTION } from "ui/organisms/CourseList/types";
 import { PAGE_ROUTES } from "@constants";
-import { useDebouncedCallback } from "use-debounce";
-import { useEffect } from "react";
 
 export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   return {

@@ -37,7 +37,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   const queryClient = new QueryClient();
 
   try {
-    await queryClient.prefetchQuery(userQueryKeys.detail(id));
+    await queryClient.fetchQuery(userQueryKeys.detail(id));
     return {
       props: {
         ...(await serverSideTranslations(locale, [
@@ -63,7 +63,11 @@ const ProfileUserPage: NextPage = () => {
   const { data: profile } = useUserDetail(id as string);
 
   if (router.isFallback) {
-    return <AppLoading />;
+    return (
+      <div style={{ height: 600 }}>
+        <AppLoading />
+      </div>
+    );
   }
 
   return (

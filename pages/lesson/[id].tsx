@@ -39,7 +39,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
 
   return {
     paths: paths,
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
@@ -107,7 +107,11 @@ const LessonPage = () => {
   }, [data, router, userCourse, videoId]);
 
   if (router.isFallback) {
-    return <AppLoading />;
+    return (
+      <div style={{ height: 600 }}>
+        <AppLoading />
+      </div>
+    );
   }
 
   return (
