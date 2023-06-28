@@ -47,17 +47,25 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
 export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
-  await queryClient.prefetchQuery(courseQueryKeys.detail(id));
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        "common",
-        "sentence",
-        "course",
-      ])),
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
+
+  try {
+    await queryClient.prefetchQuery(courseQueryKeys.detail(id));
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          "common",
+          "sentence",
+          "course",
+        ])),
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 }
 
 const CourseDetailPage = () => {

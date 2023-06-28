@@ -36,18 +36,25 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
 
-  await queryClient.prefetchQuery(userQueryKeys.detail(id));
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, [
-        "common",
-        "sentence",
-        "sentence",
-      ])),
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
+  try {
+    await queryClient.prefetchQuery(userQueryKeys.detail(id));
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          "common",
+          "sentence",
+          "sentence",
+        ])),
+        dehydratedState: dehydrate(queryClient),
+        revalidate: 60,
+      },
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 }
 
 const ProfileUserPage: NextPage = () => {

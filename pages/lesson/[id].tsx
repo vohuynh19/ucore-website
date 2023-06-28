@@ -6,11 +6,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { dehydrate, QueryClient } from "@tanstack/react-query";
 import { useTranslation } from "react-i18next";
 
-import {
-  API_SERVICES,
-  courseQueryKeys,
-  REACT_QUERY_KEYS,
-} from "src/infra/https";
+import { courseQueryKeys } from "src/infra/https";
 import { useCourseDetail, useLesson, useUserCourse } from "hooks";
 import { PAGE_ROUTES } from "@constants";
 
@@ -50,17 +46,24 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
 export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
-
-  await queryClient.prefetchQuery(REACT_QUERY_KEYS.GET_COURSE_DETAIL(id), () =>
-    API_SERVICES.COURSE.getCoursesDetail(id)
-  );
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ["common"])),
-      dehydratedState: dehydrate(queryClient),
-    },
-  };
+  try {
+    await queryClient.prefetchQuery(courseQueryKeys.detail(id));
+    return {
+      props: {
+        ...(await serverSideTranslations(locale, [
+          "common",
+          "sentence",
+          "course",
+        ])),
+        dehydratedState: dehydrate(queryClient),
+      },
+    };
+  } catch (e) {
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 }
 
 const LessonPage = () => {
