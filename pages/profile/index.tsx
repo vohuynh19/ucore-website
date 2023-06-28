@@ -26,11 +26,7 @@ const ProfileMyProfilePage: NextPage = () => {
       </Head>
 
       <ProfileLayout>
-        {process.env.NEXT_PUBLIC_ENV === "production" ? (
-          <ComingSoon />
-        ) : (
-          myProfile && <ProfilePersonalProfile myProfile={myProfile} />
-        )}
+        {myProfile && <ProfilePersonalProfile myProfile={myProfile} />}
       </ProfileLayout>
     </>
   );

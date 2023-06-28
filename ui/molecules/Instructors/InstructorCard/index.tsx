@@ -1,10 +1,11 @@
-import { Card, Space, Typography } from "antd";
+import { Card, Popover, Space, Typography } from "antd";
 import { PAGE_ROUTES } from "@constants";
 import router from "next/router";
 import { useTranslation } from "react-i18next";
 import { StyledCard } from "./styled";
 import { Star, YouTube } from "@mui/icons-material";
 import { UserInstroductionPopover } from "ui";
+import { red } from "@mui/material/colors";
 
 const defaultAvatar =
   "https://villagesonmacarthur.com/wp-content/uploads/2020/12/Blank-Avatar.png";
@@ -37,7 +38,7 @@ const InstructorCard = (props: User & { cardProps?: any }) => {
               </Text>
 
               <div className="more-info">
-                <YouTube />
+                <YouTube sx={{ color: red[500] }} />
                 <span style={{ marginLeft: "5px", fontWeight: "bold" }}>
                   {props?.profileYoutubeCount
                     ? `${props?.profileYoutubeCount}K`
@@ -51,7 +52,13 @@ const InstructorCard = (props: User & { cardProps?: any }) => {
     );
   };
 
-  return <InstructorCardInner />;
+  return (
+    <Popover content={content} trigger="hover" placement="right">
+      <div>
+        <InstructorCardInner />
+      </div>
+    </Popover>
+  );
 };
 
 export default InstructorCard;
