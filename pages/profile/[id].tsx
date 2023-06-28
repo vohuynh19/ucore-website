@@ -61,11 +61,7 @@ const ProfileUserPage: NextPage = () => {
         <title>Profile - Vicodemy</title>
       </Head>
 
-      {process.env.NEXT_PUBLIC_ENV === "production" ? (
-        <ComingSoon />
-      ) : (
-        profile && <ProfileUserProfile userProfile={profile} />
-      )}
+      {profile && <ProfileUserProfile userProfile={profile} />}
     </>
   );
 };

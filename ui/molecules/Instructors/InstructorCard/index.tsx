@@ -4,7 +4,7 @@ import router from "next/router";
 import { useTranslation } from "react-i18next";
 import { StyledCard } from "./styled";
 import { Star, YouTube } from "@mui/icons-material";
-import SchoolIcon from "@mui/icons-material/School";
+import { UserInstroductionPopover } from "ui";
 
 const defaultAvatar =
   "https://villagesonmacarthur.com/wp-content/uploads/2020/12/Blank-Avatar.png";
@@ -12,6 +12,8 @@ const defaultAvatar =
 const { Text } = Typography;
 const InstructorCard = (props: User & { cardProps?: any }) => {
   const { t: t } = useTranslation("common");
+
+  const content = <UserInstroductionPopover myProfile={props} />;
 
   const InstructorCardInner = () => {
     return (
@@ -39,7 +41,7 @@ const InstructorCard = (props: User & { cardProps?: any }) => {
                 <span style={{ marginLeft: "5px", fontWeight: "bold" }}>
                   {props?.profileYoutubeCount
                     ? `${props?.profileYoutubeCount}K`
-                    : 0}
+                    : `0K`}
                 </span>
               </div>
             </Space>

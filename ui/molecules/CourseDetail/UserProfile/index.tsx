@@ -29,19 +29,32 @@ const Container = styled.div`
 
 type Props = {
   avatarLink: string;
+  profileLink: string;
   name: string;
+  discordLink: string;
 };
-const UserProfile = ({ avatarLink, name }: Props) => {
+const UserProfile = ({ avatarLink, profileLink, name, discordLink }: Props) => {
   const { t } = useTranslation("common");
 
   return (
     <Container>
       <Space>
-        <Avatar size={48} icon={<UserOutlined />} src={avatarLink} />
+        <a href={profileLink}>
+          <Avatar size={48} icon={<UserOutlined />} src={avatarLink} />
+        </a>
 
         <Space direction="vertical">
           <Typography.Title level={5}>{name}</Typography.Title>
-          <Button> {t("seeInDiscord")}</Button>
+          <Button
+            onClick={() => {
+              if (discordLink) {
+                window.open(discordLink, "_blank");
+              }
+            }}
+          >
+            {" "}
+            {t("seeInDiscord")}
+          </Button>
         </Space>
       </Space>
     </Container>

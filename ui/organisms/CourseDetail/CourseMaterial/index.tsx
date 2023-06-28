@@ -110,14 +110,18 @@ const CourseMaterial = ({ course }: Props) => {
             <Title level={4} style={{ marginBottom: 12 }}>
               {t("A Course By")}
             </Title>
-
-            <UserProfile
-              avatarLink={
-                teacherProfile?.avatar ||
-                "https://vicodemy.com/wp-content/uploads/2023/03/0901df4f8a204c7e1531.jpeg"
-              }
-              name={course?.teacherName || ""}
-            />
+            {teacherProfile && (
+              <UserProfile
+                avatarLink={
+                  teacherProfile?.avatar ||
+                  "https://vicodemy.com/wp-content/uploads/2023/03/0901df4f8a204c7e1531.jpeg"
+                }
+                name={course?.teacherName || ""}
+                discordLink={teacherProfile?.profileDiscordLink || ""}
+                profileLink={PAGE_ROUTES.USER_PROFILE(teacherProfile.id) || ""}
+              />
+            )}
+            ;
           </>
         }
       >
