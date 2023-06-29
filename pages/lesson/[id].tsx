@@ -61,7 +61,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   } catch (e) {
     return {
       notFound: true,
-      revalidate: 60,
+      revalidate: 5,
     };
   }
 }

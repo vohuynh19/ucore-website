@@ -46,13 +46,13 @@ export async function getStaticProps({ locale, params }: StaticProps) {
           "sentence",
         ])),
         dehydratedState: dehydrate(queryClient),
-        revalidate: 60,
+        revalidate: 5,
       },
     };
   } catch (e) {
     return {
       notFound: true,
-      revalidate: 60,
+      revalidate: 5,
     };
   }
 }
