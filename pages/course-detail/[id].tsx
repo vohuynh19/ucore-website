@@ -40,7 +40,7 @@ export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
 
   return {
     paths: paths,
-    fallback: "blocking",
+    fallback: true,
   };
 };
 
@@ -49,7 +49,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   const queryClient = new QueryClient();
 
   try {
-    await queryClient.prefetchQuery(courseQueryKeys.detail(id));
+    await queryClient.fetchQuery({ ...courseQueryKeys.detail(id), retry: 0 });
     return {
       props: {
         ...(await serverSideTranslations(locale, [

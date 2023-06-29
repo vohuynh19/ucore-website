@@ -47,7 +47,7 @@ export async function getStaticProps({ locale, params }: StaticProps) {
   const { id = "" } = params;
   const queryClient = new QueryClient();
   try {
-    await queryClient.fetchQuery(courseQueryKeys.detail(id));
+    await queryClient.fetchQuery({ ...courseQueryKeys.detail(id), retry: 0 });
     return {
       props: {
         ...(await serverSideTranslations(locale, [
