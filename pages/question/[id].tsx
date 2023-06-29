@@ -23,7 +23,7 @@ import { PAGE_ROUTES } from "@constants";
 export const getStaticPaths: GetStaticPaths = async ({ locales }: any) => {
   return {
     paths: [],
-    fallback: true,
+    fallback: "blocking",
   };
 };
 
