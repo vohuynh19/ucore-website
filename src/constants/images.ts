@@ -1,5 +1,5 @@
 const IMAGES_URL = {
-  LOGO: "/images/logo.png",
+  LOGO: "/images/xet/xetmiy.png",
   LOGO_FOOTER: "/images/logo-footer.png",
   BANNER_COVER: "/images/home/banner-cover.png",
   HOME_COVER: "/images/home/hero-graphics.svg",
@@ -18,7 +18,7 @@ const IMAGES_URL = {
   INSTRUCTOR_4: "/images/instructors/culi.png",
   INSTRUCTOR_DEMO: "/images/instructors/instructor-demo.png",
   PROFILE_PANEL: "/images/cover-photo.jpg",
-  THANK:"/images/thank3.png",
+  THANK: "/images/thank3.png",
 };
 
 export default IMAGES_URL;

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { collection, getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyC2GW9oFZ0yhsCL4Z1YTWvyrr6JnzvrODI",
@@ -13,4 +14,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const auth = getAuth();
+
+export const auth = getAuth(app);
+export const firestoreIns = getFirestore(app);
+
+// Firestore
+
+export const getCollection = (name: "orders") => {
+  if (process.env.NEXT_PUBLIC_ENV === "development") {
+    return `test_${name}`;
+  }
+  return name;
+};
+
+export const orderCollection = collection(
+  firestoreIns,
+  getCollection("orders")
+);

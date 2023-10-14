@@ -5,7 +5,7 @@ import { pxToCalc } from "./helper";
 
 export const theme = {
   colors: {
-    primary: COLORS.PURPLE_1,
+    primary: "#5E3E33",
     secondary: COLORS.BLACK_2,
     success: COLORS.GREEN_1,
     error: COLORS.RED_1,

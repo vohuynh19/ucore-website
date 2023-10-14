@@ -16,6 +16,7 @@ export const StyledContent = styled(Content)`
       max-width: 767px;
       height: 100vh !important;
       background-color: ${({ theme }) => theme.colors.white} !important;
+      overflow-y: auto;
     }
   }
 `;
