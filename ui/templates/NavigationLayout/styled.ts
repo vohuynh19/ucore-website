@@ -5,8 +5,18 @@ const { Sider, Content, Header, Footer } = Layout;
 
 export const StyledContent = styled(Content)`
   && {
-    min-height: 50vh !important;
-    background-color: ${({ theme }) => theme.colors.white} !important;
+    height: 100vh !important;
+    background-color: ${({ theme }) => theme.colors.line} !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .container {
+      max-width: 767px;
+      height: 100vh !important;
+      background-color: ${({ theme }) => theme.colors.white} !important;
+    }
   }
 `;
 

@@ -9,5 +9,3 @@ export { default as SizeBox } from "./SizeBox";
 export { default as Button } from "./Button";
 export { default as Drawer } from "./Drawer";
 export { default as ComingSoon } from "./ComingSoon";
-export { default as MarkupView } from "./MarkupView";
-export { default as TextEditor } from "./TextEditor";
